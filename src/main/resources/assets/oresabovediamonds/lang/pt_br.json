@@ -1,0 +1,52 @@
+{
+	"item.oresabovediamonds.black_opal": "§5Opala Negra",
+	"item.oresabovediamonds.amethyst": "§dAmetista",
+	
+	"block.oresabovediamonds.amethyst_ore": "§dMinério de Ametista",
+	"block.oresabovediamonds.black_opal_ore": "§5Minério de Opala Negra",
+	
+	"block.oresabovediamonds.nether_amethyst_ore": "§dMinério de Ametista do Nether",
+	"block.oresabovediamonds.end_amethyst_ore": "§dMinério de Ametista do Fim",
+	
+	"block.oresabovediamonds.nether_black_opal_ore": "§5Minério de Opala Negra do Nether",
+	"block.oresabovediamonds.end_black_opal_ore": "§5Minério de Opala Negra do Fim",
+	
+	"block.oresabovediamonds.amethyst_block": "§dBloco de Ametista",
+	"block.oresabovediamonds.black_opal_block": "§5Bloco de Opala Negra",
+	
+	"item.oresabovediamonds.amethyst_sword": "§dEspada de Ametista",
+	"item.oresabovediamonds.amethyst_pickaxe": "§dPicareta de Ametista",
+	"item.oresabovediamonds.amethyst_shovel": "§dPá de Ametista",
+	"item.oresabovediamonds.amethyst_axe": "§dMachado de Ametista",
+	"item.oresabovediamonds.amethyst_hoe": "§dEnxada de Ametista",
+	
+	"item.oresabovediamonds.black_opal_sword": "§5Espada de Opala Negra",
+	"item.oresabovediamonds.black_opal_pickaxe": "§5Picareta de Opala Negra",
+	"item.oresabovediamonds.black_opal_shovel": "§5Pá de Opala Negra",
+	"item.oresabovediamonds.black_opal_axe": "§5Machado de Opala Negra",
+	"item.oresabovediamonds.black_opal_hoe": "§5Enxada de Opala Negra",
+	
+	"item.oresabovediamonds.netherite_opal_sword": "§5Espada de Opala Netherita",
+	"item.oresabovediamonds.netherite_opal_pickaxe": "§5Picareta de Opala Netherita",
+	"item.oresabovediamonds.netherite_opal_shovel": "§5Pá de Opala Netherita",
+	"item.oresabovediamonds.netherite_opal_axe": "§5Machado de Opala Netherita",
+	"item.oresabovediamonds.netherite_opal_hoe": "§5Enxada de Opala Netherita",
+	
+	"item.oresabovediamonds.amethyst_helmet": "§5Capacete de Ametista",
+	"item.oresabovediamonds.amethyst_chestplate": "§5Peitoral de Ametista",
+	"item.oresabovediamonds.amethyst_leggings": "§5Calças de Ametista",
+	"item.oresabovediamonds.amethyst_boots": "§5Botas de Ametista",
+	
+	"item.oresabovediamonds.black_opal_helmet": "§5Capacete de Opala Negra",
+	"item.oresabovediamonds.black_opal_chestplate": "§5Peitoral de Opala Negra",
+	"item.oresabovediamonds.black_opal_leggings": "§5Calças de Opala Negra",
+	"item.oresabovediamonds.black_opal_boots": "§5Botas de Opala Negra",
+	
+	"item.oresabovediamonds.netherite_opal_helmet": "§5Capacete de Opala Netherita",
+	"item.oresabovediamonds.netherite_opal_chestplate": "§5Peitoral de Opala Netherita",
+	"item.oresabovediamonds.netherite_opal_leggings": "§5Calças de Opala Netherita",
+	"item.oresabovediamonds.netherite_opal_boots": "§5Botas de Opala Netherita",
+	
+	"itemGroup.oresabovediamonds": "§dOres Above Diamonds"
+	
+}

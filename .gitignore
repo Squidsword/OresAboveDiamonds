@@ -23,5 +23,8 @@ run
 libs
 .lnk
 
+# Files from Forge MDK
+forge*changelog.txt
+
 anybat.bat
 Git Bash.lnk

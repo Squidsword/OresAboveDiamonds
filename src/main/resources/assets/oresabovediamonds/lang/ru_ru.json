@@ -1,0 +1,51 @@
+{
+	"item.oresabovediamonds.black_opal": "§5Чёрный опал" ,
+	"item.oresabovediamonds.amethyst": "§dАметист",
+	
+	"block.oresabovediamonds.amethyst_ore": "§dАметистовая руда",
+	"block.oresabovediamonds.black_opal_ore": "§5Руда чёрного опала",
+	
+	"block.oresabovediamonds.nether_amethyst_ore": "§dНезер-аметистовая руда",
+	"block.oresabovediamonds.end_amethyst_ore": "§dЭнд-аметистовая руда",
+	
+	"block.oresabovediamonds.nether_black_opal_ore": "§5Незер-руда чёрного опала",
+	"block.oresabovediamonds.end_black_opal_ore": "§5Энд-руда чёрного опала",
+	
+	"block.oresabovediamonds.amethyst_block": "§dАметистовый блок",
+	"block.oresabovediamonds.black_opal_block": "§5Блок чёрного опала",
+	
+	"item.oresabovediamonds.amethyst_sword": "§dАметистовый меч",
+	"item.oresabovediamonds.amethyst_pickaxe": "§dАметистовая кирка",
+	"item.oresabovediamonds.amethyst_shovel": "§dАметистовая лопата",
+	"item.oresabovediamonds.amethyst_axe": "§dАметистовый топор",
+	"item.oresabovediamonds.amethyst_hoe": "§dАметистовая мотыга",
+	
+	"item.oresabovediamonds.black_opal_sword": "§5Меч из чёрного опала",
+	"item.oresabovediamonds.black_opal_pickaxe": "§5Кирка из чёрного опала",
+	"item.oresabovediamonds.black_opal_shovel": "§5Лопата из чёрного опала",
+	"item.oresabovediamonds.black_opal_axe": "§5Топор из чёрного опала",
+	"item.oresabovediamonds.black_opal_hoe": "§5Мотыга из чёрного опала",
+	
+	"item.oresabovediamonds.netherite_opal_sword": "В§5Меч из незеритового опала",
+	"item.oresabovediamonds.netherite_opal_pickaxe": "В§5Кирка из незеритового опала",
+	"item.oresabovediamonds.netherite_opal_shovel": "В§5Лопата из незеритового опала",
+	"item.oresabovediamonds.netherite_opal_axe": "В§5Топор из незеритового опала",
+	"item.oresabovediamonds.netherite_opal_hoe": "В§5Мотыга из незеритового опала",
+	
+	"item.oresabovediamonds.amethyst_helmet": "§dАметистовый шлем",
+	"item.oresabovediamonds.amethyst_chestplate": "§dАмтистовый нагрудник",
+	"item.oresabovediamonds.amethyst_leggings": "§dАметистовые поножи",
+	"item.oresabovediamonds.amethyst_boots": "§dАметистовые ботинки",
+	
+	"item.oresabovediamonds.black_opal_helmet": "§5Шлем из чёрного опала",
+	"item.oresabovediamonds.black_opal_chestplate": "§5Нагрудник из чёрного опала",
+	"item.oresabovediamonds.black_opal_leggings": "§5Поножи из чёрного опала",
+	"item.oresabovediamonds.black_opal_boots": "§5Ботинки из чёрного опала",
+	
+	"item.oresabovediamonds.netherite_opal_helmet": "В§5Шлем из незеритового опала",
+	"item.oresabovediamonds.netherite_opal_chestplate": "В§5Нагрудник из незеритового опала",
+	"item.oresabovediamonds.netherite_opal_leggings": "В§5Поножи из незеритового опала",
+	"item.oresabovediamonds.netherite_opal_boots": "В§5Ботинки из незеритового опала",
+		
+	"itemGroup.oresabovediamonds": "§dOres Above Diamonds"
+}

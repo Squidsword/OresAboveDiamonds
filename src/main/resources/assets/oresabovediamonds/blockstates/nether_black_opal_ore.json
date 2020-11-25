@@ -1,6 +1,6 @@
 {
     "variants": 
     {
-        "normal": { "model": "oresabovediamonds:nether_black_opal_ore" }
+        "": { "model": "oresabovediamonds:block/nether_black_opal_ore" }
     }
 }

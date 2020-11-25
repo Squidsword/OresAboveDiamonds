@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "oresabovediamonds:item/netherite_opal_hoe"
+    }
+}
