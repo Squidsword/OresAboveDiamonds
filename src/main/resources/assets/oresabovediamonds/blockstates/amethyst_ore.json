@@ -1,6 +1,6 @@
 {
     "variants": 
     {
-        "normal": { "model": "oresabovediamonds:amethyst_ore" }
+        "": { "model": "oresabovediamonds:block/amethyst_ore" }
     }
 }

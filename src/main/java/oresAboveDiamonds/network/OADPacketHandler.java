@@ -1,23 +1,23 @@
 package oresAboveDiamonds.network;
 
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 
-public class OADPacketHandler {
-	public static SimpleNetworkWrapper INSTANCE;
-
-    private static int ID = 0;
-    private static int nextID() {
-        return ID++;
-    }
+public class OADPacketHandler  {
+	
+	private static final String PROTOCOL_VERSION = "1";
+	public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(
+	    new ResourceLocation("oresabovediamonds", "main"),
+	    () -> PROTOCOL_VERSION,
+	    PROTOCOL_VERSION::equals,
+	    PROTOCOL_VERSION::equals
+	);
+	
+    public static void registerMessages() {
+    	int id = 0;
+    	
+    	INSTANCE.registerMessage(id++, PacketSyncConfig.class, PacketSyncConfig::encode, PacketSyncConfig::decode, PacketSyncConfig::handle);
     
-    public static void registerMessages(String channelName) {
-        INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(channelName);
-
-        // Server side
-
-        // Client side
-        INSTANCE.registerMessage(PacketSyncConfig.Handler.class, PacketSyncConfig.class, nextID(), Side.CLIENT);
     }
 }
