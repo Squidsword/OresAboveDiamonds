@@ -1,0 +1,32 @@
+modLoader="javafml" #mandatory
+loaderVersion="[28,)" #mandatory (28 is current forge version)
+[[mods]] #mandatory
+modId="oresabovediamonds" #mandatory
+version="3.4" #mandatory
+displayURL="https://www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
+displayName="Ores Above Diamonds" #mandatory
+logoFile="oresabovediamonds_logo.png" #optional
+# A text field displayed in the mod UI
+authors="Squidsword" #optional
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Adds the Amethyst and Black Opal which are respectively 3x and 9x rarer than diamonds.
+Both have its own set of balanced armors and tools.
+
+It's recommended to download Overloaded Armor Bar along with this mod.
+https://www.curseforge.com/minecraft/mc-mods/overloaded-armor-bar/files/2844091
+
+Special thanks to the guys at the Minecraft Mod Development Discord and to Poland123456 from CurseForge for making the art for the Amethyst.
+
+DISCLAIMER: The mod doesn't have built in retrogen support. This means that ores will not spawn in already loaded chunks.
+If you can find a 1.15.2 retrogen mod, you can download it and follow the instructions to add this mod to the retrogen mod.
+I have not found any mods that can retrogen on 1.15.2, so you might be out of luck trying to find one. 
+
+'''
+# Here's another dependency
+[[dependencies.oresabovediamonds]]
+    modId="overloadedarmorbar"
+    mandatory=false
+    versionRange="[3.0.0b,)"
+    ordering="AFTER"
+    side="CLIENT"
