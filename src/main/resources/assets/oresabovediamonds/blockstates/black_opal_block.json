@@ -1,6 +1,6 @@
 {
     "variants": 
     {
-        "normal": { "model": "oresabovediamonds:black_opal_block" }
+        "": { "model": "oresabovediamonds:block/black_opal_block" }
     }
 }

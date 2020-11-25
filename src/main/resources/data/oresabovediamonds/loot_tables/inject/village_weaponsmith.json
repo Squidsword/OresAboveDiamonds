@@ -1,0 +1,47 @@
+{
+  "pools": [{
+    "name": "main",
+    "rolls": {
+        "min": 3.0,
+        "max": 8.0,
+        "type": "minecraft:uniform"
+      },
+    "entries": [
+      {
+        "type": "item",
+        "name": "oresabovediamonds:black_opal",
+         "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 2.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+        "weight": 1
+      },
+      {
+      
+        "type": "item",
+        "name": "oresabovediamonds:amethyst",
+         "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 2.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+        "weight": 2
+      },
+      {
+        "type": "empty",
+        "weight": 44
+      }
+    ]
+  }]
+}
