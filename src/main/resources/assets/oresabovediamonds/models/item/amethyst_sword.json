@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "oresabovediamonds:item/amethyst_sword"
+    }
+}

@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"I"
+	],
+	
+	
+	
+	"key":
+	{
+		"I": {"item": "oresabovediamonds:black_opal_block"}
+	},
+	
+	"result": {
+		"item": "oresabovediamonds:black_opal",
+		"count": 9
+		}
+}

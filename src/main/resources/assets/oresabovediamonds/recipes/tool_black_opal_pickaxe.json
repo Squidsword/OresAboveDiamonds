@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"III",
+		" S ",
+		" S "
+	],
+		
+	"key":
+	{
+		"I": {"item": "oresabovediamonds:black_opal"},
+		"S": {"item": "minecraft:stick"}
+	},
+	
+	"result": {"item": "oresabovediamonds:black_opal_pickaxe"}
+}

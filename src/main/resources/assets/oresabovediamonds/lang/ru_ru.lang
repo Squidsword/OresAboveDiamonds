@@ -1,0 +1,38 @@
+	item.black_opal:§5Чёрный опал ,
+	item.amethyst:§dАметист,
+	
+	tile.amethyst_ore:§dАметистовая руда,
+	tile.black_opal_ore:§5Руда чёрного опала,
+	
+	tile.nether_amethyst_ore:§dНезер-аметистовая руда,
+	tile.end_amethyst_ore:§dЭнд-аметистовая руда,
+	
+	tile.nether_black_opal_ore:§5Незер-руда чёрного опала,
+	tile.end_black_opal_ore:§5Энд-руда чёрного опала,
+	
+	tile.amethyst_tile:§dАметистовый блок,
+	tile.black_opal_tile:§5Блок чёрного опала,
+	
+	item.amethyst_sword:§dАметистовый меч,
+	item.amethyst_pickaxe:§dАметистовая кирка,
+	item.amethyst_shovel:§dАметистовая лопата,
+	item.amethyst_axe:§dАметистовый топор,
+	item.amethyst_hoe:§dАметистовая мотыга,
+	
+	item.black_opal_sword:§5Меч из чёрного опала,
+	item.black_opal_pickaxe:§5Кирка из чёрного опала,
+	item.black_opal_shovel:§5Лопата из чёрного опала,
+	item.black_opal_axe:§5Топор из чёрного опала,
+	item.black_opal_hoe:§5Мотыга из чёрного опала,
+	
+	item.amethyst_helmet:§dАметистовый шлем,
+	item.amethyst_chestplate:§dАмтистовый нагрудник,
+	item.amethyst_leggings:§dАметистовые поножи,
+	item.amethyst_boots:§dАметистовые ботинки,
+	
+	item.black_opal_helmet:§5Шлем из чёрного опала,
+	item.black_opal_chestplate:§5Нагрудник из чёрного опала,
+	item.black_opal_leggings:§5Поножи из чёрного опала,
+	item.black_opal_boots:§5Ботинки из чёрного опала
+
+	itemGroup.oresabovediamonds=§dOres Above Diamonds
