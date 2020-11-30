@@ -121,7 +121,7 @@ public class OreGeneration {
     }
 
     private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
-        return Registry.register(WorldGenRegistries.field_243653_e, OresAboveDiamonds.modID + ":" + name, configuredFeature);
+        return Registry.register(WorldGenRegistries.field_243653_e, OresAboveDiamonds.MODID + ":" + name, configuredFeature);
     }
 
 }

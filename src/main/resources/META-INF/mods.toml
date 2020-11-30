@@ -1,13 +1,19 @@
 modLoader="javafml" #mandatory
-loaderVersion="[28,)" #mandatory (28 is current forge version)
+
+loaderVersion="[35,)" #mandatory (35 is current forge version)
+issueTrackerURL="https://github.com/Squidsword/OresAboveDiamonds/issues"
+license="MIT"
+
 [[mods]] #mandatory
 modId="oresabovediamonds" #mandatory
-version="5.3" #mandatory
-displayURL="https://www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
+version="6.0.0" #mandatory
+displayURL="www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
 displayName="Ores Above Diamonds" #mandatory
 logoFile="oresabovediamonds_logo.png" #optional
 # A text field displayed in the mod UI
 authors="§dSquidsword" #optional
+license="MIT License"
+credits="Special thanks to §6CriativeMan1§r for the making the art for this mod!"
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 Adds the §dAmethyst§r and §5Black Opal§r which are respectively §d3x§r and §59x§r rarer than diamonds.
@@ -16,17 +22,20 @@ Both have its own set of balanced armors and tools.
 It's recommended to download Overloaded Armor Bar along with this mod.
 https://www.curseforge.com/minecraft/mc-mods/overloaded-armor-bar/
 
-Special thanks to the guys at the Minecraft Mod Development Discord, §6CriativeMan1§r for making nearly all the textures, §6mARRSSSSSS§r for making Russian translations, and to §6Poland123456§r from CurseForge for making the art for the Amethyst!
-
-DISCLAIMER: The mod doesn't have built in retrogen support. This means that ores will not spawn in already loaded chunks.
-Venture far into unexplored lands to have a chance at finding them.
-
+The mod doesn't have built in retrogen support. This means that ores will not spawn in already loaded chunks. Venture far into unexplored lands to have a chance at finding them.
 '''
 # Here's another dependency
 
 [[dependencies.oresabovediamonds]]
     modId="forge"
     mandatory=true
-    versionRange="[32.0.67,)"
+    versionRange="[35.0.0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.oresabovediamonds]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,)"
     ordering="NONE"
     side="BOTH"

@@ -37,15 +37,14 @@ import oresAboveDiamonds.network.OADPacketHandler;
 import oresAboveDiamonds.world.OreGeneration;
 
 
-@Mod("oresabovediamonds")
+@Mod(OresAboveDiamonds.MODID)
 public class OresAboveDiamonds 
 {
-	public static OresAboveDiamonds instance;
-	public static final Logger logger = LogManager.getLogger("oresabovediamonds");
-	
+	public static final Logger LOGGER = LogManager.getLogger("oresabovediamonds");
 	public static final ItemGroup OAD = new OADItemGroup();
+	public static final String MODID = "oresabovediamonds";
 	
-	public static final String modID = "oresabovediamonds";
+	public static OresAboveDiamonds instance;
 	
 	public OresAboveDiamonds() 
 	{
@@ -67,12 +66,12 @@ public class OresAboveDiamonds
 	private void setup(final FMLCommonSetupEvent event)
 	{
 		OreGeneration.setupOreGeneration();
-		logger.info("Setup method registered.");
+		LOGGER.info("Setup method registered.");
 		
 	}
 	private void clientRegistries(final FMLClientSetupEvent event)
 	{
-		logger.info("clientRegistries method registered.");
+		LOGGER.info("clientRegistries method registered.");
 	}
 	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 	public static class RegistryEvents
@@ -95,7 +94,7 @@ public class OresAboveDiamonds
 					
 			);
 			
-			logger.info("Blocks registered.");
+			LOGGER.info("Blocks registered.");
 		}
 		@SubscribeEvent
 		public static void registerItems(final RegistryEvent.Register<Item> event)

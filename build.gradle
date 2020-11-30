@@ -18,9 +18,38 @@ tasks.withType(JavaCompile) {
   options.encoding = "UTF-8"
 }
 
-version = '1.0'
-group = 'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'modid'
+version = "${minecraft_version}-v${mod_version}"
+group = 'mod.squidsword.oresabovediamonds' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'OresAboveDiamonds'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+build.dependsOn sourcesJar
+
+// Process resources on build
+processResources {
+	// This will ensure that this task is redone when the versions change.
+	inputs.property 'version', project.version
+
+	// Replace stuff in mods.toml, nothing else
+	from(sourceSets.main.resources.srcDirs) {
+		include 'META-INF/mods.toml'
+
+		// Replace version
+		expand 'version':project.version
+	}
+
+	// Copy everything else except the mods.toml
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'META-INF/mods.toml'
+	}
+}
+
+artifacts {
+	archives sourcesJar
+}
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -38,6 +67,7 @@ minecraft {
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
+    
     runs {
         client {
             workingDirectory project.file('run')
@@ -49,7 +79,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                oresabovediamonds {
                     source sourceSets.main
                 }
             }
@@ -65,7 +95,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                oresabovediamonds {
                     source sourceSets.main
                 }
             }
@@ -80,7 +110,7 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'oresabovediamonds', '--all', '--output', file('src/generated/resources/')
 
             mods {
                 examplemod {
@@ -95,7 +125,7 @@ dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.6'
+    minecraft "net.minecraftforge:forge:${version_forge}"
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
@@ -121,12 +151,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "examplemod",
-            "Specification-Vendor": "examplemodsareus",
-            "Specification-Version": "1", // We are version 1 of ourselves
+            "Specification-Title": "oresabovediamonds",
+            "Specification-Vendor": "Squidsword",
+            "Specification-": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"examplemodsareus",
+            "Implementation-Vendor" :"Squidsword",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
