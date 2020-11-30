@@ -45,6 +45,8 @@ public class OresAboveDiamonds
 	
 	public static final ItemGroup OAD = new OADItemGroup();
 	
+	public static final String modID = "oresabovediamonds";
+	
 	public OresAboveDiamonds() 
 	{
 		instance = this;

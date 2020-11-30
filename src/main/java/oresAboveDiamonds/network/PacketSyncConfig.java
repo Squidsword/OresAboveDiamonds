@@ -155,6 +155,7 @@ public class PacketSyncConfig {
 		return new PacketSyncConfig(buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readBoolean());
 	}
 	
+	@SuppressWarnings("resource")
 	public static void handle(PacketSyncConfig message, Supplier<NetworkEvent.Context> ctx) {
 		
 		int counter = 0;

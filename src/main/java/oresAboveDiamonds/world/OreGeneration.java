@@ -1,26 +1,51 @@
 package oresAboveDiamonds.world;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Blocks;
 import net.minecraft.block.pattern.BlockMatcher;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.GenerationStage.Decoration;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.placement.ChanceRangeConfig;
+//import net.minecraft.world.gen.placement.ChanceRangeConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
+import oresAboveDiamonds.OresAboveDiamonds;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.lists.BlockList;
+import oresAboveDiamonds.lists.ItemList;
 
-public class OreGeneration 
-{	
+public class OreGeneration {	
 	
-	public static OreFeatureConfig.FillerBlockType END_STONE = OreFeatureConfig.FillerBlockType.create("END_STONE", "end_stone", new BlockMatcher(Blocks.END_STONE));
+	private static final ArrayList<ConfiguredFeature<?, ?>> overworldOres = new ArrayList<ConfiguredFeature<?, ?>>();
+	private static final ArrayList<ConfiguredFeature<?, ?>> netherOres = new ArrayList<ConfiguredFeature<?, ?>>();
+	private static final ArrayList<ConfiguredFeature<?, ?>> endOres = new ArrayList<ConfiguredFeature<?, ?>>();
+
 	
-	public static void setupOreGeneration() 
-	{
+    private static ConfiguredFeature<?, ?> overworldAmethyst = Feature.ORE.withConfiguration(
+    		new OreFeatureConfig(OreFeatureConfig.FillerBlockType.field_241882_a, BlockList.amethyst_block.getDefaultState(), OADConfig.amethyst_max_vein_size.get())).func_242733_d(16).func_242729_a(3);
+    
+	//public static OreFeatureConfig.FillerBlockType END_STONE = OreFeatureConfig.FillerBlockType.create("END_STONE", "end_stone", new BlockMatcher(Blocks.END_STONE));
+	
+	public static void setupOreGeneration() {
 		
+		//Overworld Ore Register
+        overworldOres.add(register("amethyst_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(
+                OreFeatureConfig.FillerBlockType.field_241882_a, BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get())) //Vein Size
+                .func_242733_d(16).func_242729_a(5) //Spawn height start
+                .func_242731_b(1))); //Chunk spawn frequency
+		
+        /*
 		double d = OADConfig.amethyst_chance.get();
 		float amethyst_chance = (float)d;
 		
@@ -28,6 +53,7 @@ public class OreGeneration
 		float black_opal_chance = (float)d2;
 		
 		//final EndOreFeature END_OREGEN = new EndOreFeature(null);
+		
 		
 		if(OADConfig.overworld_ores.get() == true) {
 			for(Biome biome : ForgeRegistries.BIOMES) 
@@ -72,6 +98,30 @@ public class OreGeneration
 				      }
 				}
 			}
-			
+		*/
+		
 	}
+	
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void gen(BiomeLoadingEvent event) {
+        BiomeGenerationSettingsBuilder generation = event.getGeneration();
+        if(event.getCategory().equals(Biome.Category.NETHER)){
+            for(ConfiguredFeature<?, ?> ore : netherOres){
+                if (ore != null) generation.func_242513_a(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+            }
+        }
+        if(event.getCategory().equals(Biome.Category.THEEND)){
+            for(ConfiguredFeature<?, ?> ore : endOres){
+                if (ore != null) generation.func_242513_a(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+            }
+        }
+        for(ConfiguredFeature<?, ?> ore : overworldOres){
+            if (ore != null) generation.func_242513_a(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+        }
+    }
+
+    private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
+        return Registry.register(WorldGenRegistries.field_243653_e, OresAboveDiamonds.modID + ":" + name, configuredFeature);
+    }
+
 }
