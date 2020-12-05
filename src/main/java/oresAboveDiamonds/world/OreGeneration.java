@@ -33,7 +33,9 @@ public class OreGeneration {
 
 	
     private static ConfiguredFeature<?, ?> overworldAmethyst = Feature.ORE.withConfiguration(
-    		new OreFeatureConfig(OreFeatureConfig.FillerBlockType.field_241882_a, BlockList.amethyst_block.getDefaultState(), OADConfig.amethyst_max_vein_size.get())).func_242733_d(16).func_242729_a(3);
+    		new OreFeatureConfig(OreFeatureConfig.FillerBlockType.field_241882_a, BlockList.amethyst_block.getDefaultState(), OADConfig.amethyst_max_vein_size.get())).func_242733_d(16).func_242729_a(OADConfig.amethyst_chestplate_armor.get());
+    
+    // The new ore generation code was taken from this link https://pastebin.com/naAYBnjr from a guy called TechOfFreak who provided this in a YouTube comments section. Yeah I mean that unironically.
     
 	//public static OreFeatureConfig.FillerBlockType END_STONE = OreFeatureConfig.FillerBlockType.create("END_STONE", "end_stone", new BlockMatcher(Blocks.END_STONE));
 	
@@ -42,8 +44,8 @@ public class OreGeneration {
 		//Overworld Ore Register
         overworldOres.add(register("amethyst_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(
                 OreFeatureConfig.FillerBlockType.field_241882_a, BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get())) //Vein Size
-                .func_242733_d(16).func_242729_a(5) //Spawn height start
-                .func_242731_b(1))); //Chunk spawn frequency
+                .func_242733_d(64).func_242728_a() //Spawn height start
+                .func_242731_b(64))); //Chunk spawn frequency
 		
         /*
 		double d = OADConfig.amethyst_chance.get();
