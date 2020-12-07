@@ -165,8 +165,8 @@ public class CommandConfigChange {
 	}
 	
 	public static int run(CommandSource source, String command, String option){
-		if(option.equalsIgnoreCase("amethyst_chance")) {source.sendFeedback(new TranslationTextComponent("Amethyst Chance: §d" + OADConfig.amethyst_chance.get().toString()), false); }
-		if(option.equalsIgnoreCase("black_opal_chance")) {source.sendFeedback(new TranslationTextComponent("Black Opal Chance: §5" + OADConfig.black_opal_chance.get().toString()), false); }
+		if(option.equalsIgnoreCase("amethyst_chance")) {source.sendFeedback(new TranslationTextComponent("Amethyst Chance: §d" + OADConfig.amethyst_times_rarer.get().toString()), false); }
+		if(option.equalsIgnoreCase("black_opal_chance")) {source.sendFeedback(new TranslationTextComponent("Black Opal Chance: §5" + OADConfig.black_opal_times_rarer.get().toString()), false); }
 		
 		if(option.equalsIgnoreCase("amethyst_max_vein_size")) {source.sendFeedback(new TranslationTextComponent("Amethyst Max Vein Size: §d" + OADConfig.amethyst_max_vein_size.get().toString()), false); }
 		if(option.equalsIgnoreCase("black_opal_max_vein_size")) {source.sendFeedback(new TranslationTextComponent("Black Opal Max Vein Size: §5" + OADConfig.black_opal_max_vein_size.get().toString()), false); }
@@ -221,9 +221,12 @@ public class CommandConfigChange {
 		
 		if(option.equalsIgnoreCase("enable_server_config_sync")) {source.sendFeedback(new TranslationTextComponent("(Client Side) Enable Server Config Sync: " + OADConfig.enable_server_config_sync.get().toString()), false); }
 		if(option.equalsIgnoreCase("send_config_sync_packet")) {source.sendFeedback(new TranslationTextComponent("(Server Side) Send Config Sync Packet: " + OADConfig.send_config_sync_packet.get().toString()), false); }
-		if(option.equalsIgnoreCase("overworld_ores")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.overworld_ores.get().toString()), false); }
-		if(option.equalsIgnoreCase("nether_ores")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.nether_ores.get().toString()), false); }
-		if(option.equalsIgnoreCase("end_ores")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.end_ores.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_amethyst_overworld")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.spawn_amethyst_overworld.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_black_opal_overworld")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.spawn_black_opal_overworld.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_amethyst_nether")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.spawn_amethyst_nether.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_black_opal_nether")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.spawn_black_opal_nether.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_amethyst_end")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.spawn_amethyst_end.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_black_opal_end")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.spawn_black_opal_end.get().toString()), false); }
 		if(option.equalsIgnoreCase("old_combat_mechanics")) {source.sendFeedback(new TranslationTextComponent("Old Combat Mechanics " + OADConfig.old_combat_mechanics.get().toString()), false); }
 		if(option.equalsIgnoreCase("chest_loot")) {source.sendFeedback(new TranslationTextComponent("Chest Loot " + OADConfig.chest_loot.get().toString()), false); }
 		return 1;
@@ -233,8 +236,8 @@ public class CommandConfigChange {
 		if(action.equalsIgnoreCase("write")) {
 			source.sendErrorMessage(new TranslationTextComponent("ERROR: Please enter a value to write. Use /OAD help."));
 		} else if(action.equalsIgnoreCase("read")) {
-			if(option.equalsIgnoreCase("amethyst_chance")) {source.sendFeedback(new TranslationTextComponent("Amethyst Chance: §d" + OADConfig.amethyst_chance.get().toString()), false); }
-			if(option.equalsIgnoreCase("black_opal_chance")) {source.sendFeedback(new TranslationTextComponent("Black Opal Chance: §5" + OADConfig.black_opal_chance.get().toString()), false); }
+			if(option.equalsIgnoreCase("amethyst_times_rarer")) {source.sendFeedback(new TranslationTextComponent("Amethyst Chance: §d" + OADConfig.amethyst_times_rarer.get().toString()), false); }
+			if(option.equalsIgnoreCase("black_opal_times_rarer")) {source.sendFeedback(new TranslationTextComponent("Black Opal Chance: §5" + OADConfig.black_opal_times_rarer.get().toString()), false); }
 			
 			if(option.equalsIgnoreCase("amethyst_max_vein_size")) {source.sendFeedback(new TranslationTextComponent("Amethyst Max Vein Size: §d" + OADConfig.amethyst_max_vein_size.get().toString()), false); }
 			if(option.equalsIgnoreCase("black_opal_max_vein_size")) {source.sendFeedback(new TranslationTextComponent("Black Opal Max Vein Size: §5" + OADConfig.black_opal_max_vein_size.get().toString()), false); }
@@ -289,9 +292,12 @@ public class CommandConfigChange {
 			
 			if(option.equalsIgnoreCase("enable_server_config_sync")) {source.sendFeedback(new TranslationTextComponent("(Client Side) Enable Server Config Sync: " + OADConfig.enable_server_config_sync.get().toString()), false); }
 			if(option.equalsIgnoreCase("send_config_sync_packet")) {source.sendFeedback(new TranslationTextComponent("(Server Side) Send Config Sync Packet: " + OADConfig.send_config_sync_packet.get().toString()), false); }
-			if(option.equalsIgnoreCase("overworld_ores")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.overworld_ores.get().toString()), false); }
-			if(option.equalsIgnoreCase("nether_ores")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.nether_ores.get().toString()), false); }
-			if(option.equalsIgnoreCase("end_ores")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.end_ores.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_amethyst_overworld")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.spawn_amethyst_overworld.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_black_opal_overworld")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.spawn_black_opal_overworld.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_amethyst_nether")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.spawn_amethyst_nether.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_black_opal_nether")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.spawn_black_opal_nether.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_amethyst_end")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.spawn_amethyst_end.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_black_opal_end")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.spawn_black_opal_end.get().toString()), false); }
 			if(option.equalsIgnoreCase("old_combat_mechanics")) {source.sendFeedback(new TranslationTextComponent("Old Combat Mechanics §" + OADConfig.old_combat_mechanics.get().toString()), false); }
 			if(option.equalsIgnoreCase("chest_loot")) {source.sendFeedback(new TranslationTextComponent("Chest Loot " + OADConfig.chest_loot.get().toString()), false); }
 		} else {
@@ -324,55 +330,54 @@ public class CommandConfigChange {
 	
 	public static int run(CommandSource source, String command, String option, String action, String value) {
 		/*
-		final double initial_amethyst_chance = OADConfig.amethyst_chance.get();
-		final double initial_black_opal_chance = OADConfig.black_opal_chance.get();
-		final int initial_amethyst_max_vein_size = OADConfig.amethyst_max_vein_size.get();
-		final int initial_black_opal_max_vein_size = OADConfig.black_opal_max_vein_size.get();
-		final int initial_amethyst_armor_toughness = OADConfig.amethyst_armor_toughness.get();
-		final int initial_black_opal_armor_toughness = OADConfig.black_opal_armor_toughness.get();
-		final int initial_amethyst_armor_durability = OADConfig.amethyst_armor_durability.get();
-		final int initial_black_opal_armor_durability = OADConfig.black_opal_armor_durability.get();
-		final int initial_amethyst_helmet_armor = OADConfig.amethyst_helmet_armor.get();
-		final int initial_amethyst_chestplate_armor = OADConfig.amethyst_chestplate_armor.get();
-		final int initial_amethyst_leggings_armor = OADConfig.amethyst_leggings_armor.get();
-		final int initial_amethyst_boots_armor = OADConfig.amethyst_boots_armor.get();
-		final int initial_black_opal_helmet_armor = OADConfig.black_opal_helmet_armor.get();
-		final int initial_black_opal_chestplate_armor = OADConfig.black_opal_chestplate_armor.get();
-		final int initial_black_opal_leggings_armor = OADConfig.black_opal_leggings_armor.get();
-		final int initial_black_opal_boots_armor = OADConfig.black_opal_boots_armor.get();
-		final int initial_amethyst_attack_damage = OADConfig.amethyst_attack_damage.get();
-		final int initial_amethyst_efficiency = OADConfig.amethyst_efficiency.get();
-		final int initial_amethyst_durability = OADConfig.amethyst_efficiency.get();
-		final int initial_amethyst_enchantability = OADConfig.amethyst_enchantability.get();
-		final int initial_black_opal_attack_damage = OADConfig.black_opal_attack_damage.get();
-		final int initial_black_opal_efficiency = OADConfig.black_opal_efficiency.get();
-		final int initial_black_opal_durability = OADConfig.black_opal_durability.get();
-		final int initial_black_opal_enchantability = OADConfig.black_opal_enchantability.get();
+		double initial_amethyst_chance = OADConfig.amethyst_chance.get();
+		double initial_black_opal_chance = OADConfig.black_opal_chance.get();
+		int initial_amethyst_max_vein_size = OADConfig.amethyst_max_vein_size.get();
+		int initial_black_opal_max_vein_size = OADConfig.black_opal_max_vein_size.get();
+		int initial_amethyst_armor_toughness = OADConfig.amethyst_armor_toughness.get();
+		int initial_black_opal_armor_toughness = OADConfig.black_opal_armor_toughness.get();
+		int initial_amethyst_armor_durability = OADConfig.amethyst_armor_durability.get();
+		int initial_black_opal_armor_durability = OADConfig.black_opal_armor_durability.get();
+		int initial_amethyst_helmet_armor = OADConfig.amethyst_helmet_armor.get();
+		int initial_amethyst_chestplate_armor = OADConfig.amethyst_chestplate_armor.get();
+		int initial_amethyst_leggings_armor = OADConfig.amethyst_leggings_armor.get();
+		int initial_amethyst_boots_armor = OADConfig.amethyst_boots_armor.get();
+		int initial_black_opal_helmet_armor = OADConfig.black_opal_helmet_armor.get();
+		int initial_black_opal_chestplate_armor = OADConfig.black_opal_chestplate_armor.get();
+		int initial_black_opal_leggings_armor = OADConfig.black_opal_leggings_armor.get();
+		int initial_black_opal_boots_armor = OADConfig.black_opal_boots_armor.get();
+		int initial_amethyst_attack_damage = OADConfig.amethyst_attack_damage.get();
+		int initial_amethyst_efficiency = OADConfig.amethyst_efficiency.get();
+		int initial_amethyst_durability = OADConfig.amethyst_efficiency.get();
+		int initial_amethyst_enchantability = OADConfig.amethyst_enchantability.get();
+		int initial_black_opal_attack_damage = OADConfig.black_opal_attack_damage.get();
+		int initial_black_opal_efficiency = OADConfig.black_opal_efficiency.get();
+		int initial_black_opal_durability = OADConfig.black_opal_durability.get();
+		int initial_black_opal_enchantability = OADConfig.black_opal_enchantability.get();
 		*/
 		/*
-		final double initial_nether_chance_multiplier = OADConfig.nether_chance_multiplier.get();
-		final double initial_end_chance_multiplier = OADConfig.end_chance_multiplier.get();
-		final double initial_nether_vein_multiplier = OADConfig.nether_vein_multiplier.get();
-		final double initial_end_vein_multiplier = OADConfig.end_vein_multiplier.get();
+		double initial_nether_chance_multiplier = OADConfig.nether_chance_multiplier.get();
+		double initial_end_chance_multiplier = OADConfig.end_chance_multiplier.get();
+		double initial_nether_vein_multiplier = OADConfig.nether_vein_multiplier.get();
+		double initial_end_vein_multiplier = OADConfig.end_vein_multiplier.get();
 		*/
-		 
 		
 		if(action.equalsIgnoreCase("write")) {
 			
-			if(option.equalsIgnoreCase("amethyst_chance")) {
-				if(isParsableDouble(value)) {
-					OADConfig.amethyst_chance.set(Double.parseDouble(value));
-					source.sendFeedback(new TranslationTextComponent("Successfully changed Amethyst Chance to §d" + OADConfig.amethyst_chance.get().toString()), false);
+			if(option.equalsIgnoreCase("amethyst_times_rarer")) {
+				if(isParsableInt(value)) {
+					OADConfig.amethyst_times_rarer.set(Integer.parseInt(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Amethyst Chance to §d" + OADConfig.amethyst_times_rarer.get().toString()), false);
 				} else {
-					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a double."));
+					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be an int."));
 				}
 			}
-			if(option.equalsIgnoreCase("black_opal_chance")) {
-				if(isParsableDouble(value)) {
-					OADConfig.black_opal_chance.set(Double.parseDouble(value));
-					source.sendFeedback(new TranslationTextComponent("Successfully changed Black Opal Chance to §5" + OADConfig.black_opal_chance.get().toString()), false);
+			if(option.equalsIgnoreCase("black_opal_times_rarer")) {
+				if(isParsableInt(value)) {
+					OADConfig.black_opal_times_rarer.set(Integer.parseInt(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Black Opal Chance to §5" + OADConfig.black_opal_times_rarer.get().toString()), false);
 				} else {
-					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a double."));
+					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be an int."));
 				}
 			}
 			
@@ -725,26 +730,50 @@ public class CommandConfigChange {
 					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
 				}
 			}
-			if (option.equalsIgnoreCase("overworld_ores")) {
+			if (option.equalsIgnoreCase("spawn_amethyst_overworld")) {
 				if(Boolean.parseBoolean(value)) {
-					OADConfig.overworld_ores.set(Boolean.parseBoolean(value));
-					source.sendFeedback(new TranslationTextComponent("Successfully changed Overworld Ores to " + OADConfig.overworld_ores.get().toString()), false);
+					OADConfig.spawn_amethyst_overworld.set(Boolean.parseBoolean(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Amethyst Overworld to " + OADConfig.spawn_amethyst_overworld.get().toString()), false);
 				} else {
 					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
 				}
 			}
-			if (option.equalsIgnoreCase("nether_ores")) {
+			if (option.equalsIgnoreCase("spawn_black_opal_overworld")) {
 				if(Boolean.parseBoolean(value)) {
-					OADConfig.nether_ores.set(Boolean.parseBoolean(value));
-					source.sendFeedback(new TranslationTextComponent("Successfully changed Nether Ores to " + OADConfig.nether_ores.get().toString()), false);
+					OADConfig.spawn_black_opal_overworld.set(Boolean.parseBoolean(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Black Opal Overworld to " + OADConfig.spawn_black_opal_overworld.get().toString()), false);
 				} else {
 					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
 				}
 			}
-			if (option.equalsIgnoreCase("end_ores")) {
+			if (option.equalsIgnoreCase("spawn_amethyst_nether")) {
 				if(Boolean.parseBoolean(value)) {
-					OADConfig.end_ores.set(Boolean.parseBoolean(value));
-					source.sendFeedback(new TranslationTextComponent("Successfully changed End Ores to " + OADConfig.end_ores.get().toString()), false);
+					OADConfig.spawn_amethyst_nether.set(Boolean.parseBoolean(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Amethyst Nether to " + OADConfig.spawn_amethyst_nether.get().toString()), false);
+				} else {
+					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
+				}
+			}
+			if (option.equalsIgnoreCase("spawn_black_opal_nether")) {
+				if(Boolean.parseBoolean(value)) {
+					OADConfig.spawn_black_opal_nether.set(Boolean.parseBoolean(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Black Opal Nether to " + OADConfig.spawn_black_opal_nether.get().toString()), false);
+				} else {
+					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
+				}
+			}
+			if (option.equalsIgnoreCase("spawn_amethyst_end")) {
+				if(Boolean.parseBoolean(value)) {
+					OADConfig.spawn_amethyst_end.set(Boolean.parseBoolean(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Amethyst End to " + OADConfig.spawn_amethyst_end.get().toString()), false);
+				} else {
+					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
+				}
+			}
+			if (option.equalsIgnoreCase("spawn_black_opal_end")) {
+				if(Boolean.parseBoolean(value)) {
+					OADConfig.spawn_black_opal_end.set(Boolean.parseBoolean(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Black Opal End to " + OADConfig.spawn_black_opal_end.get().toString()), false);
 				} else {
 					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
 				}

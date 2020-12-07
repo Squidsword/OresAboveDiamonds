@@ -6,12 +6,15 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 public enum ConfigValuesList {
-	AMETHYST_CHANCE("amethyst_chance", "double"),
-	BLACK_OPAL_CHANCE("black_opal_chance", "double"),
+	AMETHYST_CHANCE("amethyst_times_rarer", "int"),
+	BLACK_OPAL_CHANCE("black_opal_times_rarer", "int"),
 
 	AMETHYST_MAX_VEIN_SIZE("amethyst_max_vein_size", "int"),
 	BLACK_OPAL_MAX_VEIN_SIZE("black_opal_max_vein_size", "int"),
-
+	
+	AMETHYST_MAX_SPAWN_HEIGHT("amethyst_max_spawn_height", "int"),
+	BLACK_OPAL_MAX_SPAWN_HEIGHT("black_opal_max_spawn_height", "int"),
+	
 	AMETHYST_ARMOR_TOUGHNESS("amethyst_armor_toughness", "int"),
 	BLACK_OPAL_ARMOR_TOUGHNESS("black_opal_armor_toughness", "int"),
 	NETHERITE_OPAL_ARMOR_TOUGHNESS("netherite_opal_armor_toughness", "int"),
@@ -47,7 +50,7 @@ public enum ConfigValuesList {
 	BLACK_OPAL_EFFICIENCY("black_opal_efficiency", "int"),
 	BLACK_OPAL_DURABILITY("black_opal_durability", "int"),
 	
-	NETHERITE_ATTACK_DAMAGE("netherite_opal_attack_damage", "int"),
+	NETHERITE_OPAL_ATTACK_DAMAGE("netherite_opal_attack_damage", "int"),
 	NETHERITE_OPAL_EFFICIENCY("netherite_opal_efficiency", "int"),
 	NETHERITE_OPAL_DURABILITY("netherite_opal_durability", "int"),
 
@@ -62,9 +65,12 @@ public enum ConfigValuesList {
 
 	ENABLE_SERVER_CONFIG_SYNC("enable_server_config_sync", "boolean"),
 	SEND_CONFIG_SYNC_PACKET("send_config_sync_packet", "boolean"),
-	OVERWORLD_ORES("overworld_ores", "boolean"),
-	NETHER_ORES("nether_ores", "boolean"),
-	END_ORES("end_ores", "boolean"),
+	SPAWN_AMETHYST_OVERWORLD("spawn_amethyst_overworld", "boolean"),
+	SPAWN_BLACK_OPAL_OVERWORLD("spawn_black_opal_overworld", "boolean"),
+	SPAWN_AMETHYST_NETHER("spawn_amethyst_nether", "boolean"),
+	SPAWN_BLACK_OPAL_NETHER("spawn_black_opal_nether", "boolean"),
+	SPAWN_AMETHYST_END("spawn_amethyst_end", "boolean"),
+	SPAWN_BLACK_OPAL_END("spawn_black_opal_end", "boolean"),
 	OLD_COMBAT_MECHANICS("old_combat_mechanics", "boolean"),
 	CHEST_LOOT("chest_loot", "boolean");
 	

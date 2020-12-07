@@ -34,7 +34,6 @@ import oresAboveDiamonds.lists.BlockList;
 import oresAboveDiamonds.lists.ItemList;
 import oresAboveDiamonds.lists.ToolMaterialList;
 import oresAboveDiamonds.network.OADPacketHandler;
-import oresAboveDiamonds.world.OreGeneration;
 
 
 @Mod(OresAboveDiamonds.MODID)
@@ -65,9 +64,7 @@ public class OresAboveDiamonds
 	
 	private void setup(final FMLCommonSetupEvent event)
 	{
-		OreGeneration.setupOreGeneration();
 		LOGGER.info("Setup method registered.");
-		
 	}
 	private void clientRegistries(final FMLClientSetupEvent event)
 	{
@@ -131,11 +128,11 @@ public class OresAboveDiamonds
 			ItemList.black_opal_axe = new CustomAxeItem(ToolMaterialList.black_opal, axedmg, -3f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD)).setRegistryName(location("black_opal_axe")),
 			ItemList.black_opal_hoe = new CustomHoeItem(ToolMaterialList.black_opal, -5, 2f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD)).setRegistryName(location("black_opal_hoe")),
 			
-			ItemList.netherite_opal_sword = new CustomSwordItem(ToolMaterialList.netherite_opal, 3, -2.4f, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_sword")),
-			ItemList.netherite_opal_pickaxe = new CustomPickaxeItem(ToolMaterialList.netherite_opal, pickdmg, -2.8f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_pickaxe")),
-			ItemList.netherite_opal_shovel = new CustomShovelItem(ToolMaterialList.netherite_opal, shoveldmg, -3f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_shovel")),
-			ItemList.netherite_opal_axe = new CustomAxeItem(ToolMaterialList.netherite_opal, axedmg, -3f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_axe")),
-			ItemList.netherite_opal_hoe = new CustomHoeItem(ToolMaterialList.netherite_opal, -6, 2f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_hoe")),
+			ItemList.netherite_opal_sword = new CustomSwordItem(ToolMaterialList.netherite_opal, 3, -2.4f, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_sword")),
+			ItemList.netherite_opal_pickaxe = new CustomPickaxeItem(ToolMaterialList.netherite_opal, pickdmg, -2.8f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_pickaxe")),
+			ItemList.netherite_opal_shovel = new CustomShovelItem(ToolMaterialList.netherite_opal, shoveldmg, -3f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_shovel")),
+			ItemList.netherite_opal_axe = new CustomAxeItem(ToolMaterialList.netherite_opal, axedmg, -3f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_axe")),
+			ItemList.netherite_opal_hoe = new CustomHoeItem(ToolMaterialList.netherite_opal, -6, 2f, new Item.Properties().group(ItemGroup.TOOLS).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_hoe")),
 			
 			ItemList.amethyst_helmet = new CustomArmorItem(ArmorMaterialList.amethyst, EquipmentSlotType.HEAD, new Item.Properties().group(ItemGroup.COMBAT).group(OAD)).setRegistryName(location("amethyst_helmet")),
 			ItemList.amethyst_chestplate = new CustomArmorItem(ArmorMaterialList.amethyst, EquipmentSlotType.CHEST, new Item.Properties().group(ItemGroup.COMBAT).group(OAD)).setRegistryName(location("amethyst_chestplate")),
@@ -147,10 +144,10 @@ public class OresAboveDiamonds
 			ItemList.black_opal_leggings = new CustomArmorItem(ArmorMaterialList.black_opal, EquipmentSlotType.LEGS, new Item.Properties().group(ItemGroup.COMBAT).group(OAD)).setRegistryName(location("black_opal_leggings")),
 			ItemList.black_opal_boots = new CustomArmorItem(ArmorMaterialList.black_opal, EquipmentSlotType.FEET, new Item.Properties().group(ItemGroup.COMBAT).group(OAD)).setRegistryName(location("black_opal_boots")),
 			
-			ItemList.netherite_opal_helmet = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.HEAD, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_helmet")),
-			ItemList.netherite_opal_chestplate = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.CHEST, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_chestplate")),
-			ItemList.netherite_opal_leggings = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.LEGS, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_leggings")),
-			ItemList.netherite_opal_boots = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.FEET, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).func_234689_a_()).setRegistryName(location("netherite_opal_boots")),
+			ItemList.netherite_opal_helmet = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.HEAD, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_helmet")),
+			ItemList.netherite_opal_chestplate = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.CHEST, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_chestplate")),
+			ItemList.netherite_opal_leggings = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.LEGS, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_leggings")),
+			ItemList.netherite_opal_boots = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.FEET, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_boots")),
 			
 			ItemList.amethyst_ore = new BlockItem(BlockList.amethyst_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("amethyst_ore")),
 			ItemList.nether_amethyst_ore = new BlockItem(BlockList.nether_amethyst_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("nether_amethyst_ore")),
