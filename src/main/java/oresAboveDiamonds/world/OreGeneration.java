@@ -18,9 +18,6 @@ public class OreGeneration {
     public static ConfiguredFeature<?, ?> AMETHYST_OVERWORLD = buildOverworldOre(BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height.get(), 3);
 	
 	public static void generateOres(BiomeLoadingEvent event) {
-		if(OADConfig.spawn_amethyst_overworld.get() == true) {
-			
-		}
         event.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, AMETHYST_OVERWORLD);
         event.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, BLACK_OPAL_OVERWORLD);
     } 

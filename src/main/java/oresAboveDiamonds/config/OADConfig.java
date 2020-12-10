@@ -97,7 +97,7 @@ public class OADConfig {
 		
 		spawn_black_opal_overworld = builder
 				.comment("Spawn black opals in the overworld? Default = true")
-				.define("spawn_black_opals_overworld", true);
+				.define("spawn_black_opal_overworld", true);
 		
 		spawn_amethyst_nether = builder
 				.comment("Spawn amethysts in the nether? Default = false")
@@ -105,15 +105,15 @@ public class OADConfig {
 		
 		spawn_black_opal_nether = builder
 				.comment("Spawn black opals in the nether? Default = false")
-				.define("spawn_black_opals_nether", false);
+				.define("spawn_black_opal_nether", false);
 		
 		spawn_amethyst_end = builder
 				.comment("Spawn amethysts in the end? Default = false")
-				.define("spawn_amethyst_overworld", false);
+				.define("spawn_amethyst_end", false);
 		
 		spawn_black_opal_end = builder
 				.comment("Spawn black opals in the end? Default = false")
-				.define("spawn_black_opals_end", false);
+				.define("spawn_black_opal_end", false);
 		
 		
 		nether_chance_multiplier = builder
@@ -142,7 +142,7 @@ public class OADConfig {
 		
 		black_opal_times_rarer = builder
 				.comment("Chance for a Black Opal Ore vein to spawn in a chunk. Default = 9")
-				.defineInRange("black_opal_chance", 9, 0, Integer.MAX_VALUE);
+				.defineInRange("black_opal_chance", 9, 1, Integer.MAX_VALUE);
 		
 		amethyst_max_vein_size = builder
 				.comment("Maximum vein size for an Amethyst Ore vein. For reference, diamonds have a max vein size of 8. Default = 7")
@@ -154,11 +154,11 @@ public class OADConfig {
 		
 		amethyst_max_spawn_height = builder
 				.comment("Maximum spawn height size for an Amethyst ore vein. Default = 16")
-				.defineInRange("black_opal_max_vein_size", 0, 0, 255);
+				.defineInRange("amethyst_max_spawn_height", 16, 1, 255);
 		
 		black_opal_max_spawn_height = builder
 				.comment("Maximum spawn height size for a Black Opal ore vein. Default = 16")
-				.defineInRange("black_opal_max_vein_size", 0, 0, 255);
+				.defineInRange("black_opal_max_spawn_height", 16, 1, 255);
 		
 		chest_loot = builder
 				.comment("Wherever diamonds can naturally generate in chests, black opal and amethyst can too at a reduced rate! Default = true")
