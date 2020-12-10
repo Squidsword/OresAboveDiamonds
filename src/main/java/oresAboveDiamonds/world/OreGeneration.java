@@ -1,27 +1,31 @@
 package oresAboveDiamonds.world;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.world.gen.GenerationStage.Decoration;
+import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
+import net.minecraft.world.gen.feature.template.RuleTest;
 //import net.minecraft.world.gen.placement.ChanceRangeConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.lists.BlockList;
 
 public class OreGeneration {	
     
-    public static ConfiguredFeature<?, ?> BLACK_OPAL_OVERWORLD = buildOverworldOre(BlockList.black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height.get(), 9);
-    public static ConfiguredFeature<?, ?> AMETHYST_OVERWORLD = buildOverworldOre(BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height.get(), 3);
-	
-	public static void generateOres(BiomeLoadingEvent event) {
-        event.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, AMETHYST_OVERWORLD);
-        event.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, BLACK_OPAL_OVERWORLD);
-    } 
+    public static ConfiguredFeature<?, ?> BLACK_OPAL_OVERWORLD = buildOverworldOre(BlockList.black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_overworld.get(), OADConfig.black_opal_times_rarer.get());
+    public static ConfiguredFeature<?, ?> AMETHYST_OVERWORLD = buildOverworldOre(BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_overworld.get(), OADConfig.amethyst_times_rarer.get());
 		
+    public static ConfiguredFeature<?, ?> AMETHYST_NETHER = buildNetherOre(BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_nether.get(), Math.max(1, (int) (OADConfig.amethyst_times_rarer.get() / (OADConfig.nether_chance_multiplier.get()) )));
+    public static ConfiguredFeature<?, ?> BLACK_OPAL_NETHER = buildNetherOre(BlockList.black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_nether.get(), Math.max(1, (int) (OADConfig.black_opal_times_rarer.get() / (OADConfig.nether_chance_multiplier.get()) )));
+        
+    //public static ConfiguredFeature<?, ?> AMETHYST_END = buildEndOre(BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_end.get(), Math.max(1, (int) (OADConfig.amethyst_times_rarer.get() / (OADConfig.end_chance_multiplier.get()) )));
+    //public static ConfiguredFeature<?, ?> BLACK_OPAL_END = buildEndOre(BlockList.black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_end.get(), Math.max(1, (int) (OADConfig.black_opal_times_rarer.get() / (OADConfig.end_chance_multiplier.get()) ))); 
+    
+    public static final RuleTest END_STONE = new BlockMatchRuleTest(Blocks.END_STONE);
+    
 	 public static ConfiguredFeature<?, ?> buildOverworldOre(BlockState bstate, int veinSize, int maxHeight, int timesRarer) {
 	        return Feature.ORE.withConfiguration(
 	                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, 
@@ -29,6 +33,24 @@ public class OreGeneration {
 	                    			new TopSolidRangeConfig(0, 0, maxHeight))).square().chance(timesRarer);
   
 	 }
+	 
+	 public static ConfiguredFeature<?, ?> buildNetherOre(BlockState bstate, int veinSize, int maxHeight, int timesRarer) {
+	        return Feature.ORE.withConfiguration(
+	                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_NETHER, 
+	                        bstate, veinSize)).withPlacement(Placement.RANGE.configure(
+	                    			new TopSolidRangeConfig(0, 0, maxHeight))).square().chance(timesRarer);
+
+	 }
+	 
+	 /*
+	 public static ConfiguredFeature<?, ?> buildEndOre(BlockState bstate, int veinSize, int maxHeight, int timesRarer) {
+	        return Feature.ORE.withConfiguration(
+	                new OreFeatureConfig(END_STONE, 
+	                        bstate, veinSize)).withPlacement(Placement.RANGE.configure(
+	                    			new TopSolidRangeConfig(0, 0, maxHeight))).square().chance(timesRarer);
+
+	 }
+	 */
 	 
 	 /*
 		double d = OADConfig.amethyst_chance.get();

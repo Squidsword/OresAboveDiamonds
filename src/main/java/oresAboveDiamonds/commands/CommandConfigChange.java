@@ -150,11 +150,35 @@ public class CommandConfigChange {
 			
 			boolean old_combat_mechanics = OADConfig.old_combat_mechanics.get();
 			
+			boolean spawn_amethyst_overworld = OADConfig.spawn_amethyst_overworld.get();
+			boolean spawn_black_opal_overworld = OADConfig.spawn_black_opal_overworld.get();
+			boolean spawn_amethyst_nether = OADConfig.spawn_amethyst_nether.get();
+			boolean spawn_black_opal_nether = OADConfig.spawn_black_opal_nether.get();
+			boolean spawn_amethyst_end = OADConfig.spawn_amethyst_end.get();
+			boolean spawn_black_opal_end = OADConfig.spawn_black_opal_end.get();
+			
+			int amethyst_times_rarer = OADConfig.amethyst_times_rarer.get();
+			int black_opal_times_rarer = OADConfig.black_opal_times_rarer.get();
+			
+			int amethyst_max_vein_size = OADConfig.amethyst_max_vein_size.get();
+			int black_opal_max_vein_size = OADConfig.black_opal_max_vein_size.get();
+			
+			int amethyst_max_spawn_height_overworld = OADConfig.amethyst_max_spawn_height_overworld.get();
+			int black_opal_max_spawn_height_overworld = OADConfig.black_opal_max_spawn_height_overworld.get();
+			
+			int amethyst_max_spawn_height_nether = OADConfig.amethyst_max_spawn_height_nether.get();
+			int black_opal_max_spawn_height_nether = OADConfig.black_opal_max_spawn_height_nether.get();
+			
+			int amethyst_max_spawn_height_end = OADConfig.amethyst_max_spawn_height_end.get();
+			int black_opal_max_spawn_height_end = OADConfig.black_opal_max_spawn_height_end.get();
+			
 			OADPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new PacketSyncConfig(amethyst_enchant, black_opal_enchant, netherite_opal_enchant, amethyst_ad, amethyst_efficiency, amethyst_tool_durability,
 					 black_opal_ad, black_opal_efficiency, black_opal_tool_durability, netherite_opal_ad, netherite_opal_efficiency, netherite_opal_tool_durability, amethyst_toughness, black_opal_toughness, netherite_opal_toughness,
 					 amethyst_knockback_resistance, black_opal_knockback_resistance, netherite_opal_knockback_resistance, amethyst_armor_durability, black_opal_armor_durability, netherite_opal_armor_durability, amethyst_helmet_armor, amethyst_chestplate_armor,
 					 amethyst_leggings_armor, amethyst_boots_armor, black_opal_helmet_armor, black_opal_chestplate_armor,
-					 black_opal_leggings_armor, black_opal_boots_armor, netherite_opal_helmet_armor, netherite_opal_chestplate_armor, netherite_opal_leggings_armor, netherite_opal_boots_armor, old_combat_mechanics));
+					 black_opal_leggings_armor, black_opal_boots_armor, netherite_opal_helmet_armor, netherite_opal_chestplate_armor, netherite_opal_leggings_armor, netherite_opal_boots_armor, old_combat_mechanics,
+					 spawn_amethyst_overworld, spawn_black_opal_overworld, spawn_amethyst_nether, spawn_black_opal_nether, spawn_amethyst_end, spawn_black_opal_end, amethyst_times_rarer, black_opal_times_rarer, amethyst_max_vein_size, black_opal_max_vein_size, amethyst_max_spawn_height_overworld,
+					 black_opal_max_spawn_height_overworld, amethyst_max_spawn_height_nether, black_opal_max_spawn_height_nether, amethyst_max_spawn_height_end, black_opal_max_spawn_height_end));
 			
 			source.sendFeedback(new TranslationTextComponent("Client configurations synced. If they had any configuration changes, they will be notified and will be asked to restart their minecraft to finalize changes. This is an optimal time to restart the server so the changes can take effect."), false);
 		} else {
@@ -221,12 +245,12 @@ public class CommandConfigChange {
 		
 		if(option.equalsIgnoreCase("enable_server_config_sync")) {source.sendFeedback(new TranslationTextComponent("(Client Side) Enable Server Config Sync: " + OADConfig.enable_server_config_sync.get().toString()), false); }
 		if(option.equalsIgnoreCase("send_config_sync_packet")) {source.sendFeedback(new TranslationTextComponent("(Server Side) Send Config Sync Packet: " + OADConfig.send_config_sync_packet.get().toString()), false); }
-		if(option.equalsIgnoreCase("spawn_amethyst_overworld")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.spawn_amethyst_overworld.get().toString()), false); }
-		if(option.equalsIgnoreCase("spawn_black_opal_overworld")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.spawn_black_opal_overworld.get().toString()), false); }
-		if(option.equalsIgnoreCase("spawn_amethyst_nether")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.spawn_amethyst_nether.get().toString()), false); }
-		if(option.equalsIgnoreCase("spawn_black_opal_nether")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.spawn_black_opal_nether.get().toString()), false); }
-		if(option.equalsIgnoreCase("spawn_amethyst_end")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.spawn_amethyst_end.get().toString()), false); }
-		if(option.equalsIgnoreCase("spawn_black_opal_end")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.spawn_black_opal_end.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_amethyst_overworld")) {source.sendFeedback(new TranslationTextComponent("Spawn Amethyst Overworld: " + OADConfig.spawn_amethyst_overworld.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_black_opal_overworld")) {source.sendFeedback(new TranslationTextComponent("Spawn Black Opal Overworld: " + OADConfig.spawn_black_opal_overworld.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_amethyst_nether")) {source.sendFeedback(new TranslationTextComponent("Spawn Amethyst Nether: " + OADConfig.spawn_amethyst_nether.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_black_opal_nether")) {source.sendFeedback(new TranslationTextComponent("Spawn Black Opal Nether: " + OADConfig.spawn_black_opal_nether.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_amethyst_end")) {source.sendFeedback(new TranslationTextComponent("Spawn Amethyst End: " + OADConfig.spawn_amethyst_end.get().toString()), false); }
+		if(option.equalsIgnoreCase("spawn_black_opal_end")) {source.sendFeedback(new TranslationTextComponent("Spawn Black Opal End: " + OADConfig.spawn_black_opal_end.get().toString()), false); }
 		if(option.equalsIgnoreCase("old_combat_mechanics")) {source.sendFeedback(new TranslationTextComponent("Old Combat Mechanics " + OADConfig.old_combat_mechanics.get().toString()), false); }
 		if(option.equalsIgnoreCase("chest_loot")) {source.sendFeedback(new TranslationTextComponent("Chest Loot " + OADConfig.chest_loot.get().toString()), false); }
 		return 1;
@@ -292,12 +316,12 @@ public class CommandConfigChange {
 			
 			if(option.equalsIgnoreCase("enable_server_config_sync")) {source.sendFeedback(new TranslationTextComponent("(Client Side) Enable Server Config Sync: " + OADConfig.enable_server_config_sync.get().toString()), false); }
 			if(option.equalsIgnoreCase("send_config_sync_packet")) {source.sendFeedback(new TranslationTextComponent("(Server Side) Send Config Sync Packet: " + OADConfig.send_config_sync_packet.get().toString()), false); }
-			if(option.equalsIgnoreCase("spawn_amethyst_overworld")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.spawn_amethyst_overworld.get().toString()), false); }
-			if(option.equalsIgnoreCase("spawn_black_opal_overworld")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.spawn_black_opal_overworld.get().toString()), false); }
-			if(option.equalsIgnoreCase("spawn_amethyst_nether")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.spawn_amethyst_nether.get().toString()), false); }
-			if(option.equalsIgnoreCase("spawn_black_opal_nether")) {source.sendFeedback(new TranslationTextComponent("Overworld Ores: " + OADConfig.spawn_black_opal_nether.get().toString()), false); }
-			if(option.equalsIgnoreCase("spawn_amethyst_end")) {source.sendFeedback(new TranslationTextComponent("Nether Ores: " + OADConfig.spawn_amethyst_end.get().toString()), false); }
-			if(option.equalsIgnoreCase("spawn_black_opal_end")) {source.sendFeedback(new TranslationTextComponent("End Ores: " + OADConfig.spawn_black_opal_end.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_amethyst_overworld")) {source.sendFeedback(new TranslationTextComponent("Spawn Amethyst Overworld: " + OADConfig.spawn_amethyst_overworld.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_black_opal_overworld")) {source.sendFeedback(new TranslationTextComponent("Spawn Black Opal Overworld: " + OADConfig.spawn_black_opal_overworld.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_amethyst_nether")) {source.sendFeedback(new TranslationTextComponent("Spawn Amethyst Nether: " + OADConfig.spawn_amethyst_nether.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_black_opal_nether")) {source.sendFeedback(new TranslationTextComponent("Spawn Black Opal Nether: " + OADConfig.spawn_black_opal_nether.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_amethyst_end")) {source.sendFeedback(new TranslationTextComponent("Spawn Amethyst End: " + OADConfig.spawn_amethyst_end.get().toString()), false); }
+			if(option.equalsIgnoreCase("spawn_black_opal_end")) {source.sendFeedback(new TranslationTextComponent("Spawn Black Opal End: " + OADConfig.spawn_black_opal_end.get().toString()), false); }
 			if(option.equalsIgnoreCase("old_combat_mechanics")) {source.sendFeedback(new TranslationTextComponent("Old Combat Mechanics §" + OADConfig.old_combat_mechanics.get().toString()), false); }
 			if(option.equalsIgnoreCase("chest_loot")) {source.sendFeedback(new TranslationTextComponent("Chest Loot " + OADConfig.chest_loot.get().toString()), false); }
 		} else {

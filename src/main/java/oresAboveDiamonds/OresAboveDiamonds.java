@@ -29,6 +29,7 @@ import oresAboveDiamonds.items.CustomHoeItem;
 import oresAboveDiamonds.items.CustomPickaxeItem;
 import oresAboveDiamonds.items.CustomShovelItem;
 import oresAboveDiamonds.items.CustomSwordItem;
+import oresAboveDiamonds.items.TooltipBlockItem;
 import oresAboveDiamonds.lists.ArmorMaterialList;
 import oresAboveDiamonds.lists.BlockList;
 import oresAboveDiamonds.lists.ItemList;
@@ -59,7 +60,7 @@ public class OresAboveDiamonds
 		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
 		
 		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.16_v5.3.toml"));
+		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.16.4_v6.0.0.toml"));
 	}
 	
 	private void setup(final FMLCommonSetupEvent event)
@@ -149,12 +150,12 @@ public class OresAboveDiamonds
 			ItemList.netherite_opal_leggings = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.LEGS, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_leggings")),
 			ItemList.netherite_opal_boots = new CustomArmorItem(ArmorMaterialList.netherite_opal, EquipmentSlotType.FEET, new Item.Properties().group(ItemGroup.COMBAT).group(OAD).isImmuneToFire()).setRegistryName(location("netherite_opal_boots")),
 			
-			ItemList.amethyst_ore = new BlockItem(BlockList.amethyst_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("amethyst_ore")),
-			ItemList.nether_amethyst_ore = new BlockItem(BlockList.nether_amethyst_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("nether_amethyst_ore")),
-			ItemList.end_amethyst_ore = new BlockItem(BlockList.end_amethyst_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("end_amethyst_ore")),
-			ItemList.black_opal_ore = new BlockItem(BlockList.black_opal_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("black_opal_ore")),
-			ItemList.nether_black_opal_ore = new BlockItem(BlockList.nether_black_opal_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("nether_black_opal_ore")),
-			ItemList.end_black_opal_ore = new BlockItem(BlockList.end_black_opal_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("end_black_opal_ore")),
+			ItemList.amethyst_ore = new TooltipBlockItem(BlockList.amethyst_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("amethyst_ore")),
+			ItemList.nether_amethyst_ore = new TooltipBlockItem(BlockList.nether_amethyst_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("nether_amethyst_ore")),
+			ItemList.end_amethyst_ore = new TooltipBlockItem(BlockList.end_amethyst_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("end_amethyst_ore")),
+			ItemList.black_opal_ore = new TooltipBlockItem(BlockList.black_opal_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("black_opal_ore")),
+			ItemList.nether_black_opal_ore = new TooltipBlockItem(BlockList.nether_black_opal_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("nether_black_opal_ore")),
+			ItemList.end_black_opal_ore = new TooltipBlockItem(BlockList.end_black_opal_ore, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(location("end_black_opal_ore")),
 
 			ItemList.black_opal_block = new BlockItem(BlockList.black_opal_block, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(BlockList.black_opal_block.getRegistryName()),
 			ItemList.amethyst_block = new BlockItem(BlockList.amethyst_block, new Item.Properties().group(ItemGroup.MISC).group(OAD)).setRegistryName(BlockList.amethyst_block.getRegistryName())

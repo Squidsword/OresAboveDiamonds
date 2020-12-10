@@ -46,6 +46,13 @@
 	"item.oresabovediamonds.netherite_opal_chestplate": "В§5Нагрудник из незеритового опала",
 	"item.oresabovediamonds.netherite_opal_leggings": "В§5Поножи из незеритового опала",
 	"item.oresabovediamonds.netherite_opal_boots": "В§5Ботинки из незеритового опала",
+	
+	"advancements.find_amethyst": "An Ore Above Diamonds?",
+    "advancements.find_amethyst_text": "Find an amethyst",
+    "advancements.find_black_opal": "Jackpot",
+    "advancements.find_black_opal_text": "Find a black opal!",
+    "advancements.craft_black_opal_block": "Show-off",
+    "advancements.craft_black_opal_block_text": "Craft a black opal block. We get it, man...",
 		
 	"itemGroup.oresabovediamonds": "§dOres Above Diamonds"
 }

@@ -47,6 +47,13 @@
 	"item.oresabovediamonds.netherite_opal_leggings": "§5Calças de Opala Netherita",
 	"item.oresabovediamonds.netherite_opal_boots": "§5Botas de Opala Netherita",
 	
+	"advancements.find_amethyst": "An Ore Above Diamonds?",
+    "advancements.find_amethyst_text": "Find an amethyst",
+    "advancements.find_black_opal": "Jackpot",
+    "advancements.find_black_opal_text": "Find a black opal!",
+    "advancements.craft_black_opal_block": "Show-off",
+    "advancements.craft_black_opal_block_text": "Craft a black opal block. We get it, man...",
+	
 	"itemGroup.oresabovediamonds": "§dOres Above Diamonds"
 	
 }
