@@ -113,42 +113,42 @@ public class OADConfig {
 				.comment("Spawn black opals in the nether? Default = false")
 				.define("spawn_black_opal_nether", false);
 		
-		/*spawn_amethyst_end = builder
-				.comment("Spawn amethysts in the end? Default = false")
+		spawn_amethyst_end = builder
+				.comment("Spawn amethysts in the end? Default = false Note: This version doesn't support End gen yet.")
 				.define("spawn_amethyst_end", false);
 		
 		spawn_black_opal_end = builder
-				.comment("Spawn black opals in the end? Default = false")
-				.define("spawn_black_opal_end", false);*/
+				.comment("Spawn black opals in the end? Default = false Note: This version doesn't support End gen yet.")
+				.define("spawn_black_opal_end", false);
 		
 		
 		nether_chance_multiplier = builder
 				.comment("If nether_ores is enabled, the spawn chance per chunk in the nether will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The final rarity of each ore vein cannot be more common than diamonds. The default value tries to imitate the rarity in the overworld. Default = 1.35.")
 				.defineInRange("nether_chance_multiplier", 1.5d, 0.01, 1000.0d);
 		
-		/*end_chance_multiplier = builder
+		end_chance_multiplier = builder
 				.comment("If end_ores is enabled, the spawn chance per chunk in the end will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The default value tries to imitate the rarity in the overworld. Default = 1.0")
-				.defineInRange("end_chance_multiplier", 1.0d, 0.01, 1000.0d);*/
+				.defineInRange("end_chance_multiplier", 1.0d, 0.01, 1000.0d);
 		
 		nether_vein_multiplier = builder
 				.comment("If nether_ores is enableld, multiplies the max vein size of nether ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.0")
 				.defineInRange("nether_vein_multiplier", 1.0d, 0, 1000.0d);
 		
-		/*end_vein_multiplier = builder
+		end_vein_multiplier = builder
 				.comment("If end_ores is enableld, multiplies the max vein size of end ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.2")
-				.defineInRange("end_vein_multiplier", 1.2d, 0, 1000.0d);*/
+				.defineInRange("end_vein_multiplier", 1.2d, 0, 1000.0d);
 		
 		builder.pop();
 		
 		builder.comment("Rarity Configuration").push("ore_rarity");
 		
 		amethyst_times_rarer = builder
-				.comment("Chance for an Amethyst Ore vein to spawn in a chunk. 1 = As common as diamonds, 2 = Half as common as diamonds etc. Default = 3")
-				.defineInRange("amethyst_chance", 3, 1, Integer.MAX_VALUE);
+				.comment("How many times rarer amethysts are than diamonds. 1 = As common as diamonds, 2 = Half as common as diamonds etc. Default = 3")
+				.defineInRange("amethyst_times_rarer", 3, 1, Integer.MAX_VALUE);
 		
 		black_opal_times_rarer = builder
-				.comment("Chance for a Black Opal Ore vein to spawn in a chunk. Default = 9")
-				.defineInRange("black_opal_chance", 9, 1, Integer.MAX_VALUE);
+				.comment("How many times rarer black opals are than diamonds. Default = 9")
+				.defineInRange("black_opal_times_rarer", 9, 1, Integer.MAX_VALUE);
 		
 		amethyst_max_vein_size = builder
 				.comment("Maximum vein size for an Amethyst Ore vein. For reference, diamonds have a max vein size of 8. Default = 7")
