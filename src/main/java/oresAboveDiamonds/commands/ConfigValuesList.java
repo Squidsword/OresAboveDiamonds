@@ -11,7 +11,16 @@ public enum ConfigValuesList {
 
 	AMETHYST_MAX_VEIN_SIZE("amethyst_max_vein_size", "int"),
 	BLACK_OPAL_MAX_VEIN_SIZE("black_opal_max_vein_size", "int"),
-
+	
+	AMETHYST_MAX_SPAWN_HEIGHT_OVERWORLD("amethyst_max_spawn_height_overworld", "int"),
+	BLACK_OPAL_MAX_SPAWN_HEIGHT_OVERWORLD("black_opal_max_spawn_height_overworld", "int"),
+	
+	AMETHYST_MAX_SPAWN_HEIGHT_NETHER("amethyst_max_spawn_height_nether", "int"),
+	BLACK_OPAL_MAX_SPAWN_HEIGHT_NETHER("black_opal_max_spawn_height_nether", "int"),
+	
+	AMETHYST_MAX_SPAWN_HEIGHT_END("amethyst_max_spawn_height_end", "int"),
+	BLACK_OPAL_MAX_SPAWN_HEIGHT_END("black_opal_max_spawn_height_end", "int"),
+	
 	AMETHYST_ARMOR_TOUGHNESS("amethyst_armor_toughness", "int"),
 	BLACK_OPAL_ARMOR_TOUGHNESS("black_opal_armor_toughness", "int"),
 
@@ -46,9 +55,12 @@ public enum ConfigValuesList {
 
 	ENABLE_SERVER_CONFIG_SYNC("enable_server_config_sync", "boolean"),
 	SEND_CONFIG_SYNC_PACKET("send_config_sync_packet", "boolean"),
-	OVERWORLD_ORES("overworld_ores", "boolean"),
-	NETHER_ORES("nether_ores", "boolean"),
-	END_ORES("end_ores", "boolean"),
+	SPAWN_AMETHYST_OVERWORLD("spawn_amethyst_overworld", "boolean"),
+	SPAWN_BLACK_OPAL_OVERWORLD("spawn_black_opal_overworld", "boolean"),
+	SPAWN_AMETHYST_NETHER("spawn_amethyst_nether", "boolean"),
+	SPAWN_BLACK_OPAL_NETHER("spawn_black_opal_nether", "boolean"),
+	SPAWN_AMETHYST_END("spawn_amethyst_end", "boolean"),
+	SPAWN_BLACK_OPAL_END("spawn_black_opal_end", "boolean"),
 	OLD_COMBAT_MECHANICS("old_combat_mechanics", "boolean"),
 	CHEST_LOOT("chest_loot", "boolean");
 	

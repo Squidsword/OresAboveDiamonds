@@ -13,6 +13,15 @@ public class OADConfig {
 	public static ForgeConfigSpec.IntValue amethyst_max_vein_size;
 	public static ForgeConfigSpec.IntValue black_opal_max_vein_size;
 	
+	public static ForgeConfigSpec.IntValue amethyst_max_spawn_height_overworld;
+	public static ForgeConfigSpec.IntValue black_opal_max_spawn_height_overworld;
+	
+	public static ForgeConfigSpec.IntValue amethyst_max_spawn_height_nether;
+	public static ForgeConfigSpec.IntValue black_opal_max_spawn_height_nether;
+	
+	public static ForgeConfigSpec.IntValue amethyst_max_spawn_height_end;
+	public static ForgeConfigSpec.IntValue black_opal_max_spawn_height_end;
+	
 	public static ForgeConfigSpec.IntValue amethyst_armor_toughness;
 	public static ForgeConfigSpec.IntValue black_opal_armor_toughness;
 	
@@ -47,55 +56,80 @@ public class OADConfig {
 	
 	public static ForgeConfigSpec.BooleanValue enable_server_config_sync;
 	public static ForgeConfigSpec.BooleanValue send_config_sync_packet;
-	public static ForgeConfigSpec.BooleanValue overworld_ores;
-	public static ForgeConfigSpec.BooleanValue nether_ores;
-	public static ForgeConfigSpec.BooleanValue end_ores;
+	
+	public static ForgeConfigSpec.BooleanValue spawn_amethyst_overworld;
+	public static ForgeConfigSpec.BooleanValue spawn_black_opal_overworld;
+	public static ForgeConfigSpec.BooleanValue spawn_amethyst_nether;
+	public static ForgeConfigSpec.BooleanValue spawn_black_opal_nether;
+	public static ForgeConfigSpec.BooleanValue spawn_amethyst_end;
+	public static ForgeConfigSpec.BooleanValue spawn_black_opal_end;
+	
+	//public static ForgeConfigSpec.BooleanValue overworld_ores;
+	//public static ForgeConfigSpec.BooleanValue nether_ores;
+	//public static ForgeConfigSpec.BooleanValue end_ores;
 	public static ForgeConfigSpec.BooleanValue old_combat_mechanics;
 	public static ForgeConfigSpec.BooleanValue chest_loot;
 	
 	public static void init(ForgeConfigSpec.Builder builder) {
 		
-		builder.comment("Note that almost all config changes require a server restart. Dimensional Ore Configuration").push("dimensional_ore");
+		builder.comment("Note that almost all config changes require a server restart and/or a full minecraft restart. Dimensional Ore Configuration").push("dimensional_ore");
 		
-		overworld_ores = builder
-				.comment("Spawn ores in the overworld? Default = true")
-				.define("overworld_ores", true);
+		/*
+		ores_above_netherite = builder
+				.comment("Allow black opal tools to be enhanced by a netherite ingot?")
+				.define("ores_above_netherite", true);
+				*/
 		
-		nether_ores = builder
-				.comment("Spawn ores in the nether? Default = false")
-				.define("nether_ores", false);
+		spawn_amethyst_overworld = builder
+				.comment("Spawn amethysts in the overworld? Default = true")
+				.define("spawn_amethyst_overworld", true);
 		
-		end_ores = builder
-				.comment("Spawn ores in the end? Default = false")
-				.define("end_ores", false);
+		spawn_black_opal_overworld = builder
+				.comment("Spawn black opals in the overworld? Default = true")
+				.define("spawn_black_opal_overworld", true);
 		
+		spawn_amethyst_nether = builder
+				.comment("Spawn amethysts in the nether? Default = false")
+				.define("spawn_amethyst_nether", false);
+		
+		spawn_black_opal_nether = builder
+				.comment("Spawn black opals in the nether? Default = false")
+				.define("spawn_black_opal_nether", false);
+		
+		spawn_amethyst_end = builder
+				.comment("Spawn amethysts in the end? Default = false")
+				.define("spawn_amethyst_end", false);
+		
+		spawn_black_opal_end = builder
+				.comment("Spawn black opals in the end? Default = false")
+				.define("spawn_black_opal_end", false);
 		
 		nether_chance_multiplier = builder
-				.comment("If nether_ores is enabled, the spawn chance per chunk in the nether will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The default value tries to imitate the rarity in the overworld. Default = 1.35.")
-				.defineInRange("nether_chance_multiplier", 1.35d, 0.00, 10.0d);
+				.comment("If nether_ores is enabled, the spawn chance per chunk in the nether will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The final rarity of each ore vein cannot be more common than diamonds. The default value tries to imitate the rarity in the overworld. Default = 1.35.")
+				.defineInRange("nether_chance_multiplier", 1.5d, 0.01, 1000.0d);
 		
 		end_chance_multiplier = builder
 				.comment("If end_ores is enabled, the spawn chance per chunk in the end will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The default value tries to imitate the rarity in the overworld. Default = 1.0")
-				.defineInRange("end_chance_multiplier", 1.0d, 0.00, 10.0d);
+				.defineInRange("end_chance_multiplier", 1.0d, 0.01, 1000.0d);
 		
 		nether_vein_multiplier = builder
 				.comment("If nether_ores is enableld, multiplies the max vein size of nether ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.0")
-				.defineInRange("nether_vein_multiplier", 1.0d, 0, 10.0d);
+				.defineInRange("nether_vein_multiplier", 1.0d, 0, 1000.0d);
 		
 		end_vein_multiplier = builder
 				.comment("If end_ores is enableld, multiplies the max vein size of end ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.2")
-				.defineInRange("end_vein_multiplier", 1.2d, 0, 10.0d);
+				.defineInRange("end_vein_multiplier", 1.2d, 0, 1000.0d);
 		
 		builder.pop();
 		
 		builder.comment("Rarity Configuration").push("ore_rarity");
 		
 		amethyst_chance = builder
-				.comment("Chance for an Amethyst Ore vein to spawn in a chunk. 1.00 = As common as diamonds, 0.50 = Half as common as diamonds etc. Default = 0.35")
+				.comment("Chance for an Amethyst Ore vein to spawn in a chunk. 1 = As common as diamonds, 2 = Half as common as diamonds etc. Default = 3")
 				.defineInRange("amethyst_chance", 0.35d, 0.00, 1.00);
 		
 		black_opal_chance = builder
-				.comment("Chance for a Black Opal Ore vein to spawn in a chunk. Default = 0.12")
+				.comment("Chance for a Black Opal Ore vein to spawn in a chunk. Default = 9")
 				.defineInRange("black_opal_chance", 0.12d, 0.00, 1.00);
 		
 		amethyst_max_vein_size = builder
@@ -106,10 +140,33 @@ public class OADConfig {
 				.comment("Maximum vein size for an Black Opal Ore vein. Default = 6")
 				.defineInRange("black_opal_max_vein_size", 6, 0, 64);
 		
+		amethyst_max_spawn_height_overworld = builder
+				.comment("Maximum spawn height size for an Amethyst ore vein. Default = 16")
+				.defineInRange("amethyst_max_spawn_height_overworld", 16, 1, 255);
+		
+		black_opal_max_spawn_height_overworld = builder
+				.comment("Maximum spawn height size for a Black Opal ore vein. Default = 16")
+				.defineInRange("black_opal_max_spawn_height_overworld", 16, 1, 255);
+		
+		amethyst_max_spawn_height_nether = builder
+				.comment("Maximum spawn height size for an Amethyst ore vein for the nether. Default = 128")
+				.defineInRange("amethyst_max_spawn_height_nether", 128, 1, 255);
+		
+		black_opal_max_spawn_height_nether = builder
+				.comment("Maximum spawn height size for a Black Opal ore vein for the nether. Default = 128")
+				.defineInRange("black_opal_max_spawn_height_nether", 128, 1, 255);
+		
+		amethyst_max_spawn_height_end = builder
+				.comment("Maximum spawn height size for an Amethyst ore vein for the end. Default = 75")
+				.defineInRange("amethyst_max_spawn_height_end", 75, 1, 255);
+		
+		black_opal_max_spawn_height_end = builder
+				.comment("Maximum spawn height size for a Black Opal ore vein for the end. Default = 75")
+				.defineInRange("black_opal_max_spawn_height_end", 75, 1, 255);
+		
 		chest_loot = builder
 				.comment("Wherever diamonds can naturally generate in chests, black opal and amethyst can too at a reduced rate! Default = true")
 				.define("chest_loot", true);
-		
 		builder.pop();
 		
 		builder.comment("Tool Settings. Changing these in a server will work, but it will not display the changes to the players.").push("tool");
@@ -147,11 +204,11 @@ public class OADConfig {
 		builder.comment("Armor Settings. These values are delicate and changing them may significantly affect the strength of the armor.").push("armor");
 		
 		amethyst_armor_toughness = builder
-				.comment("Toughness for the Amethyst Armor Set. Toughness reduces the armor penetration of high damaging attacks. Default = 4")
+				.comment("Toughness for the Amethyst Armor Set. Toughness reduces the armor penetration of high damaging attacks. Default = 3")
 				.defineInRange("amethyst_armor_toughness", 3 , 0, Integer.MAX_VALUE);
 		
 		black_opal_armor_toughness = builder
-				.comment("Toughness for the Black Opal Armor Set. Default = 6")
+				.comment("Toughness for the Black Opal Armor Set. Default = 4")
 				.defineInRange("black_opal_armor_toughness", 4 , 0, Integer.MAX_VALUE);
 		
 		amethyst_armor_durability = builder
@@ -159,7 +216,7 @@ public class OADConfig {
 				.defineInRange("amethyst_armor_durability", 58, 0, Integer.MAX_VALUE);
 		
 		black_opal_armor_durability = builder
-				.comment("Base Durability for the Black Opal Armor Set. Set 0 for infinite durability. Default = 0")
+				.comment("Base Durability for the Black Opal Armor Set. Set -1 for infinite durability. Default = 0")
 				.defineInRange("black_opal_armor_durability", 116, 0, Integer.MAX_VALUE);
 		
 		amethyst_helmet_armor = builder

@@ -46,10 +46,34 @@ public class PlayerLoggedInEventHandler {
 		
 		boolean old_combat_mechanics = OADConfig.old_combat_mechanics.get();
 		
+		boolean spawn_amethyst_overworld = OADConfig.spawn_amethyst_overworld.get();
+		boolean spawn_black_opal_overworld = OADConfig.spawn_black_opal_overworld.get();
+		boolean spawn_amethyst_nether = OADConfig.spawn_amethyst_nether.get();
+		boolean spawn_black_opal_nether = OADConfig.spawn_black_opal_nether.get();
+		boolean spawn_amethyst_end = OADConfig.spawn_amethyst_end.get();
+		boolean spawn_black_opal_end = OADConfig.spawn_black_opal_end.get();
+		
+		double amethyst_chance = OADConfig.amethyst_chance.get();
+		double black_opal_chance = OADConfig.black_opal_chance.get();
+		
+		int amethyst_max_vein_size = OADConfig.amethyst_max_vein_size.get();
+		int black_opal_max_vein_size = OADConfig.black_opal_max_vein_size.get();
+		
+		int amethyst_max_spawn_height_overworld = OADConfig.amethyst_max_spawn_height_overworld.get();
+		int black_opal_max_spawn_height_overworld = OADConfig.black_opal_max_spawn_height_overworld.get();
+		
+		int amethyst_max_spawn_height_nether = OADConfig.amethyst_max_spawn_height_nether.get();
+		int black_opal_max_spawn_height_nether = OADConfig.black_opal_max_spawn_height_nether.get();
+		
+		int amethyst_max_spawn_height_end = OADConfig.amethyst_max_spawn_height_end.get();
+		int black_opal_max_spawn_height_end = OADConfig.black_opal_max_spawn_height_end.get();
+		
 		OADPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new PacketSyncConfig(amethyst_enchant, black_opal_enchant, amethyst_ad, amethyst_efficiency, amethyst_tool_durability,
 				 black_opal_ad, black_opal_efficiency, black_opal_tool_durability, amethyst_toughness, black_opal_toughness,
 				 amethyst_armor_durability, black_opal_armor_durability, amethyst_helmet_armor, amethyst_chestplate_armor,
 				 amethyst_leggings_armor, amethyst_boots_armor, black_opal_helmet_armor, black_opal_chestplate_armor,
-				 black_opal_leggings_armor, black_opal_boots_armor, old_combat_mechanics));
+				 black_opal_leggings_armor, black_opal_boots_armor, old_combat_mechanics,
+				 spawn_amethyst_overworld, spawn_black_opal_overworld, spawn_amethyst_nether, spawn_black_opal_nether, spawn_amethyst_end, spawn_black_opal_end, amethyst_chance, black_opal_chance, amethyst_max_vein_size, black_opal_max_vein_size, amethyst_max_spawn_height_overworld,
+				 black_opal_max_spawn_height_overworld, amethyst_max_spawn_height_nether, black_opal_max_spawn_height_nether, amethyst_max_spawn_height_end, black_opal_max_spawn_height_end));
 	}	
 }

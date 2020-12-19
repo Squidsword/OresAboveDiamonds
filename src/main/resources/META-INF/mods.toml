@@ -2,7 +2,7 @@ modLoader="javafml" #mandatory
 loaderVersion="[28,)" #mandatory (28 is current forge version)
 [[mods]] #mandatory
 modId="oresabovediamonds" #mandatory
-version="5.1.1" #mandatory
+version="6.1.0" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
 displayName="Ores Above Diamonds" #mandatory
 logoFile="oresabovediamonds_logo.png" #optional
@@ -16,12 +16,9 @@ Both have its own set of balanced armors and tools.
 It's recommended to download Overloaded Armor Bar along with this mod.
 https://www.curseforge.com/minecraft/mc-mods/overloaded-armor-bar/
 
-Special thanks to the guys at the Minecraft Mod Development Discord, §6CriativeMan1§r for making nearly all the textures, §6mARRSSSSSS§r for making Russian translations, and to §6Poland123456§r from CurseForge for making the art for the Amethyst!
+The mod doesn't have built in retrogen support. This means that ores will not spawn in already loaded chunks. Venture far into unexplored lands to have a chance at finding them.
 
-DISCLAIMER: The mod doesn't have built in retrogen support. This means that ores will not spawn in already loaded chunks.
-If you can find a 1.16 retrogen mod, you can download it and follow the instructions to add this mod to the retrogen mod.
-I have not found any mods that can retrogen on 1.16, so you might be out of luck trying to find one. 
-
+Special thanks to §6CriativeMan1§r for making the art for this mod!
 '''
 # Here's another dependency
 [[dependencies.oresabovediamonds]]

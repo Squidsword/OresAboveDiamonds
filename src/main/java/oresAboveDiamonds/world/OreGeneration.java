@@ -25,39 +25,45 @@ public class OreGeneration
 		
 		final EndOreFeature END_OREGEN = new EndOreFeature(null);
 		
-		if(OADConfig.overworld_ores.get() == true) {
+		if(OADConfig.spawn_amethyst_overworld.get() == true || OADConfig.spawn_black_opal_overworld.get() == true) {
 			for(Biome biome : ForgeRegistries.BIOMES) 
 			{
-
+				if(OADConfig.spawn_amethyst_overworld.get() == true) {
+					biome.addFeature(Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
+							new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get())).withPlacement( Placement.CHANCE_RANGE.configure(new ChanceRangeConfig(amethyst_chance, 0, 0, OADConfig.amethyst_max_spawn_height_overworld.get()))));
+				}
 			
-					biome.addFeature(Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(
-						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get())).func_227228_a_( Placement.CHANCE_RANGE.func_227446_a_(new ChanceRangeConfig(amethyst_chance, 0, 0, 16))));
-
-			
-				
-					biome.addFeature(Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(
-						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get())).func_227228_a_( Placement.CHANCE_RANGE.func_227446_a_(new ChanceRangeConfig(black_opal_chance, 0, 0, 16))));
+				if(OADConfig.spawn_black_opal_overworld.get() == true) {
+					biome.addFeature(Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
+						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get())).withPlacement( Placement.CHANCE_RANGE.configure(new ChanceRangeConfig(black_opal_chance, 0, 0, OADConfig.black_opal_max_spawn_height_overworld.get()))));
+				}
 			}
 
 		}
-		if (OADConfig.nether_ores.get() == true) {
-			Biomes.NETHER.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(
-					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, BlockList.nether_amethyst_ore.getDefaultState(),  (int) Math.min((OADConfig.amethyst_max_vein_size.get()*OADConfig.nether_vein_multiplier.get()), 64))).func_227228_a_( Placement.CHANCE_RANGE.func_227446_a_(new ChanceRangeConfig((float)(amethyst_chance*OADConfig.nether_chance_multiplier.get()), 0, 0, 128))));
-	
-			Biomes.NETHER.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(
-					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, BlockList.nether_black_opal_ore.getDefaultState(),  (int) Math.min((OADConfig.black_opal_max_vein_size.get()*OADConfig.nether_vein_multiplier.get()), 64))).func_227228_a_( Placement.CHANCE_RANGE.func_227446_a_(new ChanceRangeConfig((float)(black_opal_chance*OADConfig.nether_chance_multiplier.get()), 0, 0, 128))));
-			
+		if (OADConfig.spawn_amethyst_nether.get() == true || OADConfig.spawn_black_opal_nether.get() == true) {
+			if(OADConfig.spawn_amethyst_nether.get() == true) {
+				Biomes.NETHER.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
+						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, BlockList.nether_amethyst_ore.getDefaultState(),  (int) Math.min((OADConfig.amethyst_max_vein_size.get()*OADConfig.nether_vein_multiplier.get()), 64))).withPlacement( Placement.CHANCE_RANGE.configure(new ChanceRangeConfig((float)(amethyst_chance*OADConfig.nether_chance_multiplier.get()), 0, 0, OADConfig.amethyst_max_spawn_height_nether.get()))));
+			}
+			if(OADConfig.spawn_black_opal_nether.get() == true) {
+				Biomes.NETHER.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
+						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, BlockList.nether_black_opal_ore.getDefaultState(),  (int) Math.min((OADConfig.black_opal_max_vein_size.get()*OADConfig.nether_vein_multiplier.get()), 64))).withPlacement( Placement.CHANCE_RANGE.configure(new ChanceRangeConfig((float)(black_opal_chance*OADConfig.nether_chance_multiplier.get()), 0, 0, OADConfig.black_opal_max_spawn_height_nether.get()))));
+			}
 		}
-		if (OADConfig.end_ores.get() == true) {
+		if (OADConfig.spawn_black_opal_end.get() == true || OADConfig.spawn_amethyst_end.get() == true) {
 			ForgeRegistries.BIOMES.getValues().stream()
 		      .filter(biome -> (biome.getCategory() == Biome.Category.THEEND))
 		      .forEach(biome -> {
-			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, END_OREGEN.func_225566_b_(
-					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.end_amethyst_ore.getDefaultState(), (int) Math.min((OADConfig.amethyst_max_vein_size.get()*OADConfig.end_vein_multiplier.get()), 64))).func_227228_a_( Placement.CHANCE_RANGE.func_227446_a_(new ChanceRangeConfig((float)(amethyst_chance*OADConfig.end_chance_multiplier.get()), 0, 0, 75))));
-	
+		    if(OADConfig.spawn_amethyst_end.get() == true) {	  
+		    	biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, END_OREGEN.withConfiguration(
+		    			new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.end_amethyst_ore.getDefaultState(), (int) Math.min((OADConfig.amethyst_max_vein_size.get()*OADConfig.end_vein_multiplier.get()), 64))).withPlacement( Placement.CHANCE_RANGE.configure(new ChanceRangeConfig((float)(amethyst_chance*OADConfig.end_chance_multiplier.get()), 0, 0, OADConfig.amethyst_max_spawn_height_end.get()))));
+		    }
 			
-			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, END_OREGEN.func_225566_b_(
-					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.end_black_opal_ore.getDefaultState(), (int) Math.min((OADConfig.black_opal_max_vein_size.get()*OADConfig.end_vein_multiplier.get()), 64))).func_227228_a_( Placement.CHANCE_RANGE.func_227446_a_(new ChanceRangeConfig((float) (black_opal_chance*OADConfig.end_chance_multiplier.get()), 0, 0, 75))));
+		    if(OADConfig.spawn_black_opal_end.get() == true) {	 
+			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, END_OREGEN.withConfiguration(
+					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.end_black_opal_ore.getDefaultState(), (int) Math.min((OADConfig.black_opal_max_vein_size.get()*OADConfig.end_vein_multiplier.get()), 64))).withPlacement( Placement.CHANCE_RANGE.configure(new ChanceRangeConfig((float) (black_opal_chance*OADConfig.end_chance_multiplier.get()), 0, 0, OADConfig.black_opal_max_spawn_height_end.get()))));
+		    }
+		    
 		      });
 		}
 	}
