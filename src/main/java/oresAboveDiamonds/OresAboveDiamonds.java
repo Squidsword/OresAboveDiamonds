@@ -9,6 +9,9 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,6 +38,7 @@ import oresAboveDiamonds.lists.BlockList;
 import oresAboveDiamonds.lists.ItemList;
 import oresAboveDiamonds.lists.ToolMaterialList;
 import oresAboveDiamonds.network.OADPacketHandler;
+import oresAboveDiamonds.world.OreGeneration;
 
 
 @Mod(OresAboveDiamonds.MODID)
@@ -60,12 +64,24 @@ public class OresAboveDiamonds
 		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
 		
 		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.16.4_v6.0.0.toml"));
+		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.16.3_v6.0.0.toml"));
 	}
 	
 	private void setup(final FMLCommonSetupEvent event)
 	{
 		LOGGER.info("Setup method registered.");
+		// Thanks to Telepathic Grunt for finding this issue.
+		Registry<ConfiguredFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_FEATURE;
+		
+		Registry.register(registry, new ResourceLocation(OresAboveDiamonds.MODID, "amethyst_ore"), OreGeneration.AMETHYST_OVERWORLD);
+		Registry.register(registry, new ResourceLocation(OresAboveDiamonds.MODID, "black_opal_ore"), OreGeneration.BLACK_OPAL_OVERWORLD);
+		
+		Registry.register(registry, new ResourceLocation(OresAboveDiamonds.MODID, "nether_amethyst_ore"), OreGeneration.AMETHYST_NETHER);
+		Registry.register(registry, new ResourceLocation(OresAboveDiamonds.MODID, "nether_black_opal_ore"), OreGeneration.BLACK_OPAL_NETHER);
+		
+		//Registry.register(registry, new ResourceLocation(OresAboveDiamonds.MODID, "end_amethyst_ore"), OreGeneration.AMETHYST_END);
+		//Registry.register(registry, new ResourceLocation(OresAboveDiamonds.MODID, "end_black_opal_ore"), OreGeneration.BLACK_OPAL_END);
+		
 	}
 	private void clientRegistries(final FMLClientSetupEvent event)
 	{
