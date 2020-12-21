@@ -21,12 +21,12 @@ public class ForgeEventSubscriber {
 				event.getGeneration().withFeature(Decoration.UNDERGROUND_DECORATION, OreGeneration.BLACK_OPAL_NETHER);
 			}
 		} else if(event.getCategory() == Biome.Category.THEEND) {
-			/*if(OADConfig.spawn_amethyst_end.get() == true) {
+			if(OADConfig.spawn_amethyst_end.get() == true) {
 				event.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, OreGeneration.AMETHYST_END);
 			}
 			if(OADConfig.spawn_black_opal_end.get() == true) {
 				event.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, OreGeneration.BLACK_OPAL_END);
-			}*/
+			}
 		} else {
 			if(OADConfig.spawn_amethyst_overworld.get() == true) {
 				event.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, OreGeneration.AMETHYST_OVERWORLD);

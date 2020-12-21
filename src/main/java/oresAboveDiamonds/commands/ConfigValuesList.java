@@ -12,8 +12,14 @@ public enum ConfigValuesList {
 	AMETHYST_MAX_VEIN_SIZE("amethyst_max_vein_size", "int"),
 	BLACK_OPAL_MAX_VEIN_SIZE("black_opal_max_vein_size", "int"),
 	
-	AMETHYST_MAX_SPAWN_HEIGHT("amethyst_max_spawn_height", "int"),
-	BLACK_OPAL_MAX_SPAWN_HEIGHT("black_opal_max_spawn_height", "int"),
+	AMETHYST_MAX_SPAWN_HEIGHT_OVERWORLD("amethyst_max_spawn_height_overworld", "int"),
+	BLACK_OPAL_MAX_SPAWN_HEIGHT_OVERWORLD("black_opal_max_spawn_height_overworld", "int"),
+	
+	AMETHYST_MAX_SPAWN_HEIGHT_NETHER("amethyst_max_spawn_height_nether", "int"),
+	BLACK_OPAL_MAX_SPAWN_HEIGHT_NETHER("black_opal_max_spawn_height_nether", "int"),
+	
+	AMETHYST_MAX_SPAWN_HEIGHT_END("amethyst_max_spawn_height_end", "int"),
+	BLACK_OPAL_MAX_SPAWN_HEIGHT_END("black_opal_max_spawn_height_end", "int"),
 	
 	AMETHYST_ARMOR_TOUGHNESS("amethyst_armor_toughness", "int"),
 	BLACK_OPAL_ARMOR_TOUGHNESS("black_opal_armor_toughness", "int"),

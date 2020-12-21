@@ -113,30 +113,29 @@ public class OADConfig {
 				.comment("Spawn black opals in the nether? Default = false")
 				.define("spawn_black_opal_nether", false);
 		
-		/*spawn_amethyst_end = builder
+		spawn_amethyst_end = builder
 				.comment("Spawn amethysts in the end? Default = false")
 				.define("spawn_amethyst_end", false);
 		
 		spawn_black_opal_end = builder
 				.comment("Spawn black opals in the end? Default = false")
-				.define("spawn_black_opal_end", false);*/
-		
+				.define("spawn_black_opal_end", false);	
 		
 		nether_chance_multiplier = builder
 				.comment("If nether_ores is enabled, the spawn chance per chunk in the nether will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The final rarity of each ore vein cannot be more common than diamonds. The default value tries to imitate the rarity in the overworld. Default = 1.35.")
 				.defineInRange("nether_chance_multiplier", 1.5d, 0.01, 1000.0d);
 		
-		/*end_chance_multiplier = builder
+		end_chance_multiplier = builder
 				.comment("If end_ores is enabled, the spawn chance per chunk in the end will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The default value tries to imitate the rarity in the overworld. Default = 1.0")
-				.defineInRange("end_chance_multiplier", 1.0d, 0.01, 1000.0d);*/
+				.defineInRange("end_chance_multiplier", 1.0d, 0.01, 1000.0d);
 		
 		nether_vein_multiplier = builder
 				.comment("If nether_ores is enableld, multiplies the max vein size of nether ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.0")
 				.defineInRange("nether_vein_multiplier", 1.0d, 0, 1000.0d);
 		
-		/*end_vein_multiplier = builder
+		end_vein_multiplier = builder
 				.comment("If end_ores is enableld, multiplies the max vein size of end ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.2")
-				.defineInRange("end_vein_multiplier", 1.2d, 0, 1000.0d);*/
+				.defineInRange("end_vein_multiplier", 1.2d, 0, 1000.0d);
 		
 		builder.pop();
 		
@@ -187,7 +186,7 @@ public class OADConfig {
 				.define("chest_loot", true);
 		builder.pop();
 		
-		builder.comment("Tool Settings. Changing these in a server will work, but it will not display the changes to the players.").push("tool");
+		builder.comment("Tool Settings. Changing these in a server will work, but it will not display the changes to the players without syncing.").push("tool");
 		
 		old_combat_mechanics = builder
 				.comment("Adjusts damage numbers for no attack speed/pre MC 1.9 combat. Intended to be used with a mod that removes the attack speed cooldown.")
