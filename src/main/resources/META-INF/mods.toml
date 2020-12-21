@@ -12,7 +12,6 @@ displayName="Ores Above Diamonds" #mandatory
 logoFile="oresabovediamonds_logo.png" #optional
 # A text field displayed in the mod UI
 authors="§dSquidsword" #optional
-license="MIT License"
 credits="Special thanks to §6CriativeMan1§r for the making the art for this mod!"
 # The description text for the mod (multi line!) (#mandatory)
 description='''

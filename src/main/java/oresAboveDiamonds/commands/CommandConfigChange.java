@@ -223,7 +223,11 @@ public class CommandConfigChange {
 	}
 	
 	public static boolean isParsableBoolean(String input) {
-		return Boolean.parseBoolean(input);
+		if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("false")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public static int run(CommandSource source, String command, String option, String action, String value) {
@@ -667,7 +671,7 @@ public class CommandConfigChange {
 			}
 
 			if (option.equalsIgnoreCase("enable_server_config_sync")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.enable_server_config_sync.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Enable Server Config Sync to " + OADConfig.enable_server_config_sync.get().toString()), false);
 				} else {
@@ -675,7 +679,7 @@ public class CommandConfigChange {
 				}
 			}
 			if (option.equalsIgnoreCase("send_config_sync_packet")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.send_config_sync_packet.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Send Config Sync Packet to " + OADConfig.send_config_sync_packet.get().toString()), false);
 				} else {
@@ -684,7 +688,7 @@ public class CommandConfigChange {
 			}
 			
 			if (option.equalsIgnoreCase("spawn_amethyst_overworld")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.spawn_amethyst_overworld.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Amethyst Overworld to " + OADConfig.spawn_amethyst_overworld.get().toString()), false);
 				} else {
@@ -692,7 +696,7 @@ public class CommandConfigChange {
 				}
 			}
 			if (option.equalsIgnoreCase("spawn_black_opal_overworld")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.spawn_black_opal_overworld.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Black Opal Overworld to " + OADConfig.spawn_black_opal_overworld.get().toString()), false);
 				} else {
@@ -700,7 +704,7 @@ public class CommandConfigChange {
 				}
 			}
 			if (option.equalsIgnoreCase("spawn_amethyst_nether")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.spawn_amethyst_nether.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Amethyst Nether to " + OADConfig.spawn_amethyst_nether.get().toString()), false);
 				} else {
@@ -708,7 +712,7 @@ public class CommandConfigChange {
 				}
 			}
 			if (option.equalsIgnoreCase("spawn_black_opal_nether")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.spawn_black_opal_nether.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Black Opal Nether to " + OADConfig.spawn_black_opal_nether.get().toString()), false);
 				} else {
@@ -716,15 +720,16 @@ public class CommandConfigChange {
 				}
 			}
 			if (option.equalsIgnoreCase("spawn_amethyst_end")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.spawn_amethyst_end.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Amethyst End to " + OADConfig.spawn_amethyst_end.get().toString()), false);
 				} else {
 					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
 				}
 			}
+			
 			if (option.equalsIgnoreCase("spawn_black_opal_end")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.spawn_black_opal_end.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Spawn Black Opal End to " + OADConfig.spawn_black_opal_end.get().toString()), false);
 				} else {
@@ -732,24 +737,22 @@ public class CommandConfigChange {
 				}
 			}
 			if (option.equalsIgnoreCase("old_combat_mechanics")) {
-				if(Boolean.parseBoolean(value)) {
+				if(isParsableBoolean(value)) {
 					OADConfig.old_combat_mechanics.set(Boolean.parseBoolean(value));
 					source.sendFeedback(new TranslationTextComponent("Successfully changed Old Combat Mechanics to " + OADConfig.old_combat_mechanics.get().toString()), false);
 				} else {
 					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
 				}
 			}
-		}
-		
-		if (option.equalsIgnoreCase("chest_loot")) {
-			if(Boolean.parseBoolean(value)) {
-				OADConfig.chest_loot.set(Boolean.parseBoolean(value));
-				source.sendFeedback(new TranslationTextComponent("Successfully changed Chest Loot to " + OADConfig.chest_loot.get().toString()), false);
-			} else {
-				source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
+			if (option.equalsIgnoreCase("chest_loot")) {
+				if(isParsableBoolean(value)) {
+					OADConfig.chest_loot.set(Boolean.parseBoolean(value));
+					source.sendFeedback(new TranslationTextComponent("Successfully changed Chest Loot to " + OADConfig.chest_loot.get().toString()), false);
+				} else {
+					source.sendErrorMessage(new TranslationTextComponent("Invalid input. New value must be a boolean."));
+				}
 			}
 		}
-
 		return 1;
 	}
 	
