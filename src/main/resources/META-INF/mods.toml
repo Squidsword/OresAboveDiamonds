@@ -6,7 +6,7 @@ license="MIT"
 
 [[mods]] #mandatory
 modId="oresabovediamonds" #mandatory
-version="6.0.1" #mandatory
+version="6.1.0" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
 displayName="Ores Above Diamonds" #mandatory
 logoFile="oresabovediamonds_logo.png" #optional
