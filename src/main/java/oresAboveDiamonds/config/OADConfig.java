@@ -257,7 +257,7 @@ public class OADConfig {
 				.defineInRange("netherite_opal_armor_knockback_resistance", 1 , 0, Integer.MAX_VALUE);
 		
 		amethyst_armor_durability = builder
-				.comment("Base Durability for the Amethyst Armor Set. For reference, Diamond Armor has 33 base durability. Set -1 for infinite durability. Default = 132")
+				.comment("Base Durability for the Amethyst Armor Set. For reference, Diamond Armor has 33 base durability. Set to 0 for infinite durability. Default = 132")
 				.defineInRange("amethyst_armor_durability", 58, 0, Integer.MAX_VALUE);
 		
 		black_opal_armor_durability = builder

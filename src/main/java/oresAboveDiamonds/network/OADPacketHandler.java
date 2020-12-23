@@ -15,9 +15,7 @@ public class OADPacketHandler  {
 	);
 	
     public static void registerMessages() {
-    	int id = 0;
-    	
+    	int id = 0;  	
     	INSTANCE.registerMessage(id++, PacketSyncConfig.class, PacketSyncConfig::encode, PacketSyncConfig::decode, PacketSyncConfig::handle);
-    
     }
 }

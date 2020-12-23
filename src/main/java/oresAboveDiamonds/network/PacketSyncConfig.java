@@ -221,79 +221,79 @@ public class PacketSyncConfig {
 	
 	@SuppressWarnings("resource")
 	public static void handle(PacketSyncConfig message, Supplier<NetworkEvent.Context> ctx) {
+		ctx.get().enqueueWork(() -> {
+			int counter = 0;
+			if(OADConfig.enable_server_config_sync.get() == true) {
 		
-		int counter = 0;
-		if(OADConfig.enable_server_config_sync.get() == true) {
-		
-			if(OADConfig.amethyst_enchantability.get() != message.amethyst_enchant) {OADConfig.amethyst_enchantability.set(message.amethyst_enchant); counter++;}
-			if(OADConfig.black_opal_enchantability.get() != message.black_opal_enchant) {OADConfig.black_opal_enchantability.set(message.black_opal_enchant); counter++;}
-			if(OADConfig.netherite_opal_enchantability.get() != message.netherite_opal_enchant) {OADConfig.netherite_opal_enchantability.set(message.netherite_opal_enchant); counter++;}
+				if(OADConfig.amethyst_enchantability.get() != message.amethyst_enchant) {OADConfig.amethyst_enchantability.set(message.amethyst_enchant); counter++;}
+				if(OADConfig.black_opal_enchantability.get() != message.black_opal_enchant) {OADConfig.black_opal_enchantability.set(message.black_opal_enchant); counter++;}
+				if(OADConfig.netherite_opal_enchantability.get() != message.netherite_opal_enchant) {OADConfig.netherite_opal_enchantability.set(message.netherite_opal_enchant); counter++;}
 			
-			if(OADConfig.amethyst_attack_damage.get() != message.amethyst_ad) {OADConfig.amethyst_attack_damage.set(message.amethyst_ad); counter++;}
-			if(OADConfig.amethyst_efficiency.get() != message.amethyst_efficiency) {OADConfig.amethyst_efficiency.set(message.amethyst_efficiency); counter++;}
-			if(OADConfig.amethyst_durability.get() != message.amethyst_tool_durability) {OADConfig.amethyst_durability.set(message.amethyst_tool_durability); counter++;}
+				if(OADConfig.amethyst_attack_damage.get() != message.amethyst_ad) {OADConfig.amethyst_attack_damage.set(message.amethyst_ad); counter++;}
+				if(OADConfig.amethyst_efficiency.get() != message.amethyst_efficiency) {OADConfig.amethyst_efficiency.set(message.amethyst_efficiency); counter++;}
+				if(OADConfig.amethyst_durability.get() != message.amethyst_tool_durability) {OADConfig.amethyst_durability.set(message.amethyst_tool_durability); counter++;}
 			
-			if(OADConfig.black_opal_attack_damage.get() != message.black_opal_ad) {OADConfig.black_opal_attack_damage.set(message.black_opal_ad); counter++;}
-			if(OADConfig.black_opal_efficiency.get() != message.black_opal_efficiency) {OADConfig.black_opal_efficiency.set(message.black_opal_efficiency); counter++;}
-			if(OADConfig.black_opal_durability.get() != message.black_opal_tool_durability) {OADConfig.black_opal_durability.set(message.black_opal_tool_durability); counter++;}
+				if(OADConfig.black_opal_attack_damage.get() != message.black_opal_ad) {OADConfig.black_opal_attack_damage.set(message.black_opal_ad); counter++;}
+				if(OADConfig.black_opal_efficiency.get() != message.black_opal_efficiency) {OADConfig.black_opal_efficiency.set(message.black_opal_efficiency); counter++;}
+				if(OADConfig.black_opal_durability.get() != message.black_opal_tool_durability) {OADConfig.black_opal_durability.set(message.black_opal_tool_durability); counter++;}
 			
-			if(OADConfig.netherite_opal_attack_damage.get() != message.netherite_opal_ad) {OADConfig.netherite_opal_attack_damage.set(message.netherite_opal_ad); counter++;}
-			if(OADConfig.netherite_opal_efficiency.get() != message.netherite_opal_efficiency) {OADConfig.netherite_opal_efficiency.set(message.netherite_opal_efficiency); counter++;}
-			if(OADConfig.netherite_opal_durability.get() != message.netherite_opal_tool_durability) {OADConfig.netherite_opal_durability.set(message.netherite_opal_tool_durability); counter++;}
+				if(OADConfig.netherite_opal_attack_damage.get() != message.netherite_opal_ad) {OADConfig.netherite_opal_attack_damage.set(message.netherite_opal_ad); counter++;}
+				if(OADConfig.netherite_opal_efficiency.get() != message.netherite_opal_efficiency) {OADConfig.netherite_opal_efficiency.set(message.netherite_opal_efficiency); counter++;}
+				if(OADConfig.netherite_opal_durability.get() != message.netherite_opal_tool_durability) {OADConfig.netherite_opal_durability.set(message.netherite_opal_tool_durability); counter++;}
 			
-			if(OADConfig.amethyst_armor_toughness.get() != message.amethyst_toughness) {OADConfig.amethyst_armor_toughness.set(message.amethyst_toughness);counter++;}
-			if(OADConfig.black_opal_armor_toughness.get() != message.black_opal_toughness) {OADConfig.black_opal_armor_toughness.set(message.black_opal_toughness); counter++;}
-			if(OADConfig.netherite_opal_armor_toughness.get() != message.netherite_opal_toughness) {OADConfig.netherite_opal_armor_toughness.set(message.netherite_opal_toughness); counter++;}
+				if(OADConfig.amethyst_armor_toughness.get() != message.amethyst_toughness) {OADConfig.amethyst_armor_toughness.set(message.amethyst_toughness);counter++;}
+				if(OADConfig.black_opal_armor_toughness.get() != message.black_opal_toughness) {OADConfig.black_opal_armor_toughness.set(message.black_opal_toughness); counter++;}
+				if(OADConfig.netherite_opal_armor_toughness.get() != message.netherite_opal_toughness) {OADConfig.netherite_opal_armor_toughness.set(message.netherite_opal_toughness); counter++;}
 			
-			if(OADConfig.amethyst_helmet_armor.get() != message.amethyst_helmet_armor) {OADConfig.amethyst_helmet_armor.set(message.amethyst_helmet_armor); counter++;}
-			if(OADConfig.amethyst_chestplate_armor.get() != message.amethyst_chestplate_armor) {OADConfig.amethyst_chestplate_armor.set(message.amethyst_chestplate_armor); counter++;}
-			if(OADConfig.amethyst_leggings_armor.get() != message.amethyst_leggings_armor) {OADConfig.amethyst_leggings_armor.set(message.amethyst_leggings_armor); counter++;}
-			if(OADConfig.amethyst_boots_armor.get() != message.amethyst_boots_armor) {OADConfig.amethyst_boots_armor.set(message.amethyst_boots_armor); counter++;}
+				if(OADConfig.amethyst_helmet_armor.get() != message.amethyst_helmet_armor) {OADConfig.amethyst_helmet_armor.set(message.amethyst_helmet_armor); counter++;}
+				if(OADConfig.amethyst_chestplate_armor.get() != message.amethyst_chestplate_armor) {OADConfig.amethyst_chestplate_armor.set(message.amethyst_chestplate_armor); counter++;}
+				if(OADConfig.amethyst_leggings_armor.get() != message.amethyst_leggings_armor) {OADConfig.amethyst_leggings_armor.set(message.amethyst_leggings_armor); counter++;}
+				if(OADConfig.amethyst_boots_armor.get() != message.amethyst_boots_armor) {OADConfig.amethyst_boots_armor.set(message.amethyst_boots_armor); counter++;}
 			
-			if(OADConfig.black_opal_helmet_armor.get() != message.black_opal_helmet_armor) {OADConfig.black_opal_helmet_armor.set(message.black_opal_helmet_armor); counter++;}
-			if(OADConfig.black_opal_chestplate_armor.get() != message.black_opal_chestplate_armor) {OADConfig.black_opal_chestplate_armor.set(message.black_opal_chestplate_armor); counter++;}
-			if(OADConfig.black_opal_leggings_armor.get() != message.black_opal_leggings_armor) {OADConfig.black_opal_leggings_armor.set(message.black_opal_leggings_armor); counter++;}
-			if(OADConfig.black_opal_boots_armor.get() != message.black_opal_boots_armor) {OADConfig.black_opal_boots_armor.set(message.black_opal_boots_armor); counter++;}
+				if(OADConfig.black_opal_helmet_armor.get() != message.black_opal_helmet_armor) {OADConfig.black_opal_helmet_armor.set(message.black_opal_helmet_armor); counter++;}
+				if(OADConfig.black_opal_chestplate_armor.get() != message.black_opal_chestplate_armor) {OADConfig.black_opal_chestplate_armor.set(message.black_opal_chestplate_armor); counter++;}
+				if(OADConfig.black_opal_leggings_armor.get() != message.black_opal_leggings_armor) {OADConfig.black_opal_leggings_armor.set(message.black_opal_leggings_armor); counter++;}
+				if(OADConfig.black_opal_boots_armor.get() != message.black_opal_boots_armor) {OADConfig.black_opal_boots_armor.set(message.black_opal_boots_armor); counter++;}
 			
-			if(OADConfig.netherite_opal_helmet_armor.get() != message.netherite_opal_helmet_armor) {OADConfig.netherite_opal_helmet_armor.set(message.netherite_opal_helmet_armor); counter++;}
-			if(OADConfig.netherite_opal_chestplate_armor.get() != message.netherite_opal_chestplate_armor) {OADConfig.netherite_opal_chestplate_armor.set(message.netherite_opal_chestplate_armor); counter++;}
-			if(OADConfig.netherite_opal_leggings_armor.get() != message.netherite_opal_leggings_armor) {OADConfig.netherite_opal_leggings_armor.set(message.netherite_opal_leggings_armor); counter++;}
-			if(OADConfig.netherite_opal_boots_armor.get() != message.netherite_opal_boots_armor) {OADConfig.netherite_opal_boots_armor.set(message.netherite_opal_boots_armor); counter++;}
+				if(OADConfig.netherite_opal_helmet_armor.get() != message.netherite_opal_helmet_armor) {OADConfig.netherite_opal_helmet_armor.set(message.netherite_opal_helmet_armor); counter++;}
+				if(OADConfig.netherite_opal_chestplate_armor.get() != message.netherite_opal_chestplate_armor) {OADConfig.netherite_opal_chestplate_armor.set(message.netherite_opal_chestplate_armor); counter++;}
+				if(OADConfig.netherite_opal_leggings_armor.get() != message.netherite_opal_leggings_armor) {OADConfig.netherite_opal_leggings_armor.set(message.netherite_opal_leggings_armor); counter++;}
+				if(OADConfig.netherite_opal_boots_armor.get() != message.netherite_opal_boots_armor) {OADConfig.netherite_opal_boots_armor.set(message.netherite_opal_boots_armor); counter++;}
 			
-			if(OADConfig.old_combat_mechanics.get() != message.old_combat_mechanics) {OADConfig.old_combat_mechanics.set(message.old_combat_mechanics); counter++;}
+				if(OADConfig.old_combat_mechanics.get() != message.old_combat_mechanics) {OADConfig.old_combat_mechanics.set(message.old_combat_mechanics); counter++;}
 			
-			if(OADConfig.spawn_amethyst_overworld.get() != message.spawn_amethyst_overworld) {OADConfig.spawn_amethyst_overworld.set(message.spawn_amethyst_overworld); counter++;}
-			if(OADConfig.spawn_amethyst_nether.get() != message.spawn_amethyst_nether) {OADConfig.spawn_amethyst_nether.set(message.spawn_amethyst_nether); counter++;}
-			if(OADConfig.spawn_amethyst_end.get() != message.spawn_amethyst_end) {OADConfig.spawn_amethyst_end.set(message.spawn_amethyst_end); counter++;}
-			if(OADConfig.spawn_black_opal_overworld.get() != message.spawn_black_opal_overworld) {OADConfig.spawn_black_opal_overworld.set(message.spawn_black_opal_overworld); counter++;}
-			if(OADConfig.spawn_black_opal_nether.get() != message.spawn_black_opal_nether) {OADConfig.spawn_black_opal_nether.set(message.spawn_black_opal_nether); counter++;}
-			if(OADConfig.spawn_black_opal_end.get() != message.spawn_black_opal_end) {OADConfig.spawn_black_opal_end.set(message.spawn_black_opal_end); counter++;}
+				if(OADConfig.spawn_amethyst_overworld.get() != message.spawn_amethyst_overworld) {OADConfig.spawn_amethyst_overworld.set(message.spawn_amethyst_overworld); counter++;}
+				if(OADConfig.spawn_amethyst_nether.get() != message.spawn_amethyst_nether) {OADConfig.spawn_amethyst_nether.set(message.spawn_amethyst_nether); counter++;}
+				if(OADConfig.spawn_amethyst_end.get() != message.spawn_amethyst_end) {OADConfig.spawn_amethyst_end.set(message.spawn_amethyst_end); counter++;}
+				if(OADConfig.spawn_black_opal_overworld.get() != message.spawn_black_opal_overworld) {OADConfig.spawn_black_opal_overworld.set(message.spawn_black_opal_overworld); counter++;}
+				if(OADConfig.spawn_black_opal_nether.get() != message.spawn_black_opal_nether) {OADConfig.spawn_black_opal_nether.set(message.spawn_black_opal_nether); counter++;}
+				if(OADConfig.spawn_black_opal_end.get() != message.spawn_black_opal_end) {OADConfig.spawn_black_opal_end.set(message.spawn_black_opal_end); counter++;}
 			
-			if(OADConfig.amethyst_times_rarer.get() != message.amethyst_times_rarer) {OADConfig.amethyst_times_rarer.set(message.amethyst_times_rarer); counter++;}
-			if(OADConfig.black_opal_times_rarer.get() != message.black_opal_times_rarer) {OADConfig.black_opal_times_rarer.set(message.black_opal_times_rarer); counter++;}
+				if(OADConfig.amethyst_times_rarer.get() != message.amethyst_times_rarer) {OADConfig.amethyst_times_rarer.set(message.amethyst_times_rarer); counter++;}
+				if(OADConfig.black_opal_times_rarer.get() != message.black_opal_times_rarer) {OADConfig.black_opal_times_rarer.set(message.black_opal_times_rarer); counter++;}
 			
-			if(OADConfig.amethyst_max_vein_size.get() != message.amethyst_max_vein_size) {OADConfig.amethyst_max_vein_size.set(message.amethyst_max_vein_size); counter++;}
-			if(OADConfig.black_opal_max_vein_size.get() != message.black_opal_max_vein_size) {OADConfig.black_opal_max_vein_size.set(message.black_opal_max_vein_size); counter++;}
+				if(OADConfig.amethyst_max_vein_size.get() != message.amethyst_max_vein_size) {OADConfig.amethyst_max_vein_size.set(message.amethyst_max_vein_size); counter++;}
+				if(OADConfig.black_opal_max_vein_size.get() != message.black_opal_max_vein_size) {OADConfig.black_opal_max_vein_size.set(message.black_opal_max_vein_size); counter++;}
 			
-			if(OADConfig.amethyst_max_spawn_height_overworld.get() != message.amethyst_max_spawn_height_overworld) {OADConfig.amethyst_max_spawn_height_overworld.set(message.amethyst_max_spawn_height_overworld); counter++;}
-			if(OADConfig.black_opal_max_spawn_height_overworld.get() != message.black_opal_max_spawn_height_overworld) {OADConfig.black_opal_max_spawn_height_overworld.set(message.black_opal_max_spawn_height_overworld); counter++;}
+				if(OADConfig.amethyst_max_spawn_height_overworld.get() != message.amethyst_max_spawn_height_overworld) {OADConfig.amethyst_max_spawn_height_overworld.set(message.amethyst_max_spawn_height_overworld); counter++;}
+				if(OADConfig.black_opal_max_spawn_height_overworld.get() != message.black_opal_max_spawn_height_overworld) {OADConfig.black_opal_max_spawn_height_overworld.set(message.black_opal_max_spawn_height_overworld); counter++;}
 			
-			if(OADConfig.amethyst_max_spawn_height_nether.get() != message.amethyst_max_spawn_height_nether) {OADConfig.amethyst_max_spawn_height_nether.set(message.amethyst_max_spawn_height_nether); counter++;}
-			if(OADConfig.black_opal_max_spawn_height_nether.get() != message.black_opal_max_spawn_height_nether) {OADConfig.black_opal_max_spawn_height_nether.set(message.black_opal_max_spawn_height_nether); counter++;}
+				if(OADConfig.amethyst_max_spawn_height_nether.get() != message.amethyst_max_spawn_height_nether) {OADConfig.amethyst_max_spawn_height_nether.set(message.amethyst_max_spawn_height_nether); counter++;}
+				if(OADConfig.black_opal_max_spawn_height_nether.get() != message.black_opal_max_spawn_height_nether) {OADConfig.black_opal_max_spawn_height_nether.set(message.black_opal_max_spawn_height_nether); counter++;}
 			
-			if(OADConfig.amethyst_max_spawn_height_end.get() != message.amethyst_max_spawn_height_end) {OADConfig.amethyst_max_spawn_height_end.set(message.amethyst_max_spawn_height_end); counter++;}
-			if(OADConfig.black_opal_max_spawn_height_end.get() != message.black_opal_max_spawn_height_end) {OADConfig.black_opal_max_spawn_height_end.set(message.black_opal_max_spawn_height_end); counter++;}
+				if(OADConfig.amethyst_max_spawn_height_end.get() != message.amethyst_max_spawn_height_end) {OADConfig.amethyst_max_spawn_height_end.set(message.amethyst_max_spawn_height_end); counter++;}
+				if(OADConfig.black_opal_max_spawn_height_end.get() != message.black_opal_max_spawn_height_end) {OADConfig.black_opal_max_spawn_height_end.set(message.black_opal_max_spawn_height_end); counter++;}
 			
-			if(counter > 1) {
-			ITextComponent playermessage = new StringTextComponent("§dOres Above Diamonds: " + "§rYour config has been synced with the server. " + "§cPlease completely restart minecraft and then rejoin the server for the effects to take place. " + "§9" + counter + " settings were changed.");
-			Minecraft.getInstance().player.sendMessage(playermessage, null);
-			}	
-			if(counter == 1) {
-				ITextComponent playermessage = new StringTextComponent("§dOres Above Diamonds: " + "§rYour config has been synced with the server. " + "§cPlease completely restart minecraft and then rejoin the server for the effects to take place. " + "§9" + counter + " setting was changed.");
-				Minecraft.getInstance().player.sendMessage(playermessage, null);
+				if(counter > 1) {
+					ITextComponent playermessage = new StringTextComponent("§dOres Above Diamonds: " + "§rYour config has been synced with the server. " + "§cPlease completely restart minecraft and then rejoin the server for the effects to take place. " + "§9" + counter + " settings were changed.");
+					Minecraft.getInstance().player.sendMessage(playermessage, null);
+				}	
+				if(counter == 1) {
+					ITextComponent playermessage = new StringTextComponent("§dOres Above Diamonds: " + "§rYour config has been synced with the server. " + "§cPlease completely restart minecraft and then rejoin the server for the effects to take place. " + "§9" + counter + " setting was changed.");
+					Minecraft.getInstance().player.sendMessage(playermessage, null);
+				}
 			}
-		}
-		
+		});
 		ctx.get().setPacketHandled(true);
 		
 	}

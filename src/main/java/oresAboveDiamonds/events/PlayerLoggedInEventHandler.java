@@ -10,8 +10,6 @@ import oresAboveDiamonds.network.PacketSyncConfig;
 
 public class PlayerLoggedInEventHandler {
 	
-	
-	
 	@SubscribeEvent
 	public void onLoginEvent(PlayerLoggedInEvent event) {
 		
