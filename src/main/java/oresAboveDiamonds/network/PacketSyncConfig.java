@@ -154,6 +154,7 @@ public class PacketSyncConfig {
 	public static void encode(PacketSyncConfig msg, PacketBuffer buf) { 
 		 buf.writeInt(msg.amethyst_enchant);
 		 buf.writeInt(msg.black_opal_enchant);
+		 buf.writeInt(msg.netherite_opal_enchant);
 		
 		 buf.writeInt(msg.amethyst_ad);
 		 buf.writeInt(msg.amethyst_efficiency);
