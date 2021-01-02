@@ -1,0 +1,6 @@
+{
+	"type": "minecraft:blasting",
+	"ingredient": { "tag": "oresabovediamonds:black_opal_ore" },
+	"result": { "item" : "oresabovediamonds:black_opal" },
+	"experience": 16.0
+}

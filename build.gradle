@@ -20,7 +20,7 @@ tasks.withType(JavaCompile) {
 
 version = "${minecraft_version}-v${mod_version}"
 group = 'mod.squidsword.oresabovediamonds' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'oresabovediamonds'
+archivesBaseName = 'OresAboveDiamonds'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 

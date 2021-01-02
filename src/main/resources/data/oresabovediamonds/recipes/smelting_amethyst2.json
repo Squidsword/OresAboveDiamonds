@@ -1,0 +1,6 @@
+{
+	"type": "minecraft:blasting",
+	"ingredient": { "tag": "oresabovediamonds:amethyst_ore" },
+	"result": { "item" : "oresabovediamonds:amethyst" },
+	"experience": 4.0
+}
