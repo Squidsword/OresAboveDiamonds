@@ -1,6 +1,6 @@
 {
 	"type": "minecraft:smelting",
 	"ingredient": { "tag": "oresabovediamonds:amethyst_ore" },
-	"result": "oresabovediamonds:amethyst",
-	"experience:": 4.0
+	"result": { "item" : "oresabovediamonds:amethyst" },
+	"experience": 4.0
 }

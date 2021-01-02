@@ -1,2 +1,1 @@
 This is the open source code of the Minecraft mod Ores Above Diamonds. Feel free to use it, contribute to it, or do anything else you want with it.
-1.16.4 doesn't have working ore generation right now. The ores don't spawn, and I'm trying to find a workaround but I've been pretty busy lately and I am not exactly the most efficient programmer so it's probably going to take a lot of time unfortunately.

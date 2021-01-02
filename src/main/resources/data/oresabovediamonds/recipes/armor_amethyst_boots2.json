@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_boots"
+  },
+  "addition": {
+    "item": "oresabovediamonds:amethyst_boots"
+  },
+  "result": {
+    "item": "oresabovediamonds:amethyst_boots"
+  }
+}

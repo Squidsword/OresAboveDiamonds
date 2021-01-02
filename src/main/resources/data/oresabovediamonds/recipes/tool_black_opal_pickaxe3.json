@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_pickaxe"
+  },
+  "addition": {
+    "item": "oresabovediamonds:black_opal_pickaxe"
+  },
+  "result": {
+    "item": "oresabovediamonds:black_opal_pickaxe"
+  }
+}

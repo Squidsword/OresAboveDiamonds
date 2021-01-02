@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_leggings"
+  },
+  "addition": {
+    "item": "oresabovediamonds:amethyst_leggings"
+  },
+  "result": {
+    "item": "oresabovediamonds:amethyst_leggings"
+  }
+}

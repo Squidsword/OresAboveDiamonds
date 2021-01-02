@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_hoe"
+  },
+  "addition": {
+    "item": "oresabovediamonds:amethyst_hoe"
+  },
+  "result": {
+    "item": "oresabovediamonds:amethyst_hoe"
+  }
+}

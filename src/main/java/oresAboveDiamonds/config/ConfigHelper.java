@@ -24,9 +24,9 @@ public class ConfigHelper {
 
         final CommentedFileConfig configData = CommentedFileConfig.builder(path)
                 .sync()
-                .preserveInsertionOrder()
                 .autosave()
                 .writingMode(WritingMode.REPLACE)
+                .preserveInsertionOrder()
                 .build();
 
         configData.load();

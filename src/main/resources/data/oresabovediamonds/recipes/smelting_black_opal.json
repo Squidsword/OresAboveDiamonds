@@ -1,6 +1,6 @@
 {
 	"type": "minecraft:smelting",
 	"ingredient": { "tag": "oresabovediamonds:black_opal_ore" },
-	"result": "oresabovediamonds:black_opal",
-	"experience:": 16.0
+	"result": { "item" : "oresabovediamonds:black_opal" },
+	"experience": 16.0
 }

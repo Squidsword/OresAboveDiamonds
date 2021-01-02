@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "oresabovediamonds:amethyst_chestplate"
+  },
+  "addition": {
+    "item": "oresabovediamonds:black_opal_chestplate"
+  },
+  "result": {
+    "item": "oresabovediamonds:black_opal_chestplate"
+  }
+}

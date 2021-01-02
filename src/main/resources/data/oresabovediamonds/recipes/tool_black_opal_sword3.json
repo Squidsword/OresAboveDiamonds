@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_sword"
+  },
+  "addition": {
+    "item": "oresabovediamonds:black_opal_sword"
+  },
+  "result": {
+    "item": "oresabovediamonds:black_opal_sword"
+  }
+}

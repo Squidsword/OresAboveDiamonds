@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_axe"
+  },
+  "addition": {
+    "item": "oresabovediamonds:amethyst_axe"
+  },
+  "result": {
+    "item": "oresabovediamonds:amethyst_axe"
+  }
+}

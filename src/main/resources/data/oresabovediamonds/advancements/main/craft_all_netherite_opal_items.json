@@ -1,0 +1,35 @@
+{
+    "display":  {
+        "icon": {
+            "item": "oresabovediamonds:netherite_opal_pickaxe"
+        },
+        "title": {
+            "translate": "advancements.craft_all_netherite_opal_items"
+        },
+        "description": {
+            "translate": "advancements.craft_all_netherite_opal_items_text"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent" : "minecraft:nether/netherite_armor",
+    "criteria" : {
+    	"crafted_all_netherite_opal_items" : {
+      		"trigger": "minecraft:inventory_changed",
+      		"conditions" : {
+      			"items" : [
+      			{"item" : "oresabovediamonds:netherite_opal_helmet"},
+      			{"item" : "oresabovediamonds:netherite_opal_chestplate"},
+      			{"item" : "oresabovediamonds:netherite_opal_leggings"},
+      			{"item" : "oresabovediamonds:netherite_opal_boots"},
+      			{"item" : "oresabovediamonds:netherite_opal_sword"},
+      			{"item" : "oresabovediamonds:netherite_opal_pickaxe"},
+      			{"item" : "oresabovediamonds:netherite_opal_axe"},
+      			{"item" : "oresabovediamonds:netherite_opal_shovel"},
+      			{"item" : "oresabovediamonds:netherite_opal_hoe"}
+      			]
+      		}
+    	}
+    }
+}
