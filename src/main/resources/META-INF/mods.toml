@@ -6,7 +6,7 @@ license="MIT"
 
 [[mods]] #mandatory
 modId="oresabovediamonds" #mandatory
-version="6.2.0" #mandatory
+version="6.2.1" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
 displayName="Ores Above Diamonds" #mandatory
 updateJSONURL="https://github.com/Squidsword/OresAboveDiamonds/tree/1.16.4/src/main/resources/updateJSON.json" #optional
