@@ -1,0 +1,35 @@
+{
+    "display":  {
+        "icon": {
+            "item": "oresabovediamonds:black_opal_pickaxe"
+        },
+        "title": {
+            "translate": "advancements.craft_all_black_opal_items"
+        },
+        "description": {
+            "translate": "advancements.craft_all_black_opal_items_text"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent" : "oresabovediamonds:main/find_black_opal",
+    "criteria" : {
+    	"crafted_all_black_opal_items" : {
+      		"trigger": "minecraft:inventory_changed",
+      		"conditions" : {
+      			"items" : [
+      			{"item" : "oresabovediamonds:black_opal_helmet"},
+      			{"item" : "oresabovediamonds:black_opal_chestplate"},
+      			{"item" : "oresabovediamonds:black_opal_leggings"},
+      			{"item" : "oresabovediamonds:black_opal_boots"},
+      			{"item" : "oresabovediamonds:black_opal_sword"},
+      			{"item" : "oresabovediamonds:black_opal_pickaxe"},
+      			{"item" : "oresabovediamonds:black_opal_axe"},
+      			{"item" : "oresabovediamonds:black_opal_shovel"},
+      			{"item" : "oresabovediamonds:black_opal_hoe"}
+      			]
+      		}
+    	}
+    }
+}
