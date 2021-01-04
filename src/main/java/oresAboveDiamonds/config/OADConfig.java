@@ -257,22 +257,22 @@ public class OADConfig {
 		
 		amethyst_enchantability = builder
 				.comment("Amethyst Enchantability. A higher value makes it easier to obtain higher level enchantments for less experience. For reference, diamonds have an enchantability of 10 and gold has an enchantability of 25. Default = 35")
-				.defineInRange("amethyst", 35, 0, Integer.MAX_VALUE);
+				.defineInRange("amethyst_enchantability", 35, 0, Integer.MAX_VALUE);
 		
 		black_opal_enchantability = builder
 				.comment("Black Opal Enchantability. Default = 15")
-				.defineInRange("black_opal", 15, 0, Integer.MAX_VALUE);
+				.defineInRange("black_opal_enchantability", 15, 0, Integer.MAX_VALUE);
 		
 		builder.pop();
 		
 		builder.push("network");
 		
 		enable_server_config_sync = builder
-				.comment("Sync your config to the server upon joining? (Requires a Minecraft restart afterwards)")
+				.comment("(Clients Only) Sync your config to the server upon joining? (Will still require a Minecraft restart after joining)")
 				.define("enable_server_config_sync", true);
 		
 		send_config_sync_packet = builder
-				.comment("Sends a packet that attempts to sync the client config file to the server?")
+				.comment("(Servers Only) Sends a packet that attempts to sync the client config file to the server?")
 				.define("send_config_sync_packet", true);
 		
 		builder.pop();

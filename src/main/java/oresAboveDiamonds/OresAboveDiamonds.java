@@ -45,6 +45,7 @@ public class OresAboveDiamonds
 	public static final Logger logger = LogManager.getLogger("oresabovediamonds");
 	
 	public static final ItemGroup OAD = new OADItemGroup();
+	public static final String MODID = "oresabovediamonds";
 	
 	public OresAboveDiamonds() 
 	{
@@ -60,7 +61,7 @@ public class OresAboveDiamonds
 		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
 		
 		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.15.2_v6.1.toml"));
+		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.15.2.toml"));
 	}
 	
 	private void setup(final FMLCommonSetupEvent event)
@@ -154,7 +155,7 @@ public class OresAboveDiamonds
 		}
 		private static ResourceLocation location(String name)
 		{
-			return new ResourceLocation("oresabovediamonds", name);
+			return new ResourceLocation(OresAboveDiamonds.MODID, name);
 		}
 	}
 }

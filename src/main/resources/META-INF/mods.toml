@@ -2,7 +2,7 @@ modLoader="javafml" #mandatory
 loaderVersion="[28,)" #mandatory (28 is current forge version)
 [[mods]] #mandatory
 modId="oresabovediamonds" #mandatory
-version="6.3.0" #mandatory
+version="6.3.1" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
 displayName="Ores Above Diamonds" #mandatory
 updateJSONURL="https://raw.githubusercontent.com/Squidsword/OresAboveDiamonds/1.16.4/update.json" #optional
@@ -11,7 +11,7 @@ logoFile="oresabovediamonds_logo.png" #optional
 authors="§dSquidsword" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Adds the §dAmethyst§r and §5Black Opal§r which are respectively §d3x§r and §59x§r rarer than diamonds.
+Adds customizable §dAmethyst§r and §5Black Opal§r ores which are respectively §d3x§r and §59x§r rarer than diamonds.
 Both have its own set of balanced armors and tools.
 
 It's recommended to download Overloaded Armor Bar along with this mod.
