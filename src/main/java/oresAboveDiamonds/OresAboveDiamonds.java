@@ -64,7 +64,7 @@ public class OresAboveDiamonds
 		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
 		
 		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.16.4_v6.1.toml"));
+		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.16.4.toml"));
 	}
 	
 	private void setup(final FMLCommonSetupEvent event)
@@ -179,7 +179,7 @@ public class OresAboveDiamonds
 		}
 		private static ResourceLocation location(String name)
 		{
-			return new ResourceLocation("oresabovediamonds", name);
+			return new ResourceLocation(OresAboveDiamonds.MODID, name);
 		}
 	}
 }
