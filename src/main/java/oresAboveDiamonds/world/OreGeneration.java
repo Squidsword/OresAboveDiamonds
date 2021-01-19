@@ -14,19 +14,21 @@ import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import oresAboveDiamonds.OresAboveDiamonds;
 import oresAboveDiamonds.config.OADConfig;
-import oresAboveDiamonds.lists.BlockList;
+import oresAboveDiamonds.init.ModBlocks;
 
 public class OreGeneration {	
     
-	public static ConfiguredFeature<?, ?> AMETHYST_OVERWORLD = buildOverworldOre(BlockList.amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_overworld.get(), OADConfig.amethyst_times_rarer.get());
-    public static ConfiguredFeature<?, ?> BLACK_OPAL_OVERWORLD = buildOverworldOre(BlockList.black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_overworld.get(), OADConfig.black_opal_times_rarer.get());
+	public static ConfiguredFeature<?, ?> AMETHYST_OVERWORLD = buildOverworldOre(ModBlocks.AMETHYST_ORE.get().getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_overworld.get(), OADConfig.amethyst_times_rarer.get());
+    public static ConfiguredFeature<?, ?> BLACK_OPAL_OVERWORLD = buildOverworldOre(ModBlocks.BLACK_OPAL_ORE.get().getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_overworld.get(), OADConfig.black_opal_times_rarer.get());
 		
-    public static ConfiguredFeature<?, ?> AMETHYST_NETHER = buildNetherOre(BlockList.nether_amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_nether.get(), OADConfig.amethyst_times_rarer.get());
-    public static ConfiguredFeature<?, ?> BLACK_OPAL_NETHER = buildNetherOre(BlockList.nether_black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_nether.get(), OADConfig.black_opal_times_rarer.get());
+    public static ConfiguredFeature<?, ?> AMETHYST_NETHER = buildNetherOre(ModBlocks.NETHER_AMETHYST_ORE.get().getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_nether.get(), OADConfig.amethyst_times_rarer.get());
+    public static ConfiguredFeature<?, ?> BLACK_OPAL_NETHER = buildNetherOre(ModBlocks.NETHER_BLACK_OPAL_ORE.get().getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_nether.get(), OADConfig.black_opal_times_rarer.get());
         
-    public static ConfiguredFeature<?, ?> AMETHYST_END = buildEndOre(BlockList.end_amethyst_ore.getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_end.get(), OADConfig.amethyst_times_rarer.get());
-    public static ConfiguredFeature<?, ?> BLACK_OPAL_END = buildEndOre(BlockList.end_black_opal_ore.getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_end.get(), OADConfig.black_opal_times_rarer.get()); 
+    public static ConfiguredFeature<?, ?> AMETHYST_END = buildEndOre(ModBlocks.END_AMETHYST_ORE.get().getDefaultState(), OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_end.get(), OADConfig.amethyst_times_rarer.get());
+    public static ConfiguredFeature<?, ?> BLACK_OPAL_END = buildEndOre(ModBlocks.END_BLACK_OPAL_ORE.get().getDefaultState(), OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_end.get(), OADConfig.black_opal_times_rarer.get()); 
     
+    
+    //Method used inspired by SimpleOres' library mod.
 	 public static ConfiguredFeature<?, ?> buildOverworldOre(BlockState bstate, int veinSize, int maxHeight, int timesRarer) {
 	        return Feature.ORE.withConfiguration(
 	                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, 

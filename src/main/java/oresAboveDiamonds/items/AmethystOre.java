@@ -1,4 +1,4 @@
-package oresAboveDiamonds.lists;
+package oresAboveDiamonds.items;
 
 import javax.annotation.Nullable;
 
@@ -10,26 +10,31 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.ToolType;
 
-public class Black_Opal_Ore_Settings extends Block {
+public class AmethystOre extends Block {
 
-	public Black_Opal_Ore_Settings() {
-		super(Properties.create(Material.IRON).hardnessAndResistance(25f, 50f).sound(SoundType.METAL));
+	public AmethystOre() {
+		super(Properties
+				.create(Material.IRON)
+				.hardnessAndResistance(10f, 20f)
+				.sound(SoundType.METAL)
+				.setRequiresTool()
+			);
 	}
 	
 	@Nullable
 	@Override
 	public ToolType getHarvestTool(BlockState state) {
-		return ToolType.PICKAXE;
-		
+		return ToolType.PICKAXE;	
 	}
 	
 	@Override
 	public int getHarvestLevel(BlockState state) {
-		return 4;
+		return 3;
 	}
-	
+		
 	@Override
-    public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch) {
-       return silktouch == 0 ? 50 : 0;
+	public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch) {
+		return silktouch == 0 ? 20 : 0;
+		
 	}
 }

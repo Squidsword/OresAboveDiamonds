@@ -757,8 +757,8 @@ public class CommandConfigChange {
 	}
 	
 	private static void readConfigInput(CommandSource source, String option) {
-		if(option.equalsIgnoreCase("amethyst_chance")) {source.sendFeedback(new TranslationTextComponent("Amethyst Chance: §d" + OADConfig.amethyst_times_rarer.get().toString()), false); }
-		if(option.equalsIgnoreCase("black_opal_chance")) {source.sendFeedback(new TranslationTextComponent("Black Opal Chance: §5" + OADConfig.black_opal_times_rarer.get().toString()), false); }
+		if(option.equalsIgnoreCase("amethyst_times_rarer")) {source.sendFeedback(new TranslationTextComponent("Amethyst Chance: §d" + OADConfig.amethyst_times_rarer.get().toString()), false); }
+		if(option.equalsIgnoreCase("black_opal_times_rarer")) {source.sendFeedback(new TranslationTextComponent("Black Opal Chance: §5" + OADConfig.black_opal_times_rarer.get().toString()), false); }
 		
 		if(option.equalsIgnoreCase("amethyst_max_vein_size")) {source.sendFeedback(new TranslationTextComponent("Amethyst Max Vein Size: §d" + OADConfig.amethyst_max_vein_size.get().toString()), false); }
 		if(option.equalsIgnoreCase("black_opal_max_vein_size")) {source.sendFeedback(new TranslationTextComponent("Black Opal Max Vein Size: §5" + OADConfig.black_opal_max_vein_size.get().toString()), false); }

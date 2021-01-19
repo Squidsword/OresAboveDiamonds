@@ -7,16 +7,17 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import oresAboveDiamonds.config.OADConfig;
+import oresAboveDiamonds.init.ModItems;
 
 public enum ArmorMaterialList implements IArmorMaterial
 {
 	
-	amethyst("amethyst", OADConfig.amethyst_armor_durability.get(), new int[] {OADConfig.amethyst_boots_armor.get(), OADConfig.amethyst_leggings_armor.get(), OADConfig.amethyst_chestplate_armor.get(), OADConfig.amethyst_helmet_armor.get()}, OADConfig.amethyst_enchantability.get(), ItemList.amethyst, "item.armor.equip_diamond", OADConfig.amethyst_armor_toughness.get(), ((float)OADConfig.amethyst_armor_knockback_resistance.get()) / 10),
-	black_opal("black_opal", OADConfig.black_opal_armor_durability.get(), new int[] {OADConfig.black_opal_boots_armor.get(), OADConfig.black_opal_leggings_armor.get(), OADConfig.black_opal_chestplate_armor.get(), OADConfig.black_opal_helmet_armor.get()}, OADConfig.black_opal_enchantability.get(), ItemList.black_opal, "entity.ender_dragon.flap", OADConfig.black_opal_armor_toughness.get(), ((float)OADConfig.black_opal_armor_knockback_resistance.get()) / 10),
-	netherite_opal("netherite_opal", OADConfig.netherite_opal_armor_durability.get(), new int[] {OADConfig.netherite_opal_boots_armor.get(), OADConfig.netherite_opal_leggings_armor.get(), OADConfig.netherite_opal_chestplate_armor.get(), OADConfig.netherite_opal_helmet_armor.get()}, OADConfig.netherite_opal_enchantability.get(), ItemList.black_opal, "entity.ender_dragon.flap", OADConfig.netherite_opal_armor_toughness.get(), ((float)OADConfig.netherite_opal_armor_knockback_resistance.get()) / 10);
+	AMETHYST("amethyst", OADConfig.amethyst_armor_durability.get(), new int[] {OADConfig.amethyst_boots_armor.get(), OADConfig.amethyst_leggings_armor.get(), OADConfig.amethyst_chestplate_armor.get(), OADConfig.amethyst_helmet_armor.get()}, OADConfig.amethyst_enchantability.get(), ModItems.AMETHYST.get(), "item.armor.equip_diamond", OADConfig.amethyst_armor_toughness.get(), ((float)OADConfig.amethyst_armor_knockback_resistance.get()) / 10),
+	BLACK_OPAL("black_opal", OADConfig.black_opal_armor_durability.get(), new int[] {OADConfig.black_opal_boots_armor.get(), OADConfig.black_opal_leggings_armor.get(), OADConfig.black_opal_chestplate_armor.get(), OADConfig.black_opal_helmet_armor.get()}, OADConfig.black_opal_enchantability.get(), ModItems.BLACK_OPAL.get(), "entity.ender_dragon.flap", OADConfig.black_opal_armor_toughness.get(), ((float)OADConfig.black_opal_armor_knockback_resistance.get()) / 10),
+	NETHERITE_OPAL("netherite_opal", OADConfig.netherite_opal_armor_durability.get(), new int[] {OADConfig.netherite_opal_boots_armor.get(), OADConfig.netherite_opal_leggings_armor.get(), OADConfig.netherite_opal_chestplate_armor.get(), OADConfig.netherite_opal_helmet_armor.get()}, OADConfig.netherite_opal_enchantability.get(), ModItems.BLACK_OPAL.get(), "entity.ender_dragon.flap", OADConfig.netherite_opal_armor_toughness.get(), ((float)OADConfig.netherite_opal_armor_knockback_resistance.get()) / 10);
 
 	
-	private static final int[]max_damage_array = new int[] {13, 15, 16, 11};
+	private static final int[]MAX_DAMAGE_ARRAY = new int[] {13, 15, 16, 11};
 	private String name, equipSound;
 	private int durability, enchantability;
 	private Item repairItem;
@@ -39,7 +40,7 @@ public enum ArmorMaterialList implements IArmorMaterial
 	@Override
 	public int getDurability(EquipmentSlotType slot) 
 	{
-		return max_damage_array[slot.getIndex()] * this.durability;
+		return MAX_DAMAGE_ARRAY[slot.getIndex()] * this.durability;
 	}
 
 	@Override

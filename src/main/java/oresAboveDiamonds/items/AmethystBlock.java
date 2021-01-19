@@ -1,4 +1,4 @@
-package oresAboveDiamonds.lists;
+package oresAboveDiamonds.items;
 
 import javax.annotation.Nullable;
 
@@ -8,10 +8,15 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
-public class Black_Opal_Block_Settings extends Block {
+public class AmethystBlock extends Block {
 
-	public Black_Opal_Block_Settings() {
-		super(Properties.create(Material.IRON).hardnessAndResistance(25f, 100f).sound(SoundType.METAL));
+	public AmethystBlock() {
+		super(Properties
+				.create(Material.IRON)
+				.hardnessAndResistance(10f, 50f)
+				.sound(SoundType.METAL)
+				.setRequiresTool()
+			);
 	}
 	
 	@Nullable
@@ -23,6 +28,6 @@ public class Black_Opal_Block_Settings extends Block {
 	
 	@Override
 	public int getHarvestLevel(BlockState state) {
-		return 4;
+		return 3;
 	}
 }

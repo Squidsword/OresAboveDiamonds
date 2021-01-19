@@ -1,4 +1,4 @@
-package oresAboveDiamonds.world;
+package oresAboveDiamonds;
 
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage.Decoration;
@@ -6,8 +6,8 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import oresAboveDiamonds.OresAboveDiamonds;
 import oresAboveDiamonds.config.OADConfig;
+import oresAboveDiamonds.world.OreGeneration;
 
 @EventBusSubscriber(modid = OresAboveDiamonds.MODID, bus = EventBusSubscriber.Bus.FORGE)
 public class ForgeEventSubscriber {
