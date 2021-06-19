@@ -3,6 +3,7 @@ To-do:
        (In no particular order)
        Rename all objects to match Java naming conventions.
        Clean up the spaghetti code in the network package.
+       Spartan Weaponry Compatability
        Retro-generation.
        Possibly make less lazy textures for Netherite Opal gear.
        Rename the recipes and .json files to proper names (same format as the ones from Minecraft)
