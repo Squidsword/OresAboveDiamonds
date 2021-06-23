@@ -22,9 +22,9 @@ import oresAboveDiamonds.lists.ToolMaterialList;
 public class ModItems {
 
 	//Thanks to Cadiboo for the tutorial
-	static int axedmg = OADConfig.old_combat_mechanics.get() ? 2 : 5;
-	static int shoveldmg = OADConfig.old_combat_mechanics.get() ? 0 : 2;
-	static int pickdmg = OADConfig.old_combat_mechanics.get() ? 1 : 1;
+	public static int axedmg = OADConfig.old_combat_mechanics.get() ? 2 : 5;
+	public static int shoveldmg = OADConfig.old_combat_mechanics.get() ? 0 : 2;
+	public static int pickdmg = OADConfig.old_combat_mechanics.get() ? 1 : 1;
 	
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OresAboveDiamonds.MODID);
 	
