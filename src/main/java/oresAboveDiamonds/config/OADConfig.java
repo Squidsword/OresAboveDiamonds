@@ -1,5 +1,8 @@
 package oresAboveDiamonds.config;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.common.Mod;
 
@@ -80,9 +83,6 @@ public class OADConfig {
 	public static ForgeConfigSpec.BooleanValue spawn_amethyst_end;
 	public static ForgeConfigSpec.BooleanValue spawn_black_opal_end;
 	
-	//public static ForgeConfigSpec.BooleanValue overworld_ores;
-	//public static ForgeConfigSpec.BooleanValue nether_ores;
-	//public static ForgeConfigSpec.BooleanValue end_ores;
 	public static ForgeConfigSpec.BooleanValue old_combat_mechanics;
 	public static ForgeConfigSpec.BooleanValue ores_above_netherite;
 	public static ForgeConfigSpec.BooleanValue chest_loot;
@@ -90,12 +90,6 @@ public class OADConfig {
 	public static void init(ForgeConfigSpec.Builder builder) {
 		
 		builder.comment("Note that almost all config changes require a server restart and/or a full minecraft restart. Dimensional Ore Configuration").push("dimensional_ore");
-		
-		/*
-		ores_above_netherite = builder
-				.comment("Allow black opal tools to be enhanced by a netherite ingot?")
-				.define("ores_above_netherite", true);
-				*/
 		
 		spawn_amethyst_overworld = builder
 				.comment("Spawn amethysts in the overworld? Default = true")
@@ -346,4 +340,108 @@ public class OADConfig {
 		
 		builder.pop();
 	}
+	
+	/*
+	 * Working on making a less sloppy config file, ignore if needed.
+	 */
+	public static List<List<Object>> getValues() {
+		
+		List<List<Object>> returnedList = new ArrayList<>();
+		
+		List<Object> intList = new ArrayList<>();
+		intList.add(amethyst_times_rarer);
+		intList.add(black_opal_times_rarer);
+		
+		intList.add(amethyst_max_vein_size);
+		intList.add(black_opal_max_vein_size);
+		
+		intList.add(amethyst_max_spawn_height_overworld);
+		intList.add(black_opal_max_spawn_height_overworld);
+		
+		intList.add(amethyst_max_spawn_height_nether);
+		intList.add(black_opal_max_spawn_height_nether);
+		
+		intList.add(amethyst_max_spawn_height_end);
+		intList.add(black_opal_max_spawn_height_end);
+		
+		intList.add(amethyst_armor_toughness);
+		intList.add(black_opal_armor_toughness);
+		intList.add(netherite_opal_armor_toughness);
+		
+		intList.add(amethyst_armor_knockback_resistance);
+		intList.add(black_opal_armor_knockback_resistance);
+		intList.add(netherite_opal_armor_knockback_resistance);
+		
+		intList.add(amethyst_armor_durability);
+		intList.add(black_opal_armor_durability);
+		intList.add(netherite_opal_armor_durability);
+		
+		intList.add(amethyst_helmet_armor);
+		intList.add(amethyst_chestplate_armor);
+		intList.add(amethyst_leggings_armor);
+		intList.add(amethyst_boots_armor);
+		
+		intList.add(black_opal_helmet_armor);
+		intList.add(black_opal_chestplate_armor);
+		intList.add(black_opal_leggings_armor);
+		intList.add(black_opal_boots_armor);
+		
+		intList.add(netherite_opal_helmet_armor);
+		intList.add(netherite_opal_chestplate_armor);
+		intList.add(netherite_opal_leggings_armor);
+		intList.add(netherite_opal_boots_armor);
+		
+		intList.add(amethyst_attack_damage);
+		intList.add(amethyst_efficiency);
+		intList.add(amethyst_durability);
+		
+		intList.add(black_opal_attack_damage);
+		intList.add(black_opal_efficiency);
+		intList.add(black_opal_durability);
+		
+		intList.add(netherite_opal_attack_damage);
+		intList.add(netherite_opal_efficiency);
+		intList.add(netherite_opal_durability);
+		
+		intList.add(amethyst_enchantability);
+		intList.add(black_opal_enchantability);
+		intList.add(netherite_opal_enchantability);
+		
+		List<Object> doubleList = new ArrayList<>();
+		
+		doubleList.add(nether_chance_multiplier);
+		doubleList.add(end_chance_multiplier);
+		doubleList.add(nether_vein_multiplier);
+		doubleList.add(end_vein_multiplier);
+		
+		List<Object> boolList = new ArrayList<>();
+		
+		boolList.add(enable_server_config_sync);
+		boolList.add(send_config_sync_packet);
+		boolList.add(spawn_amethyst_overworld);
+		boolList.add(spawn_black_opal_overworld);
+		boolList.add(spawn_amethyst_nether);
+		boolList.add(spawn_black_opal_nether);
+		boolList.add(spawn_amethyst_end);
+		boolList.add(spawn_black_opal_end);
+		
+		boolList.add(old_combat_mechanics);
+		boolList.add(chest_loot);
+		
+		returnedList.add(intList);
+		returnedList.add(doubleList);
+		returnedList.add(boolList);
+		
+		return returnedList;
+		
+	}
+	
+	public static Integer[] getLastIndexes() {
+		Integer[] indexes = new Integer[3];
+		indexes[0] = getValues().get(0).size() - 1;
+		indexes[1] = getValues().get(1).size() + indexes[0];
+		indexes[2] = getValues().get(2).size() + indexes[1];
+		return indexes;
+	}
+	
 }
