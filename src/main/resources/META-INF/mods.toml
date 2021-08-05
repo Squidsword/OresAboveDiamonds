@@ -1,8 +1,8 @@
 modLoader="javafml" #mandatory
 
 loaderVersion="[34,)" #mandatory (35 is current forge version)
-issueTrackerURL="https://github.com/Squidsword/OresAboveDiamonds/issues"
 license="MIT"
+issueTrackerURL="https://github.com/Squidsword/OresAboveDiamonds/issues"
 
 [[mods]] #mandatory
 modId="oresabovediamonds" #mandatory

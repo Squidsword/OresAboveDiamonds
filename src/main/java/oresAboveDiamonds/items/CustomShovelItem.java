@@ -1,12 +1,12 @@
 package oresAboveDiamonds.items;
 
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ItemStack;
 
 public class CustomShovelItem extends ShovelItem {
 
-	public CustomShovelItem(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
+	public CustomShovelItem(Tier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 
 	}

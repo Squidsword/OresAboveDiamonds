@@ -1,12 +1,12 @@
 package oresAboveDiamonds.items;
 
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 
 public class CustomSwordItem extends SwordItem {
 
-	public CustomSwordItem(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
+	public CustomSwordItem(Tier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 
 	}

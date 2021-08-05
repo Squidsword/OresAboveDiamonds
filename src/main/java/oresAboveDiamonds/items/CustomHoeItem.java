@@ -1,12 +1,12 @@
 package oresAboveDiamonds.items;
 
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
 
 public class CustomHoeItem extends HoeItem {
 
-	public CustomHoeItem(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
+	public CustomHoeItem(Tier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 
 	}

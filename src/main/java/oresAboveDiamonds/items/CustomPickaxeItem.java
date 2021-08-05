@@ -1,14 +1,14 @@
 package oresAboveDiamonds.items;
 
-import net.minecraft.item.PickaxeItem;
+import net.minecraft.world.item.PickaxeItem;
 import net.minecraftforge.common.ToolType;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ItemStack;
 
 public class CustomPickaxeItem extends PickaxeItem {
 
-	public CustomPickaxeItem(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
-		super(tier, attackDamageIn, attackSpeedIn, builder.addToolType(ToolType.PICKAXE, tier.getHarvestLevel()));
+	public CustomPickaxeItem(Tier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
+		super(tier, attackDamageIn, attackSpeedIn, builder.addToolType(ToolType.PICKAXE, tier.getLevel()));
 
 	}
 	

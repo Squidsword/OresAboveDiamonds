@@ -1,5 +1,5 @@
 package oresAboveDiamonds.commands;
-
+/*	
 import java.util.List;
 
 import com.google.common.collect.Lists;
@@ -17,6 +17,7 @@ import oresAboveDiamonds.network.OADPacketHandler;
 import oresAboveDiamonds.network.PacketSyncConfig;
 
 public class CommandConfigChange {
+
 
 	private static final SuggestionProvider<CommandSource> SUGGEST_OPTION = (source, builder) -> {
 		return ISuggestionProvider.suggest(ConfigValuesList.getAllValues().stream(), builder);
@@ -256,13 +257,13 @@ public class CommandConfigChange {
 		int initial_black_opal_efficiency = OADConfig.black_opal_efficiency.get();
 		int initial_black_opal_durability = OADConfig.black_opal_durability.get();
 		int initial_black_opal_enchantability = OADConfig.black_opal_enchantability.get();
-		*/
-		/*
+		
+		
 		double initial_nether_chance_multiplier = OADConfig.nether_chance_multiplier.get();
 		double initial_end_chance_multiplier = OADConfig.end_chance_multiplier.get();
 		double initial_nether_vein_multiplier = OADConfig.nether_vein_multiplier.get();
 		double initial_end_vein_multiplier = OADConfig.end_vein_multiplier.get();
-		*/
+		
 		
 		if(action.equalsIgnoreCase("write")) {
 			
@@ -830,4 +831,4 @@ public class CommandConfigChange {
 		if(option.equalsIgnoreCase("old_combat_mechanics")) {source.sendFeedback(new TranslationTextComponent("Old Combat Mechanics " + OADConfig.old_combat_mechanics.get().toString()), false); }
 		if(option.equalsIgnoreCase("chest_loot")) {source.sendFeedback(new TranslationTextComponent("Chest Loot " + OADConfig.chest_loot.get().toString()), false); }
 	}
-}
+}*/

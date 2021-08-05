@@ -1,14 +1,14 @@
 package oresAboveDiamonds.init;
 
-import net.minecraft.block.Block;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import oresAboveDiamonds.OresAboveDiamonds;
-import oresAboveDiamonds.items.AmethystBlock;
-import oresAboveDiamonds.items.AmethystOre;
-import oresAboveDiamonds.items.BlackOpalBlock;
-import oresAboveDiamonds.items.BlackOpalOre;
+import oresAboveDiamonds.blocks.AmethystBlock;
+import oresAboveDiamonds.blocks.AmethystOre;
+import oresAboveDiamonds.blocks.BlackOpalBlock;
+import oresAboveDiamonds.blocks.BlackOpalOre;
 
 public final class ModBlocks {
 

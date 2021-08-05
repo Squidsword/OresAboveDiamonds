@@ -1,12 +1,12 @@
 package oresAboveDiamonds.items;
 
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ItemStack;
 
 public class CustomAxeItem extends AxeItem {
 
-	public CustomAxeItem(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
+	public CustomAxeItem(Tier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 		
 	}

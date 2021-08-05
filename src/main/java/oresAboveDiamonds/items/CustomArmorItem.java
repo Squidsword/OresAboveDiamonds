@@ -1,13 +1,13 @@
 package oresAboveDiamonds.items;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
 
 public class CustomArmorItem extends ArmorItem {
 
-	public CustomArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builder) {
+	public CustomArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
 		super(materialIn, slot, builder);
 		// TODO Auto-generated constructor stub
 	}

@@ -24,11 +24,11 @@ public class AnvilUpdateEventHandler {
 		ItemStack left = event.getLeft();
 		ItemStack right = event.getRight();
 		
-		int repairCost1 = left.getRepairCost();
+		int repairCost1 = left.getBaseRepairCost();
 		int repairCost2;
 		
 		if (right.getItem() != Items.ENCHANTED_BOOK) {
-			repairCost2 = right.getRepairCost();
+			repairCost2 = right.getBaseRepairCost();
 		} else {
 			repairCost2 = 0;
 		}
