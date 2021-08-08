@@ -15,4 +15,5 @@ public class CustomHoeItem extends HoeItem {
 	public boolean isEnchantable(ItemStack stack) {
 		return true;
 	}
+	
 }

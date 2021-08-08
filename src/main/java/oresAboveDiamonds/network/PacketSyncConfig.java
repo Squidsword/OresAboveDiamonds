@@ -3,10 +3,10 @@ package oresAboveDiamonds.network;
 import java.util.function.Supplier;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraftforge.fmllegacy.network.NetworkEvent;
 import oresAboveDiamonds.config.OADConfig;
 
 public class PacketSyncConfig {
@@ -151,7 +151,7 @@ public class PacketSyncConfig {
 		
 	}
 	
-	public static void encode(PacketSyncConfig msg, PacketBuffer buf) { 
+	public static void encode(PacketSyncConfig msg, FriendlyByteBuf buf) { 
 		 buf.writeInt(msg.amethyst_enchant);
 		 buf.writeInt(msg.black_opal_enchant);
 		 buf.writeInt(msg.netherite_opal_enchant);
@@ -216,7 +216,7 @@ public class PacketSyncConfig {
 		 buf.writeInt(msg.black_opal_max_spawn_height_end);
 	}
 	
-	public static PacketSyncConfig decode(PacketBuffer buf) {
+	public static PacketSyncConfig decode(FriendlyByteBuf buf) {
 		return new PacketSyncConfig(buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readBoolean(), buf.readBoolean(), buf.readBoolean(), buf.readBoolean(), buf.readBoolean(), buf.readBoolean(), buf.readBoolean(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readInt());
 	}
 	
@@ -286,12 +286,12 @@ public class PacketSyncConfig {
 				if(OADConfig.black_opal_max_spawn_height_end.get() != message.black_opal_max_spawn_height_end) {OADConfig.black_opal_max_spawn_height_end.set(message.black_opal_max_spawn_height_end); counter++;}
 			
 				if(counter > 1) {
-					ITextComponent playermessage = new StringTextComponent("§dOres Above Diamonds: " + "§rYour config has been synced with the server. " + "§cPlease completely restart minecraft and then rejoin the server for the effects to take place. " + "§9" + counter + " settings were changed.");
-					Minecraft.getInstance().player.sendMessage(playermessage, null);
+					TextComponent playermessage = new TextComponent("§dOres Above Diamonds: " + "§rYour config has been synced with the server. " + "§cPlease completely restart minecraft and then rejoin the server for the effects to take place. " + "§9" + counter + " settings were changed.");
+					Minecraft.getInstance().player.sendMessage((Component) playermessage, null);
 				}	
 				if(counter == 1) {
-					ITextComponent playermessage = new StringTextComponent("§dOres Above Diamonds: " + "§rYour config has been synced with the server. " + "§cPlease completely restart minecraft and then rejoin the server for the effects to take place. " + "§9" + counter + " setting was changed.");
-					Minecraft.getInstance().player.sendMessage(playermessage, null);
+					TextComponent playermessage = new TextComponent("§dOres Above Diamonds: " + "§rYour config has been synced with the server. " + "§cPlease completely restart minecraft and then rejoin the server for the effects to take place. " + "§9" + counter + " setting was changed.");
+					Minecraft.getInstance().player.sendMessage((Component) playermessage, null);
 				}
 			}
 		});

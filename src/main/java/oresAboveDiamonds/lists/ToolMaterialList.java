@@ -1,12 +1,12 @@
 package oresAboveDiamonds.lists;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.Tier;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.init.ModItems;
 
-public enum ToolMaterialList implements IItemTier 
+public enum ToolMaterialList implements Tier 
 {
 	
 	AMETHYST(OADConfig.amethyst_attack_damage.get() , OADConfig.amethyst_efficiency.get(), OADConfig.amethyst_durability.get(), 4, OADConfig.amethyst_enchantability.get(), ModItems.AMETHYST.get()),
@@ -28,38 +28,39 @@ public enum ToolMaterialList implements IItemTier
 	}
 
 	@Override
-	public int getMaxUses() 
+	public int getUses() 
 	{
 		return this.durability;
 	}
 
 	@Override
-	public float getEfficiency() 
+	public float getSpeed() 
 	{
 		return this.efficiency;
 	}
 
 	@Override
-	public float getAttackDamage() 
+	public float getAttackDamageBonus() 
 	{
 		return this.attackDamage;
 	}
 
 	@Override
-	public int getHarvestLevel() 
+	public int getLevel() 
 	{
 		return this.harvestLevel;
 	}
 
 	@Override
-	public int getEnchantability() 
+	public int getEnchantmentValue() 
 	{
 		return this.enchantability;
 	}
 
 	@Override
-	public Ingredient getRepairMaterial() 
+	public Ingredient getRepairIngredient() 
 	{
-		return Ingredient.fromItems(this.repairMaterial);
+		return Ingredient.of(this.repairMaterial);
 	}
+
 }

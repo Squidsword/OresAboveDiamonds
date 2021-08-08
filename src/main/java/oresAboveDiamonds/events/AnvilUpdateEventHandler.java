@@ -2,12 +2,11 @@ package oresAboveDiamonds.events;
 
 import java.util.Map;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -78,8 +77,8 @@ public class AnvilUpdateEventHandler {
             ItemStack output = left.copy();
 
     		if(event.getName().length() > 1 && event.getName().startsWith("§")) {
-        		ITextComponent name = new StringTextComponent(event.getName().substring(1));
-                output.setDisplayName(name);
+        		TextComponent name = new TextComponent(event.getName().substring(1));
+                output.setHoverName(name);
                 }
             output.setRepairCost(Math.max(Math.max(repairCost1, repairCost2) * 2, 1));
             EnchantmentHelper.setEnchantments(map, output);

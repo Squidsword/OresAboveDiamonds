@@ -1,9 +1,9 @@
 package oresAboveDiamonds.events;
 
-import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.network.PacketDistributor;
+import net.minecraftforge.fmllegacy.network.NetworkDirection;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.network.OADPacketHandler;
 import oresAboveDiamonds.network.PacketSyncConfig;
@@ -13,7 +13,7 @@ public class PlayerLoggedInEventHandler {
 	@SubscribeEvent
 	public void onLoginEvent(PlayerLoggedInEvent event) {
 		
-		ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
+		ServerPlayer player = (ServerPlayer) event.getPlayer();
 		
 		int amethyst_enchant = OADConfig.amethyst_enchantability.get();
 		int black_opal_enchant = OADConfig.black_opal_enchantability.get();
@@ -82,12 +82,14 @@ public class PlayerLoggedInEventHandler {
 		int amethyst_max_spawn_height_end = OADConfig.amethyst_max_spawn_height_end.get();
 		int black_opal_max_spawn_height_end = OADConfig.black_opal_max_spawn_height_end.get();
 		
-		OADPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new PacketSyncConfig(amethyst_enchant, black_opal_enchant, netherite_opal_enchant, amethyst_ad, amethyst_efficiency, amethyst_tool_durability,
+		PacketSyncConfig message = new PacketSyncConfig(amethyst_enchant, black_opal_enchant, netherite_opal_enchant, amethyst_ad, amethyst_efficiency, amethyst_tool_durability,
 				 black_opal_ad, black_opal_efficiency, black_opal_tool_durability, netherite_opal_ad, netherite_opal_efficiency, netherite_opal_tool_durability, amethyst_toughness, black_opal_toughness, netherite_opal_toughness,
 				 amethyst_knockback_resistance, black_opal_knockback_resistance, netherite_opal_knockback_resistance, amethyst_armor_durability, black_opal_armor_durability, netherite_opal_armor_durability, amethyst_helmet_armor, amethyst_chestplate_armor,
 				 amethyst_leggings_armor, amethyst_boots_armor, black_opal_helmet_armor, black_opal_chestplate_armor,
 				 black_opal_leggings_armor, black_opal_boots_armor, netherite_opal_helmet_armor, netherite_opal_chestplate_armor, netherite_opal_leggings_armor, netherite_opal_boots_armor, old_combat_mechanics,
 				 spawn_amethyst_overworld, spawn_black_opal_overworld, spawn_amethyst_nether, spawn_black_opal_nether, spawn_amethyst_end, spawn_black_opal_end, amethyst_times_rarer, black_opal_times_rarer, amethyst_max_vein_size, black_opal_max_vein_size, amethyst_max_spawn_height_overworld,
-				 black_opal_max_spawn_height_overworld, amethyst_max_spawn_height_nether, black_opal_max_spawn_height_nether, amethyst_max_spawn_height_end, black_opal_max_spawn_height_end));
+				 black_opal_max_spawn_height_overworld, amethyst_max_spawn_height_nether, black_opal_max_spawn_height_nether, amethyst_max_spawn_height_end, black_opal_max_spawn_height_end);
+		
+		OADPacketHandler.INSTANCE.sendTo(message, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
 	}	
 }

@@ -1,7 +1,10 @@
 package oresAboveDiamonds.config;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import com.electronwill.nightconfig.core.UnmodifiableConfig;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.common.Mod;
@@ -195,8 +198,8 @@ public class OADConfig {
 				.defineInRange("amethyst_efficiency", 12, 0, Integer.MAX_VALUE);
 		
 		amethyst_durability = builder
-				.comment("Durability of the Amethyst Tool Set. For reference, the Diamond Tool Set has 1561 durability. Set to 0 for infinite durability. Default = 4500")
-				.defineInRange("amethyst_durability", 2625, 0, Integer.MAX_VALUE);
+				.comment("Durability of the Amethyst Tool Set. For reference, the Diamond Tool Set has 1561 durability. Set to -1 for infinite durability. Default = 2625")
+				.defineInRange("amethyst_durability", 2625, -1, Integer.MAX_VALUE);
 		
 		black_opal_attack_damage = builder
 				.comment("Base Attack Damage of the Black Opal Tool Set. Default = 5")
@@ -207,8 +210,8 @@ public class OADConfig {
 				.defineInRange("black_opal_efficiency", 16, 0, Integer.MAX_VALUE);
 		
 		black_opal_durability = builder
-				.comment("Durability of the Black Opal Tool Set. Set to 0 for infinite durability. Default = 0")
-				.defineInRange("black_opal_durability", 5250, 0, Integer.MAX_VALUE);
+				.comment("Durability of the Black Opal Tool Set. Set to -1 for infinite durability. Default = 5250")
+				.defineInRange("black_opal_durability", 5250, -1, Integer.MAX_VALUE);
 		
 		netherite_opal_attack_damage = builder
 				.comment("Base Attack Damage of the Netherite Opal Tool Set. Default = 5")
@@ -219,8 +222,8 @@ public class OADConfig {
 				.defineInRange("netherite_opal_efficiency", 20, 0, Integer.MAX_VALUE);
 		
 		netherite_opal_durability = builder
-				.comment("Durability of the Netherite Opal Tool Set. Set to 0 for infinite durability. Default = 0")
-				.defineInRange("netherite_opal_durability", 6300, 0, Integer.MAX_VALUE);
+				.comment("Durability of the Netherite Opal Tool Set. Set to -1 for infinite durability. Default = 6300")
+				.defineInRange("netherite_opal_durability", 6300, -1, Integer.MAX_VALUE);
 		
 		builder.pop();
 		
@@ -343,12 +346,12 @@ public class OADConfig {
 	
 	/*
 	 * Working on making a less sloppy config file, ignore if needed.
-	 */
-	public static List<List<Object>> getValues() {
+
+	public static List<Object> getClassifiedValues() {
 		
-		List<List<Object>> returnedList = new ArrayList<>();
+		ArrayList<List<ForgeConfigSpec.ConfigValue>> returnedList = new ArrayList<>();
 		
-		List<Object> intList = new ArrayList<>();
+		List<ForgeConfigSpec.IntValue> intList = new ArrayList<>();
 		intList.add(amethyst_times_rarer);
 		intList.add(black_opal_times_rarer);
 		
@@ -407,14 +410,14 @@ public class OADConfig {
 		intList.add(black_opal_enchantability);
 		intList.add(netherite_opal_enchantability);
 		
-		List<Object> doubleList = new ArrayList<>();
+		List<ForgeConfigSpec.DoubleValue> doubleList = new ArrayList<>();
 		
 		doubleList.add(nether_chance_multiplier);
 		doubleList.add(end_chance_multiplier);
 		doubleList.add(nether_vein_multiplier);
 		doubleList.add(end_vein_multiplier);
 		
-		List<Object> boolList = new ArrayList<>();
+		List<ForgeConfigSpec.BooleanValue> boolList = new ArrayList<>();
 		
 		boolList.add(enable_server_config_sync);
 		boolList.add(send_config_sync_packet);
@@ -436,12 +439,23 @@ public class OADConfig {
 		
 	}
 	
-	public static Integer[] getLastIndexes() {
-		Integer[] indexes = new Integer[3];
-		indexes[0] = getValues().get(0).size() - 1;
-		indexes[1] = getValues().get(1).size() + indexes[0];
-		indexes[2] = getValues().get(2).size() + indexes[1];
-		return indexes;
+	
+	public static List<Object> getValues() {
+		List<Object> values = new ArrayList<>();
+		List<Object> classifiedValues = getClassifiedValues();
+		values.addAll(classifiedValues.get(0));
+		values.addAll(classifiedValues.get(1));
+		values.addAll(classifiedValues.get(2));
+		return values;
 	}
 	
+	public static Integer[] getLastIndexes() {
+		Integer[] indexes = new Integer[3];
+		indexes[0] = getClassifiedValues().get(0).size() - 1;
+		indexes[1] = getClassifiedValues().get(1).size() + indexes[0];
+		indexes[2] = getClassifiedValues().get(2).size() + indexes[1];
+		return indexes;
+	}
+
+	*/
 }
