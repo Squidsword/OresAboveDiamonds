@@ -23,6 +23,9 @@ public class OreGeneration {
 	public static ConfiguredFeature<?, ?> AMETHYST_OVERWORLD;
 	public static ConfiguredFeature<?, ?> BLACK_OPAL_OVERWORLD;
 	
+	public static ConfiguredFeature<?, ?> AMETHYST_DEEPSLATE;
+	public static ConfiguredFeature<?, ?> BLACK_OPAL_DEEPSLATE;
+	
 	public static ConfiguredFeature<?, ?> AMETHYST_NETHER;
 	public static ConfiguredFeature<?, ?> BLACK_OPAL_NETHER;
 	
@@ -31,10 +34,12 @@ public class OreGeneration {
 	
     // Reference: kwpugh's easy_steel mod for 1.17.1
     public static ImmutableList<OreConfiguration.TargetBlockState> AMETHYST_TARGET_BLOCKS;
+    public static ImmutableList<OreConfiguration.TargetBlockState> DEEPSLATE_AMETHYST_TARGET_BLOCKS;
     public static ImmutableList<OreConfiguration.TargetBlockState> NETHER_AMETHYST_TARGET_BLOCKS;
     public static ImmutableList<OreConfiguration.TargetBlockState> END_AMETHYST_TARGET_BLOCKS;
     
     public static ImmutableList<OreConfiguration.TargetBlockState> BLACK_OPAL_TARGET_BLOCKS;
+    public static ImmutableList<OreConfiguration.TargetBlockState> DEEPSLATE_BLACK_OPAL_TARGET_BLOCKS;
     public static ImmutableList<OreConfiguration.TargetBlockState> NETHER_BLACK_OPAL_TARGET_BLOCKS;
     public static ImmutableList<OreConfiguration.TargetBlockState> END_BLACK_OPAL_TARGET_BLOCKS;    
     
@@ -98,20 +103,23 @@ public class OreGeneration {
 	public static void registerConfiguredFeatures() {
 			// Thanks to TelepathicGrunt for finding this issue. Issue #1
 		
-		AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.STONE_ORE_REPLACEABLES, ModBlocks.AMETHYST_ORE.get().defaultBlockState()),
-				OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.AMETHYST_ORE.get().defaultBlockState()));
-		NETHER_AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.NETHER_ORE_REPLACEABLES, ModBlocks.AMETHYST_ORE.get().defaultBlockState()));
-		END_AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), ModBlocks.AMETHYST_ORE.get().defaultBlockState()));
+		AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.STONE_ORE_REPLACEABLES, ModBlocks.AMETHYST_ORE.get().defaultBlockState()));
+		DEEPSLATE_AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_AMETHYST_ORE.get().defaultBlockState()));
+		NETHER_AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.NETHER_ORE_REPLACEABLES, ModBlocks.NETHER_AMETHYST_ORE.get().defaultBlockState()));
+		END_AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), ModBlocks.END_AMETHYST_ORE.get().defaultBlockState()));
 		
-		BLACK_OPAL_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.STONE_ORE_REPLACEABLES, ModBlocks.BLACK_OPAL_ORE.get().defaultBlockState()),
-				OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.BLACK_OPAL_ORE.get().defaultBlockState()));
-		NETHER_BLACK_OPAL_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.NETHER_ORE_REPLACEABLES, ModBlocks.BLACK_OPAL_ORE.get().defaultBlockState()));
-		END_BLACK_OPAL_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), ModBlocks.BLACK_OPAL_ORE.get().defaultBlockState()));
+		BLACK_OPAL_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.STONE_ORE_REPLACEABLES, ModBlocks.BLACK_OPAL_ORE.get().defaultBlockState()));	
+		DEEPSLATE_BLACK_OPAL_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_BLACK_OPAL_ORE.get().defaultBlockState()));
+		NETHER_BLACK_OPAL_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.NETHER_ORE_REPLACEABLES, ModBlocks.NETHER_BLACK_OPAL_ORE.get().defaultBlockState()));
+		END_BLACK_OPAL_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), ModBlocks.END_BLACK_OPAL_ORE.get().defaultBlockState()));
 		
 		
 		AMETHYST_OVERWORLD = buildOverworldOre(AMETHYST_TARGET_BLOCKS, OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_overworld.get(), OADConfig.amethyst_times_rarer.get());
 	    BLACK_OPAL_OVERWORLD = buildOverworldOre(BLACK_OPAL_TARGET_BLOCKS, OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_overworld.get(), OADConfig.black_opal_times_rarer.get());
 			
+	    AMETHYST_DEEPSLATE = buildOverworldOre(DEEPSLATE_AMETHYST_TARGET_BLOCKS, OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_overworld.get(), OADConfig.amethyst_times_rarer.get());
+	    BLACK_OPAL_DEEPSLATE = buildOverworldOre(DEEPSLATE_BLACK_OPAL_TARGET_BLOCKS, OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_overworld.get(), OADConfig.black_opal_times_rarer.get());
+	    
 	    AMETHYST_NETHER = buildNetherOre(NETHER_AMETHYST_TARGET_BLOCKS, OADConfig.amethyst_max_vein_size.get(), OADConfig.amethyst_max_spawn_height_nether.get(), OADConfig.amethyst_times_rarer.get());
 	    BLACK_OPAL_NETHER = buildNetherOre(NETHER_BLACK_OPAL_TARGET_BLOCKS, OADConfig.black_opal_max_vein_size.get(), OADConfig.black_opal_max_spawn_height_nether.get(), OADConfig.black_opal_times_rarer.get());
 	        

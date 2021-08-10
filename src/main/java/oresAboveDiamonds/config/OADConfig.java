@@ -1,11 +1,5 @@
 package oresAboveDiamonds.config;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import com.electronwill.nightconfig.core.UnmodifiableConfig;
-
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.common.Mod;
 
@@ -214,7 +208,7 @@ public class OADConfig {
 				.defineInRange("black_opal_durability", 5250, -1, Integer.MAX_VALUE);
 		
 		netherite_opal_attack_damage = builder
-				.comment("Base Attack Damage of the Netherite Opal Tool Set. Default = 5")
+				.comment("Base Attack Damage of the Netherite Opal Tool Set. Default = 6")
 				.defineInRange("netherite_opal_ad", 6, 0, Integer.MAX_VALUE);
 		
 		netherite_opal_efficiency = builder
@@ -254,16 +248,16 @@ public class OADConfig {
 				.defineInRange("netherite_opal_armor_knockback_resistance", 1 , 0, Integer.MAX_VALUE);
 		
 		amethyst_armor_durability = builder
-				.comment("Base Durability for the Amethyst Armor Set. For reference, Diamond Armor has 33 base durability. Set to 0 for infinite durability. Default = 132")
-				.defineInRange("amethyst_armor_durability", 58, 0, Integer.MAX_VALUE);
+				.comment("Base Durability for the Amethyst Armor Set. For reference, Diamond Armor has 33 base durability. Set to -1 for infinite durability. Default = 58")
+				.defineInRange("amethyst_armor_durability", 58, -1, Integer.MAX_VALUE);
 		
 		black_opal_armor_durability = builder
-				.comment("Base Durability for the Black Opal Armor Set. Set 0 for infinite durability. Default = 0")
-				.defineInRange("black_opal_armor_durability", 116, 0, Integer.MAX_VALUE);
+				.comment("Base Durability for the Black Opal Armor Set. Set -1 for infinite durability. Default = 116")
+				.defineInRange("black_opal_armor_durability", 116, -1, Integer.MAX_VALUE);
 		
 		netherite_opal_armor_durability = builder
-				.comment("Base Durability for the Black Opal Armor Set. Set 0 for infinite durability. Default = 0")
-				.defineInRange("netherite_opal_armor_durability", 140, 0, Integer.MAX_VALUE);
+				.comment("Base Durability for the Black Opal Armor Set. Set -1 for infinite durability. Default = 140")
+				.defineInRange("netherite_opal_armor_durability", 140, -1, Integer.MAX_VALUE);
 		
 		amethyst_helmet_armor = builder
 				.comment("Amethyst Helmet Armor Value. Indicates how many half-armor points the indicated armor will give. Default = 3")

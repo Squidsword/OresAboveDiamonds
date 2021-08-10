@@ -65,9 +65,12 @@ public class ModItems {
 	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_BOOTS = ITEMS.register("netherite_opal_boots", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, EquipmentSlot.FEET, new Item.Properties().tab(CreativeModeTab.TAB_COMBAT).tab(ModItemGroups.OAD_ITEM_GROUP).fireResistant()));
 			
 	public static final RegistryObject<TooltipBlockItem> AMETHYST_ORE = ITEMS.register("amethyst_ore", () -> new TooltipBlockItem(ModBlocks.AMETHYST_ORE.get(), new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));
+	public static final RegistryObject<TooltipBlockItem> DEEPSLATE_AMETHYST_ORE = ITEMS.register("deepslate_amethyst_ore", () -> new TooltipBlockItem(ModBlocks.DEEPSLATE_AMETHYST_ORE.get(), new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));
 	public static final RegistryObject<TooltipBlockItem> NETHER_AMETHYST_ORE = ITEMS.register("nether_amethyst_ore", () -> new TooltipBlockItem(ModBlocks.NETHER_AMETHYST_ORE.get(), new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));
 	public static final RegistryObject<TooltipBlockItem> END_AMETHYST_ORE = ITEMS.register("end_amethyst_ore", () -> new TooltipBlockItem(ModBlocks.END_AMETHYST_ORE.get(), new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));
+	
 	public static final RegistryObject<TooltipBlockItem> BLACK_OPAL_ORE = ITEMS.register("black_opal_ore", () -> new TooltipBlockItem(ModBlocks.BLACK_OPAL_ORE.get(), new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));
+	public static final RegistryObject<TooltipBlockItem> DEEPSLATE_BLACK_OPAL_ORE = ITEMS.register("deepslate_black_opal_ore", () -> new TooltipBlockItem(ModBlocks.DEEPSLATE_BLACK_OPAL_ORE.get(), new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));
 	public static final RegistryObject<TooltipBlockItem> NETHER_BLACK_OPAL_ORE = ITEMS.register("nether_black_opal_ore", () -> new TooltipBlockItem(ModBlocks.NETHER_BLACK_OPAL_ORE.get(), new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));
 	public static final RegistryObject<TooltipBlockItem> END_BLACK_OPAL_ORE = ITEMS.register("end_black_opal_ore", () -> new TooltipBlockItem(ModBlocks.END_BLACK_OPAL_ORE.get(), new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));
 

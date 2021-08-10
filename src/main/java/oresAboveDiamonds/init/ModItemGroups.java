@@ -2,6 +2,7 @@ package oresAboveDiamonds.init;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import oresAboveDiamonds.OresAboveDiamonds;
 
 public class ModItemGroups {
 
@@ -10,7 +11,7 @@ public class ModItemGroups {
 	public static final class ModItemGroup extends CreativeModeTab {
 	
 		public ModItemGroup() {
-			super("oresabovediamonds");
+			super(OresAboveDiamonds.MODID);
 			// TODO Auto-generated constructor stub
 		}
 

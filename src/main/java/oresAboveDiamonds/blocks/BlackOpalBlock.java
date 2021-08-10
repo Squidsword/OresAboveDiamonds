@@ -4,20 +4,22 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.common.ToolType;
 
 public class BlackOpalBlock extends Block {
 
 	public BlackOpalBlock() {
 		super(Properties
-				.of(Material.METAL, MaterialColor.METAL)
-				.strength(25f, 100f)
+				.of(Material.METAL, MaterialColor.COLOR_PURPLE)
+				.strength(15f, 100f)
+				.harvestLevel(4)
+				.harvestTool(ToolType.PICKAXE)
 				.requiresCorrectToolForDrops()
-				.sound(SoundType.METAL)
+				.sound(SoundType.NETHERITE_BLOCK)
 			 );
 	}
 	
 	/*
-	
 	@Nullable
 	@Override
 	public ToolType getHarvestTool(BlockState state) {
@@ -29,6 +31,6 @@ public class BlackOpalBlock extends Block {
 	public int getHarvestLevel(BlockState state) {
 		return 4;
 	}
-	
 	*/
+	
 }

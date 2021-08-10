@@ -4,19 +4,27 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.common.ToolType;
 
 public class BlackOpalOre extends OreBlock {
 
 	public BlackOpalOre() {
+		this(SoundType.STONE);
+	}
+	
+	public BlackOpalOre(SoundType soundType) {
 		super(Properties
-				.of(Material.METAL, MaterialColor.METAL)
-				.strength(10f, 20f)
-				.sound(SoundType.METAL),
+				.of(Material.STONE)
+				.requiresCorrectToolForDrops()
+				.strength(9f, 9f)
+				.harvestLevel(4)
+				.harvestTool(ToolType.PICKAXE)
+				.sound(soundType),
 				
 			 UniformInt.of(25, 75));
 	}
 	
+
 	/*
 	@Nullable
 	@Override
@@ -29,6 +37,7 @@ public class BlackOpalOre extends OreBlock {
 		return 4;
 	}
 	
+
 	@Override
     public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch) {
        return silktouch == 0 ? 50 : 0;

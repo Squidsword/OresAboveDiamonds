@@ -5,9 +5,11 @@
 	"block.oresabovediamonds.amethyst_ore": "§dАметистовая руда",
 	"block.oresabovediamonds.black_opal_ore": "§5Руда чёрного опала",
 	
+	"block.oresabovediamonds.deepslate_amethyst_ore": "§dDeepslate-аметистовая руда",
 	"block.oresabovediamonds.nether_amethyst_ore": "§dНезер-аметистовая руда",
 	"block.oresabovediamonds.end_amethyst_ore": "§dЭнд-аметистовая руда",
 	
+	"block.oresabovediamonds.deepslate_black_opal_ore": "§5Deepslate-руда чёрного опала",
 	"block.oresabovediamonds.nether_black_opal_ore": "§5Незер-руда чёрного опала",
 	"block.oresabovediamonds.end_black_opal_ore": "§5Энд-руда чёрного опала",
 	

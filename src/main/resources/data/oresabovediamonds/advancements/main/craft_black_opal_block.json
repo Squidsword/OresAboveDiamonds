@@ -19,7 +19,7 @@
       		"trigger": "minecraft:inventory_changed",
       		"conditions" : {
       			"items" : [
-      			{"item" : "oresabovediamonds:black_opal_block"}
+      			"oresabovediamonds:black_opal_block"
       			]
       		}
     	}
