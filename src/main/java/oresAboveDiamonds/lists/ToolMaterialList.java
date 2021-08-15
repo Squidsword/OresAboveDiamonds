@@ -56,13 +56,22 @@ public enum ToolMaterialList implements Tier
 	private float attackDamageBonus, efficiency;
 	private int durability, harvestLevel, enchantability;
 	private Item repairMaterial;
+	
 	private Tag<Block> tag;
+	
+	private boolean infinite_durability;
 	
 	private ToolMaterialList(int attackDamage, float efficiency, int durability, int harvestLevel, int enchantability, Item repairMaterial, Tag<Block> tag) 
 	{
 		this.attackDamageBonus = attackDamage;
 		this.efficiency = efficiency;
-		this.durability = durability;
+		if(durability <= 0) {
+			this.durability = Integer.MAX_VALUE; 
+			this.infinite_durability = true;
+		} else {
+			this.durability = durability;
+			this.infinite_durability = false;
+		}
 		this.harvestLevel = harvestLevel;
 		this.enchantability = enchantability;
 		this.repairMaterial = repairMaterial;
@@ -110,6 +119,11 @@ public enum ToolMaterialList implements Tier
     {
         return this.tag;
     }
+    
+	public boolean isInfinite() {
+		// TODO Auto-generated method stub
+		return this.infinite_durability;
+	}
 
 }
  

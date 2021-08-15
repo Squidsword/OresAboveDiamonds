@@ -10,7 +10,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import oresAboveDiamonds.config.ConfigHelper;
-import oresAboveDiamonds.events.AnvilUpdateEventHandler;
 import oresAboveDiamonds.events.LootTableHandler;
 import oresAboveDiamonds.events.PlayerLoggedInEventHandler;
 import oresAboveDiamonds.init.ModBlocks;
@@ -37,7 +36,6 @@ public class OresAboveDiamonds
 		//FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientRegistries);
 		
 		MinecraftForge.EVENT_BUS.register(this);
-		MinecraftForge.EVENT_BUS.register(new AnvilUpdateEventHandler());
 		MinecraftForge.EVENT_BUS.register(new PlayerLoggedInEventHandler());
 		MinecraftForge.EVENT_BUS.register(new LootTableHandler());
 		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
