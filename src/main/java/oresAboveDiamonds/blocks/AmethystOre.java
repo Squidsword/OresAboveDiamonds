@@ -5,21 +5,22 @@ import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.ToolType;
 
 public class AmethystOre extends OreBlock {
 
 	public AmethystOre() {
-		this(SoundType.STONE);
+		this(SoundType.STONE, 3f);
 	}
 	
 	public AmethystOre(SoundType soundType) {
+		this(soundType, 3f);
+	}
+	
+	public AmethystOre(SoundType soundType, float hardness) {
 		super(BlockBehaviour.Properties
 				.of(Material.STONE)
 				.requiresCorrectToolForDrops()
-				.strength(6f, 6f)
-				.harvestLevel(3)
-				.harvestTool(ToolType.PICKAXE)
+				.strength(hardness, 3f)
 				.sound(soundType),
 				
 			  UniformInt.of(10, 30));

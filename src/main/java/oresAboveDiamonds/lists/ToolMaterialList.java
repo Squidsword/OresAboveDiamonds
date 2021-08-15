@@ -1,30 +1,72 @@
 package oresAboveDiamonds.lists;
 
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.TierSortingRegistry;
+import oresAboveDiamonds.OresAboveDiamonds;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.init.ModItems;
 
 public enum ToolMaterialList implements Tier 
 {
 	
-	AMETHYST(OADConfig.amethyst_attack_damage.get() , OADConfig.amethyst_efficiency.get(), OADConfig.amethyst_durability.get(), 4, OADConfig.amethyst_enchantability.get(), ModItems.AMETHYST.get()),
-	BLACK_OPAL(OADConfig.black_opal_attack_damage.get(), OADConfig.black_opal_efficiency.get(), OADConfig.black_opal_durability.get(), 5, OADConfig.black_opal_enchantability.get(), ModItems.BLACK_OPAL.get()),
-	NETHERITE_OPAL(OADConfig.netherite_opal_attack_damage.get(), OADConfig.netherite_opal_efficiency.get(), OADConfig.netherite_opal_durability.get(), 5, OADConfig.netherite_opal_enchantability.get(), ModItems.BLACK_OPAL.get());
+	//Reference: gobber by kwpugh
 	
-	private float attackDamage, efficiency;
+	
+	AMETHYST(OADConfig.amethyst_attack_damage.get() , OADConfig.amethyst_efficiency.get(), OADConfig.amethyst_durability.get(), 4, OADConfig.amethyst_enchantability.get(), ModItems.AMETHYST.get(), MaterialTags.NEEDS_AMETHYST_TOOL),
+	BLACK_OPAL(OADConfig.black_opal_attack_damage.get(), OADConfig.black_opal_efficiency.get(), OADConfig.black_opal_durability.get(), 5, OADConfig.black_opal_enchantability.get(), ModItems.BLACK_OPAL.get(), MaterialTags.NEEDS_BLACK_OPAL_TOOL),
+	NETHERITE_OPAL(OADConfig.netherite_opal_attack_damage.get(), OADConfig.netherite_opal_efficiency.get(), OADConfig.netherite_opal_durability.get(), 5, OADConfig.netherite_opal_enchantability.get(), ModItems.BLACK_OPAL.get(), MaterialTags.NEEDS_NETHERITE_OPAL_TOOL);
+	
+    public static Tier AMETHYST_TIER;
+    public static Tier BLACK_OPAL_TIER;
+    public static Tier NETHERITE_OPAL_TIER;
+    
+    static {
+        ResourceLocation diamond = new ResourceLocation("diamond");
+        ResourceLocation netherite = new ResourceLocation("netherite");
+        ResourceLocation amethyst = new ResourceLocation(OresAboveDiamonds.MODID, "amethyst");
+        ResourceLocation black_opal = new ResourceLocation(OresAboveDiamonds.MODID, "black_opal");
+        ResourceLocation netherite_opal = new ResourceLocation(OresAboveDiamonds.MODID, "netherite_opal");
+    	
+        AMETHYST_TIER = TierSortingRegistry.registerTier(
+        		AMETHYST,
+                amethyst,
+                List.of(diamond, netherite), List.of(black_opal));
+
+        BLACK_OPAL_TIER = TierSortingRegistry.registerTier(
+        		BLACK_OPAL,
+                black_opal,
+                List.of(amethyst), List.of(netherite_opal));
+        
+        NETHERITE_OPAL_TIER = TierSortingRegistry.registerTier(
+        		NETHERITE_OPAL,
+                netherite_opal,
+                List.of(black_opal), List.of());
+        
+    }
+    
+	private float attackDamageBonus, efficiency;
 	private int durability, harvestLevel, enchantability;
 	private Item repairMaterial;
+	private Tag<Block> tag;
 	
-	private ToolMaterialList(int attackDamage, float efficiency, int durability, int harvestLevel, int enchantability, Item repairMaterial) 
+	private ToolMaterialList(int attackDamage, float efficiency, int durability, int harvestLevel, int enchantability, Item repairMaterial, Tag<Block> tag) 
 	{
-		this.attackDamage = attackDamage;
+		this.attackDamageBonus = attackDamage;
 		this.efficiency = efficiency;
 		this.durability = durability;
 		this.harvestLevel = harvestLevel;
 		this.enchantability = enchantability;
 		this.repairMaterial = repairMaterial;
+		this.tag = tag;
 	}
 
 	@Override
@@ -42,7 +84,7 @@ public enum ToolMaterialList implements Tier
 	@Override
 	public float getAttackDamageBonus() 
 	{
-		return this.attackDamage;
+		return this.attackDamageBonus;
 	}
 
 	@Override
@@ -62,6 +104,12 @@ public enum ToolMaterialList implements Tier
 	{
 		return Ingredient.of(this.repairMaterial);
 	}
+	
+    @Nonnull
+    public Tag<Block> getTag()
+    {
+        return this.tag;
+    }
 
 }
  

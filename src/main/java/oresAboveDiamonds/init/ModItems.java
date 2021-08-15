@@ -25,7 +25,7 @@ public class ModItems {
 	public static int axedmg = OADConfig.old_combat_mechanics.get() ? 2 : 5;
 	public static int shoveldmg = OADConfig.old_combat_mechanics.get() ? 0 : 2;
 	public static int pickdmg = OADConfig.old_combat_mechanics.get() ? 1 : 1;
-	
+    
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OresAboveDiamonds.MODID);
 	
 	public static final RegistryObject<Item> BLACK_OPAL = ITEMS.register("black_opal", () -> new Item(new Item.Properties().tab(ModItemGroups.OAD_ITEM_GROUP)));

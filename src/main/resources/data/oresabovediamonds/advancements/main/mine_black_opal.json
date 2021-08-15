@@ -1,27 +1,26 @@
 {
+    "parent" : "oresabovediamonds:main/mine_amethyst",
     "display":  {
         "icon": {
-            "item": "oresabovediamonds:black_opal_block"
+            "item": "oresabovediamonds:black_opal"
         },
         "title": {
-            "translate": "advancements.craft_black_opal_block"
+            "translate": "advancements.mine_black_opal"
         },
         "description": {
-            "translate": "advancements.craft_black_opal_block_text"
+            "translate": "advancements.mine_black_opal_text"
         },
-        "frame": "goal",
         "show_toast": true,
         "announce_to_chat": true
     },
-    "parent" : "oresabovediamonds:main/mine_black_opal",
   "criteria": {
-    "craft_black_opal_block": {
+    "find_black_opal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "oresabovediamonds:black_opal_block"
+              "oresabovediamonds:black_opal"
             ]
           }
         ]
@@ -30,7 +29,7 @@
   },
   "requirements": [
     [
-      "craft_black_opal_block"
+      "find_black_opal"
     ]
   ]
 }

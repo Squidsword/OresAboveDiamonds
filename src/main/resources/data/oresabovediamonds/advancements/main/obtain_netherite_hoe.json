@@ -1,0 +1,39 @@
+{
+    "parent" : "minecraft:husbandry/obtain_netherite_hoe",
+    "display":  {
+        "icon": {
+            "item": "oresabovediamonds:netherite_opal_hoe"
+        },
+        "title": {
+            "translate": "advancements.obtain_netherite_opal_hoe"
+        },
+        "description": {
+            "translate": "advancements.obtain_netherite_opal_hoe_text"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+  "rewards": {
+    "experience": 100
+  },
+  "criteria": {
+    "craft_netherite_opal_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "oresabovediamonds:netherite_opal_hoe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_netherite_opal_hoe"
+    ]
+  ]
+}

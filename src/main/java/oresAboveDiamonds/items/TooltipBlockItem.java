@@ -30,6 +30,14 @@ public class TooltipBlockItem extends BlockItem {
 		
 		if(KeyboardUtil.isHoldingShift()) {
 			switch(blockName) {
+			case "DEEPSLATE_AMETHYST_ORE":
+				if(OADConfig.spawn_amethyst_overworld.get() == true) {
+					tooltip.add(new TextComponent("Spawns when a normal amethyst ore tries to generate in a deepslate block."));
+				} else {
+					tooltip.add(new TextComponent("\u00A7c" + "DISABLED"));
+					tooltip.add(new TextComponent("If overworld amethyst ores are enabled, this one will be enabled as well to compliment them."));
+				}
+				break;
 			case "AMETHYST_ORE":
 				if(OADConfig.spawn_amethyst_overworld.get() == true) {
 					tooltip.add(new TextComponent("\u00A7a" + "Generating in the Overworld"));
@@ -68,6 +76,15 @@ public class TooltipBlockItem extends BlockItem {
 					tooltip.add(new TextComponent("\u00A7c" + "DISABLED"));
 					tooltip.add(new TextComponent("Can be enabled in the config file."));
 				} 
+				break;
+				
+			case "DEEPSLATE_BLACK_OPAL_ORE":
+				if(OADConfig.spawn_black_opal_overworld.get() == true) {
+					tooltip.add(new TextComponent("Spawns when a normal black opal ore tries to generate in a deepslate block."));
+				} else {
+					tooltip.add(new TextComponent("\u00A7c" + "DISABLED"));
+					tooltip.add(new TextComponent("If overworld black opal ores are enabled, this one will be enabled as well to compliment them."));
+				}
 				break;
 				
 			case "BLACK_OPAL_ORE":
@@ -114,6 +131,7 @@ public class TooltipBlockItem extends BlockItem {
 			}
 		} else {
 			switch(blockName) {
+			case "DEEPSLATE_AMETHYST_ORE":
 			case "AMETHYST_ORE":
 				if(OADConfig.spawn_amethyst_overworld.get() == false) {
 					tooltip.add(new TextComponent("\u00A7c" + "DISABLED"));
@@ -131,6 +149,7 @@ public class TooltipBlockItem extends BlockItem {
 				}
 				break;
 				
+			case "DEEPSLATE_BLACK_OPAL_ORE":
 			case "BLACK_OPAL_ORE":
 				if(OADConfig.spawn_black_opal_overworld.get() == false) {
 					tooltip.add(new TextComponent("\u00A7c" + "DISABLED"));

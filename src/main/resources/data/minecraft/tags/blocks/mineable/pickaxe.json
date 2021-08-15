@@ -3,8 +3,14 @@
 	"values":
 	[
 		"oresabovediamonds:amethyst_ore",
+    	"oresabovediamonds:deepslate_amethyst_ore",
     	"oresabovediamonds:nether_amethyst_ore",
     	"oresabovediamonds:end_amethyst_ore",
-    	"oresabovediamonds:amethyst_block"
+    	"oresabovediamonds:amethyst_block",
+    	"oresabovediamonds:black_opal_ore",
+    	"oresabovediamonds:deepslate_black_opal_ore",
+    	"oresabovediamonds:nether_black_opal_ore",
+    	"oresabovediamonds:end_black_opal_ore",
+    	"oresabovediamonds:black_opal_block"
 	]
 }
