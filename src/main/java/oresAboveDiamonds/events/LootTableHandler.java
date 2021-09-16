@@ -29,8 +29,8 @@ public class LootTableHandler {
 			case "end_city_treasure":
 			case "nether_bridge":
 			case "shipwreck_treasure":
-			case "village_toolsmith":
-			case "village_weaponsmith":
+			case "village/village_toolsmith":
+			case "village/village_weaponsmith":
 				event.getTable().addPool(getInjectPool(file));
 				break;
 			default:

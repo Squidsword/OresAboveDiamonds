@@ -20,7 +20,7 @@
               }
             }
           ],
-        "weight": 1
+        "weight": 2
       },
       {
       
@@ -36,11 +36,11 @@
               }
             }
           ],
-        "weight": 2
+        "weight": 3
       },
       {
         "type": "empty",
-        "weight": 135
+        "weight": 300
       }
     ]
   }]
