@@ -3,7 +3,7 @@ package oresAboveDiamonds.events;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fmllegacy.network.NetworkDirection;
+import net.minecraftforge.network.NetworkDirection;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.network.OADPacketHandler;
 import oresAboveDiamonds.network.PacketSyncConfig;

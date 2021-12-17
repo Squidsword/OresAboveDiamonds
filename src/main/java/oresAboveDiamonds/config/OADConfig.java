@@ -149,12 +149,12 @@ public class OADConfig {
 				.defineInRange("black_opal_max_vein_size", 6, 0, 64);
 		
 		amethyst_max_spawn_height_overworld = builder
-				.comment("Maximum spawn height size for an Amethyst ore vein. Default = 16")
-				.defineInRange("amethyst_max_spawn_height_overworld", 16, 1, 255);
+				.comment("Maximum spawn height size for an Amethyst ore vein. Default = 8")
+				.defineInRange("amethyst_max_spawn_height_overworld", 8,-64, 255);
 		
 		black_opal_max_spawn_height_overworld = builder
-				.comment("Maximum spawn height size for a Black Opal ore vein. Default = 16")
-				.defineInRange("black_opal_max_spawn_height_overworld", 16, 1, 255);
+				.comment("Maximum spawn height size for a Black Opal ore vein. Default = 0")
+				.defineInRange("black_opal_max_spawn_height_overworld", 0, -64, 255);
 		
 		amethyst_max_spawn_height_nether = builder
 				.comment("Maximum spawn height size for an Amethyst ore vein for the nether. Default = 128")
@@ -339,7 +339,7 @@ public class OADConfig {
 	}
 	
 	/*
-	 * Working on making a less sloppy config file, ignore if needed.
+	 * Working on making a less sloppy config file from stuff learned in CS1332, ignore below.
 
 	public static List<Object> getClassifiedValues() {
 		

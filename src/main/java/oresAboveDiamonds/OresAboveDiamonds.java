@@ -42,7 +42,7 @@ public class OresAboveDiamonds
 		
 		
 		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.17.1.toml"));
+		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.18.1.toml"));
 		
 		ModItems.ITEMS.register(modEventBus);
 		ModBlocks.BLOCKS.register(modEventBus);
@@ -51,8 +51,9 @@ public class OresAboveDiamonds
 	public void setup(final FMLCommonSetupEvent event)
 	{
 		event.enqueueWork(() -> {
-			OreGeneration.registerConfiguredFeatures();
+			OreGeneration.registerFeatures();
 		});
 		
 	}
+	
 }
