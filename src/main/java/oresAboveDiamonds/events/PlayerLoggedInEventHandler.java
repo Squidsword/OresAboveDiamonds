@@ -70,8 +70,8 @@ public class PlayerLoggedInEventHandler {
 		int amethyst_times_rarer = OADConfig.amethyst_times_rarer.get();
 		int black_opal_times_rarer = OADConfig.black_opal_times_rarer.get();
 		
-		int amethyst_max_vein_size = OADConfig.amethyst_max_vein_size.get();
-		int black_opal_max_vein_size = OADConfig.black_opal_max_vein_size.get();
+		int amethyst_max_vein_size = OADConfig.amethyst_vein_size.get();
+		int black_opal_max_vein_size = OADConfig.black_opal_vein_size.get();
 		
 		int amethyst_max_spawn_height_overworld = OADConfig.amethyst_max_spawn_height_overworld.get();
 		int black_opal_max_spawn_height_overworld = OADConfig.black_opal_max_spawn_height_overworld.get();

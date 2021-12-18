@@ -10,8 +10,12 @@ public class OADConfig {
 	public static ForgeConfigSpec.IntValue amethyst_times_rarer;
 	public static ForgeConfigSpec.IntValue black_opal_times_rarer;
 	
-	public static ForgeConfigSpec.IntValue amethyst_max_vein_size;
-	public static ForgeConfigSpec.IntValue black_opal_max_vein_size;
+	public static ForgeConfigSpec.IntValue amethyst_vein_size;
+	public static ForgeConfigSpec.IntValue black_opal_vein_size;
+	
+	public static ForgeConfigSpec.DoubleValue overworld_discard_chance_on_air_exposure;
+	public static ForgeConfigSpec.DoubleValue nether_discard_chance_on_air_exposure;
+	public static ForgeConfigSpec.DoubleValue end_discard_chance_on_air_exposure;
 	
 	public static ForgeConfigSpec.IntValue amethyst_max_spawn_height_overworld;
 	public static ForgeConfigSpec.IntValue black_opal_max_spawn_height_overworld;
@@ -112,21 +116,31 @@ public class OADConfig {
 				.comment("Spawn black opals in the end? Default = false")
 				.define("spawn_black_opal_end", false);	
 		
+		overworld_discard_chance_on_air_exposure = builder
+				.comment("The average chance to delete an overworld ore that is exposed to air. High values discourage cave mining and encourage strip mining. Default value 0.7F is similar to vanilla's diamonds.")
+				.defineInRange("overworld_discard_chance_on_air_exposure", 0.7d, 0.0, 1.0);
+		nether_discard_chance_on_air_exposure = builder
+				.comment("The average chance to delete a nether ore that is exposed to air. Default value = 0.8")
+				.defineInRange("nether_discard_chance_on_air_exposure", 0.8d, 0.0, 1.0);
+		end_discard_chance_on_air_exposure = builder
+				.comment("The average chance to delete an end ore that is exposed to air. Default value = 0.9")
+				.defineInRange("end_discard_chance_on_air_exposure", 0.9d, 0.0, 1.0);
+		
 		nether_chance_multiplier = builder
-				.comment("If nether_ores is enabled, the spawn chance per chunk in the nether will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The final rarity of each ore vein cannot be more common than diamonds. The default value tries to imitate the rarity in the overworld. Default = 1.35.")
-				.defineInRange("nether_chance_multiplier", 1.5d, 0.01, 1000.0d);
+				.comment("Increases the chance that an ore above diamonds will spawn in the nether. Default = 1.0.")
+				.defineInRange("nether_chance_multiplier", 1.0d, 0.01, 100.0d);
 		
 		end_chance_multiplier = builder
-				.comment("If end_ores is enabled, the spawn chance per chunk in the end will be the chances set for amethyst_chance and black_opal_chance times this multiplier. The default value tries to imitate the rarity in the overworld. Default = 1.0")
-				.defineInRange("end_chance_multiplier", 1.0d, 0.01, 1000.0d);
+				.comment("Increases the chance that an ore above diamonds will spawn in the end. Default = 1.0")
+				.defineInRange("end_chance_multiplier", 1.0d, 0.01, 100.0d);
 		
 		nether_vein_multiplier = builder
-				.comment("If nether_ores is enableld, multiplies the max vein size of nether ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.0")
-				.defineInRange("nether_vein_multiplier", 1.0d, 0, 1000.0d);
+				.comment("Multiplies the max vein size of nether ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.0")
+				.defineInRange("nether_vein_multiplier", 1.0d, 0, 64.0d);
 		
 		end_vein_multiplier = builder
-				.comment("If end_ores is enableld, multiplies the max vein size of end ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.2")
-				.defineInRange("end_vein_multiplier", 1.2d, 0, 1000.0d);
+				.comment("Multiplies the max vein size of end ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.0")
+				.defineInRange("end_vein_multiplier", 1.0d, 0, 64.0d);
 		
 		builder.pop();
 		
@@ -140,37 +154,39 @@ public class OADConfig {
 				.comment("Chance for a Black Opal Ore vein to spawn in a chunk. Default = 9")
 				.defineInRange("black_opal_chance", 9, 1, Integer.MAX_VALUE);
 		
-		amethyst_max_vein_size = builder
-				.comment("Maximum vein size for an Amethyst Ore vein. For reference, diamonds have a max vein size of 8. Default = 7")
+		amethyst_vein_size = builder
+				.comment("Average vein size for an Amethyst Ore vein. For reference, diamonds have a vein size of 8. Default = 7")
 				.defineInRange("amethyst_max_vein_size", 7, 0, 64);
 		
-		black_opal_max_vein_size = builder
-				.comment("Maximum vein size for an Black Opal Ore vein. Default = 6")
-				.defineInRange("black_opal_max_vein_size", 6, 0, 64);
+		black_opal_vein_size = builder
+				.comment("Average vein size for an Black Opal Ore vein. Default = 6")
+				.defineInRange("black_opal_vein_size", 6, 0, 64);
+		
+		
 		
 		amethyst_max_spawn_height_overworld = builder
 				.comment("Maximum spawn height size for an Amethyst ore vein. Default = 8")
-				.defineInRange("amethyst_max_spawn_height_overworld", 8,-64, 255);
+				.defineInRange("amethyst_max_spawn_height_overworld", 8,-63, 255);
 		
 		black_opal_max_spawn_height_overworld = builder
 				.comment("Maximum spawn height size for a Black Opal ore vein. Default = 0")
-				.defineInRange("black_opal_max_spawn_height_overworld", 0, -64, 255);
+				.defineInRange("black_opal_max_spawn_height_overworld", 0, -63, 255);
 		
 		amethyst_max_spawn_height_nether = builder
 				.comment("Maximum spawn height size for an Amethyst ore vein for the nether. Default = 128")
-				.defineInRange("amethyst_max_spawn_height_nether", 128, 1, 255);
+				.defineInRange("amethyst_max_spawn_height_nether", 128, 0, 255);
 		
 		black_opal_max_spawn_height_nether = builder
 				.comment("Maximum spawn height size for a Black Opal ore vein for the nether. Default = 128")
-				.defineInRange("black_opal_max_spawn_height_nether", 128, 1, 255);
+				.defineInRange("black_opal_max_spawn_height_nether", 128, 0, 255);
 		
 		amethyst_max_spawn_height_end = builder
 				.comment("Maximum spawn height size for an Amethyst ore vein for the end. Default = 75")
-				.defineInRange("amethyst_max_spawn_height_end", 75, 1, 255);
+				.defineInRange("amethyst_max_spawn_height_end", 75, 0, 255);
 		
 		black_opal_max_spawn_height_end = builder
 				.comment("Maximum spawn height size for a Black Opal ore vein for the end. Default = 75")
-				.defineInRange("black_opal_max_spawn_height_end", 75, 1, 255);
+				.defineInRange("black_opal_max_spawn_height_end", 75, 0, 255);
 		
 		chest_loot = builder
 				.comment("Wherever diamonds can naturally generate in chests, black opal and amethyst can too at a reduced rate! Default = true")

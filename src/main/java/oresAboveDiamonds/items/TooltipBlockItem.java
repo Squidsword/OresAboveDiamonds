@@ -42,7 +42,7 @@ public class TooltipBlockItem extends BlockItem {
 				if(OADConfig.spawn_amethyst_overworld.get() == true) {
 					tooltip.add(new TextComponent("\u00A7a" + "Generating in the Overworld"));
 					tooltip.add(new TextComponent("\u00A7d" + "1 in " + OADConfig.amethyst_times_rarer.get() + "\u00A7r" + " chance of spawning per chunk"));
-					tooltip.add(new TextComponent("Max vein size of " + "\u00A7d" + OADConfig.amethyst_max_vein_size.get()));
+					tooltip.add(new TextComponent("Max vein size of " + "\u00A7d" + OADConfig.amethyst_vein_size.get()));
 					tooltip.add(new TextComponent("Spawns below " + "\u00A7d" + "y:" + OADConfig.amethyst_max_spawn_height_overworld.get()));
 				} else {
 					tooltip.add(new TextComponent("\u00A7c" + "DISABLED"));
@@ -52,7 +52,7 @@ public class TooltipBlockItem extends BlockItem {
 			case "NETHER_AMETHYST_ORE":
 				if(OADConfig.spawn_amethyst_nether.get() == true) {
 					int spawnchance = Math.max(1, (int) (OADConfig.amethyst_times_rarer.get() / (OADConfig.nether_chance_multiplier.get())));
-					int veinsize =  (int) (OADConfig.amethyst_max_vein_size.get() * OADConfig.nether_vein_multiplier.get());
+					int veinsize =  (int) (OADConfig.amethyst_vein_size.get() * OADConfig.nether_vein_multiplier.get());
 					tooltip.add(new TextComponent("\u00A7a" + "Generating in the Nether"));
 					tooltip.add(new TextComponent("\u00A7d" + "1 in " + spawnchance + "\u00A7r" + " chance of spawning per chunk"));
 					tooltip.add(new TextComponent("Max vein size of " + "\u00A7d" + veinsize));
@@ -67,7 +67,7 @@ public class TooltipBlockItem extends BlockItem {
 				
 				if(OADConfig.spawn_amethyst_end.get() == true) {
 					int spawnchance = Math.max(1, (int) (OADConfig.amethyst_times_rarer.get() / (OADConfig.end_chance_multiplier.get())));
-					int veinsize =  (int) (OADConfig.amethyst_max_vein_size.get() * OADConfig.end_vein_multiplier.get());
+					int veinsize =  (int) (OADConfig.amethyst_vein_size.get() * OADConfig.end_vein_multiplier.get());
 					tooltip.add(new TextComponent("\u00A7a" + "Generating in the End"));
 					tooltip.add(new TextComponent("\u00A7d" + "1 in " + spawnchance + "\u00A7r" + " chance of spawning per chunk"));
 					tooltip.add(new TextComponent("Max vein size of " + "\u00A7d" + veinsize));
@@ -91,7 +91,7 @@ public class TooltipBlockItem extends BlockItem {
 				if(OADConfig.spawn_black_opal_overworld.get() == true) {
 					tooltip.add(new TextComponent("\u00A7a" + "Generating in the Overworld"));
 					tooltip.add(new TextComponent("\u00A75" + "1 in " + OADConfig.black_opal_times_rarer.get() + "\u00A7r" + " chance of spawning per chunk"));
-					tooltip.add(new TextComponent("Max vein size of " + "\u00A75" + OADConfig.black_opal_max_vein_size.get()));
+					tooltip.add(new TextComponent("Max vein size of " + "\u00A75" + OADConfig.black_opal_vein_size.get()));
 					tooltip.add(new TextComponent("Spawns below " + "\u00A75" + "y:" + OADConfig.black_opal_max_spawn_height_overworld.get()));
 				} else {
 					tooltip.add(new TextComponent("\u00A7c" + "DISABLED"));
@@ -101,7 +101,7 @@ public class TooltipBlockItem extends BlockItem {
 			case "NETHER_BLACK_OPAL_ORE":
 				if(OADConfig.spawn_black_opal_nether.get() == true) {
 					int spawnchance = Math.max(1, (int) (OADConfig.black_opal_times_rarer.get() / (OADConfig.nether_chance_multiplier.get())));
-					int veinsize =  (int) (OADConfig.black_opal_max_vein_size.get() * OADConfig.nether_vein_multiplier.get());
+					int veinsize =  (int) (OADConfig.black_opal_vein_size.get() * OADConfig.nether_vein_multiplier.get());
 					tooltip.add(new TextComponent("\u00A7a" + "Generating in the Nether"));
 					tooltip.add(new TextComponent("\u00A75" + "1 in " + spawnchance + "\u00A7r" + " chance of spawning per chunk"));
 					tooltip.add(new TextComponent("Max vein size of " + "\u00A75" + veinsize));
@@ -116,7 +116,7 @@ public class TooltipBlockItem extends BlockItem {
 				
 				if(OADConfig.spawn_black_opal_end.get() == true) {
 					int spawnchance = Math.max(1, (int) (OADConfig.black_opal_times_rarer.get() / (OADConfig.end_chance_multiplier.get())));
-					int veinsize =  (int) (OADConfig.black_opal_max_vein_size.get() * OADConfig.end_vein_multiplier.get());
+					int veinsize =  (int) (OADConfig.black_opal_vein_size.get() * OADConfig.end_vein_multiplier.get());
 					tooltip.add(new TextComponent("\u00A7a" + "Generating in the End"));
 					tooltip.add(new TextComponent("\u00A75" + "1 in " + spawnchance + "\u00A7r" + " chance of spawning per chunk"));
 					tooltip.add(new TextComponent("Max vein size of " + "\u00A75" + veinsize));

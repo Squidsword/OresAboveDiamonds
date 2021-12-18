@@ -273,8 +273,8 @@ public class PacketSyncConfig {
 				if(OADConfig.amethyst_times_rarer.get() != message.amethyst_times_rarer) {OADConfig.amethyst_times_rarer.set(message.amethyst_times_rarer); counter++;}
 				if(OADConfig.black_opal_times_rarer.get() != message.black_opal_times_rarer) {OADConfig.black_opal_times_rarer.set(message.black_opal_times_rarer); counter++;}
 			
-				if(OADConfig.amethyst_max_vein_size.get() != message.amethyst_max_vein_size) {OADConfig.amethyst_max_vein_size.set(message.amethyst_max_vein_size); counter++;}
-				if(OADConfig.black_opal_max_vein_size.get() != message.black_opal_max_vein_size) {OADConfig.black_opal_max_vein_size.set(message.black_opal_max_vein_size); counter++;}
+				if(OADConfig.amethyst_vein_size.get() != message.amethyst_max_vein_size) {OADConfig.amethyst_vein_size.set(message.amethyst_max_vein_size); counter++;}
+				if(OADConfig.black_opal_vein_size.get() != message.black_opal_max_vein_size) {OADConfig.black_opal_vein_size.set(message.black_opal_max_vein_size); counter++;}
 			
 				if(OADConfig.amethyst_max_spawn_height_overworld.get() != message.amethyst_max_spawn_height_overworld) {OADConfig.amethyst_max_spawn_height_overworld.set(message.amethyst_max_spawn_height_overworld); counter++;}
 				if(OADConfig.black_opal_max_spawn_height_overworld.get() != message.black_opal_max_spawn_height_overworld) {OADConfig.black_opal_max_spawn_height_overworld.set(message.black_opal_max_spawn_height_overworld); counter++;}
