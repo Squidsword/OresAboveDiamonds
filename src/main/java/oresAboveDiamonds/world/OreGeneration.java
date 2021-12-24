@@ -50,12 +50,11 @@ public class OreGeneration {
 	public static PlacedFeature NETHER_BLACK_OPAL_PLACED;
 	public static PlacedFeature END_AMETHYST_PLACED;
 	public static PlacedFeature END_BLACK_OPAL_PLACED;
-	/*
+
 	public static PlacedFeature AMETHYST_PLACED_FRACTION;
 	public static PlacedFeature BLACK_OPAL_PLACED_FRACTION;
 	public static PlacedFeature AMETHYST_BURIED_PLACED_FRACTION;
 	public static PlacedFeature BLACK_OPAL_BURIED_PLACED_FRACTION;
-	*/
 	
     public static ImmutableList<OreConfiguration.TargetBlockState> AMETHYST_TARGET_BLOCKS;
     public static ImmutableList<OreConfiguration.TargetBlockState> NETHER_AMETHYST_TARGET_BLOCKS;
@@ -71,7 +70,7 @@ public class OreGeneration {
 	public static PlacedFeature buildFeature(ConfiguredFeature<?, ?> configured, int veinCount, double timesRarer, HeightRangePlacement placement) {
 		// Minecraft does it this way for some reason
 		if (veinCount < 1 || (int) Math.round(veinCount / timesRarer) <= 0) {
-			int chunksPerRarity = veinCount < 1 ? (int) timesRarer * 9 : (int) Math.max(1, Math.round(timesRarer / veinCount));
+			int chunksPerRarity = veinCount < 1 ? (int) timesRarer : (int) Math.max(1, Math.round(timesRarer / veinCount));
 			return configured.placed(rareOrePlacement(chunksPerRarity, placement));
 		} else {
 			return configured.placed(commonOrePlacement((int) Math.round(veinCount / timesRarer), placement));
@@ -84,19 +83,6 @@ public class OreGeneration {
 	public static HeightRangePlacement buildPlacement(int minHeight, int maxHeight) {
 		return HeightRangePlacement.uniform(VerticalAnchor.absolute(minHeight), VerticalAnchor.absolute(maxHeight));
 	}
-
-	/*
-	public static PlacedFeature buildOreRemainder(ConfiguredFeature<?, ?> configured, int veinType, int maxHeight, double timesRarer) {
-		double leftOver = ((double) veinType / (double) timesRarer) - (int) (veinType / timesRarer);
-		if (leftOver <= 0.02) {
-			return configured.placed(commonOrePlacement(0, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(maxHeight))));
-		} else {
-			int reciprocal = (int) Math.round(1.0 / leftOver);
-	        return configured.placed(rareOrePlacement(reciprocal, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(maxHeight))));
-		}
-
-	}
-	*/
 	
 	public static void registerFeatures() {
 		
@@ -145,22 +131,38 @@ public class OreGeneration {
 			
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_amethyst"), END_AMETHYST);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_black_opal"), END_BLACK_OPAL);
+
+		// Uses fractions to try and better imitate vanilla's ore spawning
+		HeightRangePlacement aPlacement = buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get());
+		if (OADConfig.amethyst_times_rarer.get() == 3) {
+			AMETHYST_PLACED = AMETHYST.placed(commonOrePlacement(2, aPlacement));
+			AMETHYST_PLACED_FRACTION = AMETHYST.placed(rareOrePlacement(3, aPlacement));
+			AMETHYST_BURIED_PLACED = AMETHYST_BURIED.placed(commonOrePlacement(1, aPlacement));
+			AMETHYST_BURIED_PLACED_FRACTION = AMETHYST_BURIED.placed(rareOrePlacement(3, aPlacement));
+		} else {
+			AMETHYST_PLACED = buildFeature(AMETHYST, 7, OADConfig.amethyst_times_rarer.get(), aPlacement);
+			AMETHYST_BURIED_PLACED = buildFeature(AMETHYST_BURIED, 4, OADConfig.amethyst_times_rarer.get(), aPlacement);
+			// commonOrePlacement(0, ...) means dont spawn
+			AMETHYST_PLACED_FRACTION = AMETHYST.placed(commonOrePlacement(0, aPlacement));
+			AMETHYST_BURIED_PLACED_FRACTION = AMETHYST_BURIED.placed(commonOrePlacement(0, aPlacement));
+		}
 		
-		AMETHYST_PLACED = buildFeature(AMETHYST, 7, OADConfig.amethyst_times_rarer.get(), buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get()));
-	    BLACK_OPAL_PLACED = buildFeature(BLACK_OPAL, 7, OADConfig.black_opal_times_rarer.get(), buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get()));
+		HeightRangePlacement bPlacement = buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get());
+		if (OADConfig.black_opal_times_rarer.get() == 9) {
+			BLACK_OPAL_PLACED = BLACK_OPAL.placed(rareOrePlacement(2, bPlacement));
+			BLACK_OPAL_PLACED_FRACTION =  BLACK_OPAL.placed(rareOrePlacement(3, bPlacement));
+			BLACK_OPAL_BURIED_PLACED = BLACK_OPAL_BURIED.placed(rareOrePlacement(3, bPlacement));
+			BLACK_OPAL_BURIED_PLACED_FRACTION = BLACK_OPAL_BURIED.placed(rareOrePlacement(9, bPlacement));
+		} else {
+			BLACK_OPAL_PLACED = buildFeature(BLACK_OPAL, 7, OADConfig.black_opal_times_rarer.get(), bPlacement);
+		    BLACK_OPAL_BURIED_PLACED = buildFeature(BLACK_OPAL_BURIED, 4, OADConfig.amethyst_times_rarer.get(), bPlacement);
+		    // dont spawn
+		    BLACK_OPAL_PLACED_FRACTION = BLACK_OPAL.placed(commonOrePlacement(0, bPlacement));
+		    BLACK_OPAL_BURIED_PLACED_FRACTION =  BLACK_OPAL_BURIED.placed(commonOrePlacement(0, bPlacement));
+		}
 	    
-	    AMETHYST_LARGE_PLACED = buildFeature(AMETHYST_LARGE, 0, OADConfig.amethyst_times_rarer.get(), buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get()));
-	    BLACK_OPAL_LARGE_PLACED = buildFeature(BLACK_OPAL_LARGE, 0, OADConfig.black_opal_times_rarer.get(), buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get()));
-	    
-	    AMETHYST_BURIED_PLACED = buildFeature(AMETHYST_BURIED, 4, OADConfig.amethyst_times_rarer.get(), buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get()));
-	    BLACK_OPAL_BURIED_PLACED = buildFeature(BLACK_OPAL_BURIED, 4, OADConfig.amethyst_times_rarer.get(), buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get()));
-	    /*
-	    AMETHYST_PLACED_FRACTION = buildOreRemainder(AMETHYST, 7, OADConfig.amethyst_max_spawn_height_overworld.get(), OADConfig.amethyst_times_rarer.get());
-	    BLACK_OPAL_PLACED_FRACTION = buildOreRemainder(BLACK_OPAL, 7, OADConfig.black_opal_max_spawn_height_overworld.get(), OADConfig.black_opal_times_rarer.get());
-	    
-	    AMETHYST_BURIED_PLACED_FRACTION = buildOreRemainder(AMETHYST_BURIED, 4, OADConfig.amethyst_max_spawn_height_overworld.get(), OADConfig.amethyst_times_rarer.get());
-	    BLACK_OPAL_BURIED_PLACED_FRACTION = buildOreRemainder(BLACK_OPAL_BURIED, 4, OADConfig.black_opal_max_spawn_height_overworld.get(), OADConfig.black_opal_times_rarer.get());
-	    */
+	    AMETHYST_LARGE_PLACED = buildFeature(AMETHYST_LARGE, 0, OADConfig.amethyst_times_rarer.get() * 9, buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get()));
+	    BLACK_OPAL_LARGE_PLACED = buildFeature(BLACK_OPAL_LARGE, 0, OADConfig.black_opal_times_rarer.get() * 9, buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get()));
 	    
 		double netherAmethystTimesRarer = OADConfig.amethyst_times_rarer.get() / OADConfig.nether_chance_multiplier.get();
 		double netherBlackOpalTimesRarer = OADConfig.black_opal_times_rarer.get() / OADConfig.nether_chance_multiplier.get();
@@ -183,14 +185,12 @@ public class OreGeneration {
 	    Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_buried"), AMETHYST_BURIED_PLACED);
 	    Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_buried"), BLACK_OPAL_BURIED_PLACED);
 	    
-	    /*
 	    Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_fraction"), AMETHYST_PLACED_FRACTION);
 	    Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_fraction"), BLACK_OPAL_PLACED_FRACTION);
-	    
+
 	    Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_buried_fraction"), AMETHYST_BURIED_PLACED_FRACTION);
 	    Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_buried_fraction"), BLACK_OPAL_BURIED_PLACED_FRACTION);
-	    */
-	    
+
 	    Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_amethyst"), NETHER_AMETHYST_PLACED);
 	    Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_black_opal"), NETHER_BLACK_OPAL_PLACED);
 	    
