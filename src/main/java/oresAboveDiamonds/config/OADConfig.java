@@ -156,7 +156,7 @@ public class OADConfig {
 		
 		amethyst_vein_size = builder
 				.comment("Average vein size for an Amethyst Ore vein. For reference, diamonds have a vein size of 8. Default = 7")
-				.defineInRange("amethyst_max_vein_size", 7, 0, 64);
+				.defineInRange("amethyst_vein_size", 7, 0, 64);
 		
 		black_opal_vein_size = builder
 				.comment("Average vein size for an Black Opal Ore vein. Default = 6")
