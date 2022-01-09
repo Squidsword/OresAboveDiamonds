@@ -68,8 +68,8 @@ public class OreGeneration {
     // Only used for non-default config options
     public static PlacedFeature buildFeature(ConfiguredFeature<?, ?> configured, int veinCount, double timesRarer, HeightRangePlacement placement) {
         if (veinCount < 1 || (int) Math.round(veinCount / timesRarer) <= 0) {
-            int chunksPerRarity = veinCount < 1 ? (int) timesRarer : (int) Math.max(1, Math.round(timesRarer / veinCount));
-            return configured.placed(rareOrePlacement(chunksPerRarity, placement));
+            int chunksPerOre = veinCount < 1 ? (int) timesRarer : (int) Math.max(1, Math.round(timesRarer / veinCount));
+            return configured.placed(rareOrePlacement(chunksPerOre, placement));
         } else {
             return configured.placed(commonOrePlacement((int) Math.round(veinCount / timesRarer), placement));
         }
@@ -148,12 +148,12 @@ public class OreGeneration {
         HeightRangePlacement bPlacement = buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get());
         if (OADConfig.black_opal_times_rarer.get() == 9) {
             BLACK_OPAL_SMALL_PLACED = BLACK_OPAL_SMALL.placed(rareOrePlacement(2, bPlacement));
-            BLACK_OPAL_SMALL_PLACED_FRACTION =  BLACK_OPAL_SMALL.placed(rareOrePlacement(3, bPlacement));
+            BLACK_OPAL_SMALL_PLACED_FRACTION =  BLACK_OPAL_SMALL.placed(rareOrePlacement(4, bPlacement));
             BLACK_OPAL_BURIED_PLACED = BLACK_OPAL_BURIED.placed(rareOrePlacement(3, bPlacement));
             BLACK_OPAL_BURIED_PLACED_FRACTION = BLACK_OPAL_BURIED.placed(rareOrePlacement(9, bPlacement));
         } else {
             BLACK_OPAL_SMALL_PLACED = buildFeature(BLACK_OPAL_SMALL, 7, OADConfig.black_opal_times_rarer.get(), bPlacement);
-            BLACK_OPAL_BURIED_PLACED = buildFeature(BLACK_OPAL_BURIED, 4, OADConfig.amethyst_times_rarer.get(), bPlacement);
+            BLACK_OPAL_BURIED_PLACED = buildFeature(BLACK_OPAL_BURIED, 4, OADConfig.black_opal_times_rarer.get(), bPlacement);
             // dont spawn
             BLACK_OPAL_SMALL_PLACED_FRACTION = BLACK_OPAL_SMALL.placed(commonOrePlacement(0, bPlacement));
             BLACK_OPAL_BURIED_PLACED_FRACTION =  BLACK_OPAL_BURIED.placed(commonOrePlacement(0, bPlacement));
@@ -162,14 +162,14 @@ public class OreGeneration {
         AMETHYST_LARGE_PLACED = buildFeature(AMETHYST_LARGE, 0, OADConfig.amethyst_times_rarer.get() * 9, buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get()));
         BLACK_OPAL_LARGE_PLACED = buildFeature(BLACK_OPAL_LARGE, 0, OADConfig.black_opal_times_rarer.get() * 9, buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get()));
 
-        double netherAmethystTimesRarer = OADConfig.amethyst_times_rarer.get() / OADConfig.nether_chance_multiplier.get();
-        double netherBlackOpalTimesRarer = OADConfig.black_opal_times_rarer.get() / OADConfig.nether_chance_multiplier.get();
+        double netherAmethystTimesRarer = OADConfig.amethyst_times_rarer.get() * OADConfig.nether_chance_multiplier.get();
+        double netherBlackOpalTimesRarer = OADConfig.black_opal_times_rarer.get() * OADConfig.nether_chance_multiplier.get();
 
         NETHER_AMETHYST_PLACED = buildFeature(NETHER_AMETHYST, 9, netherAmethystTimesRarer, buildPlacement(0, OADConfig.amethyst_max_spawn_height_nether.get()));
         NETHER_BLACK_OPAL_PLACED = buildFeature(NETHER_BLACK_OPAL, 9, netherBlackOpalTimesRarer, buildPlacement(0, OADConfig.black_opal_max_spawn_height_nether.get()));
 
-        double endAmethystTimesRarer = OADConfig.amethyst_times_rarer.get() / OADConfig.nether_chance_multiplier.get();
-        double endBlackOpalTimesRarer = OADConfig.black_opal_times_rarer.get() / OADConfig.nether_chance_multiplier.get();
+        double endAmethystTimesRarer = OADConfig.amethyst_times_rarer.get() * OADConfig.end_chance_multiplier.get();
+        double endBlackOpalTimesRarer = OADConfig.black_opal_times_rarer.get() * OADConfig.end_chance_multiplier.get();
 
         END_AMETHYST_PLACED = buildFeature(END_AMETHYST, 3, endAmethystTimesRarer, buildPlacement(0, OADConfig.amethyst_max_spawn_height_end.get()));
         END_BLACK_OPAL_PLACED = buildFeature(END_BLACK_OPAL, 3, endBlackOpalTimesRarer, buildPlacement(0, OADConfig.black_opal_max_spawn_height_end.get()));

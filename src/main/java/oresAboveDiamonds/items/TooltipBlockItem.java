@@ -24,8 +24,14 @@ public class TooltipBlockItem extends BlockItem {
 
 	public void addDescription(List<Component> tooltip, double chance, double vein, int height, String world, String color, double disappearChance) {
 		tooltip.add(new TextComponent("\u00A7a" + "Generating in the " + world));
-		tooltip.add(new TextComponent(color + "1 in " + chance + "\u00A7r" + " chance of spawning per chunk"));
-		tooltip.add(new TextComponent("Average vein size of " + color + vein));
+		if (world.equalsIgnoreCase("Nether")) {
+			tooltip.add(new TextComponent(color + 2*chance + "x" + "\u00A7r" + " rarer than nether gold ore"));
+		} else if (world.equalsIgnoreCase("End")) {
+			tooltip.add(new TextComponent(color + chance + "x" + "\u00A7r" + " less dense than overworld diamonds"));
+		} else {
+			tooltip.add(new TextComponent(color + chance + "x" + "\u00A7r" + " rarer than diamonds"));
+		}
+		tooltip.add(new TextComponent("Max vein size of " + color + vein));
 		tooltip.add(new TextComponent("Spawns below " + color + "y:" + height));
 		tooltip.add(new TextComponent(color + Math.round(disappearChance*100) + "%" + "\u00A7r" + " chance of disappearing if exposed to air"));
 	}

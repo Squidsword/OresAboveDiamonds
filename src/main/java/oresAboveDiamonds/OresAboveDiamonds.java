@@ -19,15 +19,13 @@ import oresAboveDiamonds.world.OreGeneration;
 
 
 @Mod(OresAboveDiamonds.MODID)
-public class OresAboveDiamonds 
-{
+public class OresAboveDiamonds {
 	public static final Logger LOGGER = LogManager.getLogger("oresabovediamonds");
 	public static final String MODID = "oresabovediamonds";
 	
 	public static OresAboveDiamonds instance;
 	
-	public OresAboveDiamonds() 
-	{
+	public OresAboveDiamonds() {
 		instance = this;
 		
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -42,14 +40,13 @@ public class OresAboveDiamonds
 		
 		
 		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.18.1.toml"));
+		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.18.1_V2.toml"));
 		
 		ModItems.ITEMS.register(modEventBus);
 		ModBlocks.BLOCKS.register(modEventBus);
 	}
 	
-	public void setup(final FMLCommonSetupEvent event)
-	{
+	public void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			OreGeneration.registerFeatures();
 		});

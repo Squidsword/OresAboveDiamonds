@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '8.0.0b'
+version = '8.0.1'
 group = 'mod.squidsword.oresabovediamonds' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'oresabovediamonds'
 
