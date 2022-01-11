@@ -90,7 +90,7 @@ public class OADConfig {
 	
 	public static void init(ForgeConfigSpec.Builder builder) {
 		
-		builder.comment("Note that almost all config changes require a server restart and/or a full minecraft restart. Dimensional Ore Configuration").push("dimensional_ore");
+		builder.comment("Note that almost all config changes require a server restart and/or a full minecraft restart. Dimension Configuration").push("dimensional_ore");
 		
 		spawn_amethyst_overworld = builder
 				.comment("Spawn amethysts in the overworld? Default = true")
@@ -120,49 +120,47 @@ public class OADConfig {
 				.comment("The average chance to delete an overworld ore that is exposed to air. High values discourage cave mining and encourage strip mining. Default value 0.7F is similar to vanilla's diamonds.")
 				.defineInRange("overworld_discard_chance_on_air_exposure", 0.7d, 0.0, 1.0);
 		nether_discard_chance_on_air_exposure = builder
-				.comment("The average chance to delete a nether ore that is exposed to air. Default value = 0.8")
-				.defineInRange("nether_discard_chance_on_air_exposure", 0.8d, 0.0, 1.0);
+				.comment("The average chance to delete a nether ore that is exposed to air. Default value = 0.95")
+				.defineInRange("nether_discard_chance_on_air_exposure", 0.95d, 0.0, 1.0);
 		end_discard_chance_on_air_exposure = builder
-				.comment("The average chance to delete an end ore that is exposed to air. Default value = 0.9")
-				.defineInRange("end_discard_chance_on_air_exposure", 0.9d, 0.0, 1.0);
+				.comment("The average chance to delete an end ore that is exposed to air. Default value = 0.95")
+				.defineInRange("end_discard_chance_on_air_exposure", 0.95d, 0.0, 1.0);
 		
 		nether_chance_multiplier = builder
-				.comment("Increases the chance that an ore above diamonds will spawn in the nether. Default = 1.0.")
+				.comment("Increases the chance that an ore above diamonds will spawn in the nether. Default = 1.0 which is tailored to be similar in density to the overworld")
 				.defineInRange("nether_chance_multiplier", 1.0d, 0.01, 100.0d);
 		
 		end_chance_multiplier = builder
-				.comment("Increases the chance that an ore above diamonds will spawn in the end. Default = 1.0")
+				.comment("Increases the chance that an ore above diamonds will spawn in the end. Default = 1.0 which is tailored to be similar in density to the overworld")
 				.defineInRange("end_chance_multiplier", 1.0d, 0.01, 100.0d);
 		
 		nether_vein_multiplier = builder
-				.comment("Multiplies the max vein size of nether ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.0")
-				.defineInRange("nether_vein_multiplier", 1.0d, 0, 64.0d);
+				.comment("Multiplies the max vein size of nether ores. Rounds to the nearest integer. Default = 0.75")
+				.defineInRange("nether_vein_multiplier", 0.75d, 0, 64.0d);
 		
 		end_vein_multiplier = builder
-				.comment("Multiplies the max vein size of end ores. Rounds to the nearest integer. Final max vein size cannot exceed 64 for stability reasons. Default = 1.0")
-				.defineInRange("end_vein_multiplier", 1.0d, 0, 64.0d);
+				.comment("Multiplies the max vein size of end ores. Rounds to the nearest integer. Default = 1.25")
+				.defineInRange("end_vein_multiplier", 1.25d, 0, 64.0d);
 		
 		builder.pop();
 		
 		builder.comment("Rarity Configuration").push("ore_rarity");
 		
 		amethyst_times_rarer = builder
-				.comment("Chance for an Amethyst Ore vein to spawn in a chunk. 1 = As common as diamonds, 2 = Half as common as diamonds etc. Default = 3")
+				.comment("Approximately how many times rarer the amethyst should be than diamonds. All dimensions uses these values. 1 = As common as diamonds, 2 = Half as common as diamonds etc. Default = 3")
 				.defineInRange("amethyst_chance", 3, 1, Integer.MAX_VALUE);
 		
 		black_opal_times_rarer = builder
-				.comment("Chance for a Black Opal Ore vein to spawn in a chunk. Default = 9")
+				.comment("Approximately how many times rarer the black opal should be than diamonds. All dimensions uses these values. Default = 9")
 				.defineInRange("black_opal_chance", 9, 1, Integer.MAX_VALUE);
 		
 		amethyst_vein_size = builder
-				.comment("Average vein size for an Amethyst Ore vein. For reference, diamonds have a vein size of 8. Default = 7")
-				.defineInRange("amethyst_max_vein_size", 7, 0, 64);
+				.comment("Max vein size for an Amethyst Ore vein. WARNING: Reducing vein sizes by 10%+ for some reason reduces the total ores by 35%+. For reference, diamonds have a vein size of 8. Default = 8")
+				.defineInRange("amethyst_vein_size", 8, 0, 64);
 		
 		black_opal_vein_size = builder
-				.comment("Average vein size for an Black Opal Ore vein. Default = 6")
-				.defineInRange("black_opal_vein_size", 6, 0, 64);
-		
-		
+				.comment("Max vein size for an Black Opal Ore vein. WARNING: Reducing vein sizes by 10%+ for some reason reduces the total ores by 35%+.  Default = 8")
+				.defineInRange("black_opal_vein_size", 8, 0, 64);
 		
 		amethyst_max_spawn_height_overworld = builder
 				.comment("Maximum spawn height size for an Amethyst ore vein. Default = 8")
@@ -237,7 +235,7 @@ public class OADConfig {
 		
 		builder.pop();
 		
-		builder.comment("Armor Settings. These values are delicate and changing them may significantly affect the strength of the armor.").push("armor");
+		builder.comment("Armor Settings. These values are delicate and changing them may significantly affect the strength of the armor. Changing these in a server will work, but it will not display the changes to the players without syncing.").push("armor");
 		
 		amethyst_armor_toughness = builder
 				.comment("Toughness for the Amethyst Armor Set. Toughness reduces the armor penetration of high damaging attacks. Default = 3")
