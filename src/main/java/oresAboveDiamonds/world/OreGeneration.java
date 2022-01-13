@@ -143,6 +143,63 @@ public class OreGeneration {
             // commonOrePlacement(0, ...) means dont spawn
             AMETHYST_SMALL_PLACED_FRACTION = AMETHYST_SMALL.placed(commonOrePlacement(0, aPlacement));
             AMETHYST_BURIED_PLACED_FRACTION = AMETHYST_BURIED.placed(commonOrePlacement(0, aPlacement));
+
+            //the following code was designed to solve the problem (1/x) + (1/y) = c, given some c
+            //where x and y are integers and c is a continuos value between 0 and 1
+            //it also calculates the error
+            double c = 0.98173462; //SET THIS VARIABLE TO BE WHATEVER
+            int x = 0;
+            int y = 0;
+            double error = Double.MAX_VALUE;
+
+            double s = (double)2/c;
+            if (Math.floor(s) == Math.ceil(s)) {
+                //optimization
+                //note that Math.floor(double value) == Math.ceil(double value) implies that the value is a whole number
+                x = (int) s;
+                y = (int) s;
+                error = 0;
+            } else {
+                s = (double) 1 / c;
+                int min = ((Math.floor(s) == Math.ceil(s)) ? ((int) (Math.floor(s) + 1)) : ((int) (Math.ceil(s))));
+                //min is the smallest integer greater than the asymptote
+
+                double r = -(double) min / (1 - (c * min));
+                //r is the the other coordinate pair value at min
+                if (Math.floor(r) == Math.ceil(r)) {
+                    //optimization
+                    x = min;
+                    y = (int) Math.ceil(r);
+                    error = 0;
+                } else {
+                    int max = (int) Math.floor(r);
+                    //max is the greatest integer value one member of the x,y pair can take...
+                    //without exceeding the min of the other member
+
+                    //this loop iterates throught the set of possible integer values
+                    //while there are methods that result in lower asymptotic runtimes
+                    //they require so many operations that the runtime should be comparable
+                    double exact;
+                    for (int i = min; i <= max; i++) {
+                        exact = -(double) i / (1 - (c * i));
+                        if (Math.floor(exact) == Math.ceil(exact)) {
+                            //solution
+                            x = i;
+                            y = (int) Math.ceil(exact);
+                            error = 0;
+                            break;
+                        } else {
+                            double local_error = Math.abs(c - ((double) 1 / i) - ((double) 1 / Math.round(exact)));
+                            if (local_error < error) {
+                                error = local_error;
+                                x = i;
+                                y = (int) Math.round(exact);
+                            }
+                        }
+                    }
+                }
+            }
+            //At this point in the code x,y, and error are all set!!!!!
         }
 
         HeightRangePlacement bPlacement = buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get());
@@ -157,6 +214,63 @@ public class OreGeneration {
             // dont spawn
             BLACK_OPAL_SMALL_PLACED_FRACTION = BLACK_OPAL_SMALL.placed(commonOrePlacement(0, bPlacement));
             BLACK_OPAL_BURIED_PLACED_FRACTION =  BLACK_OPAL_BURIED.placed(commonOrePlacement(0, bPlacement));
+
+            //the following code was designed to solve the problem (1/x) + (1/y) = c, given some c
+            //where x and y are integers and c is a continuos value between 0 and 1
+            //it also calculates the error
+            double c = 0.98173462; //SET THIS VARIABLE TO BE WHATEVER
+            int x = 0;
+            int y = 0;
+            double error = Double.MAX_VALUE;
+
+            double s = (double)2/c;
+            if (Math.floor(s) == Math.ceil(s)) {
+                //optimization
+                //note that Math.floor(double value) == Math.ceil(double value) implies that the value is a whole number
+                x = (int) s;
+                y = (int) s;
+                error = 0;
+            } else {
+                s = (double) 1 / c;
+                int min = ((Math.floor(s) == Math.ceil(s)) ? ((int) (Math.floor(s) + 1)) : ((int) (Math.ceil(s))));
+                //min is the smallest integer greater than the asymptote
+
+                double r = -(double) min / (1 - (c * min));
+                //r is the the other coordinate pair value at min
+                if (Math.floor(r) == Math.ceil(r)) {
+                    //optimization
+                    x = min;
+                    y = (int) Math.ceil(r);
+                    error = 0;
+                } else {
+                    int max = (int) Math.floor(r);
+                    //max is the greatest integer value one member of the x,y pair can take...
+                    //without exceeding the min of the other member
+
+                    //this loop iterates throught the set of possible integer values
+                    //while there are methods that result in lower asymptotic runtimes
+                    //they require so many operations that the runtime should be comparable
+                    double exact;
+                    for (int i = min; i <= max; i++) {
+                        exact = -(double) i / (1 - (c * i));
+                        if (Math.floor(exact) == Math.ceil(exact)) {
+                            //solution
+                            x = i;
+                            y = (int) Math.ceil(exact);
+                            error = 0;
+                            break;
+                        } else {
+                            double local_error = Math.abs(c - ((double) 1 / i) - ((double) 1 / Math.round(exact)));
+                            if (local_error < error) {
+                                error = local_error;
+                                x = i;
+                                y = (int) Math.round(exact);
+                            }
+                        }
+                    }
+                }
+            }
+            //At this point in the code x,y, and error are all set!!!!!
         }
 
         AMETHYST_LARGE_PLACED = buildFeature(AMETHYST_LARGE, 0, OADConfig.amethyst_times_rarer.get() * 9, buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get()));
