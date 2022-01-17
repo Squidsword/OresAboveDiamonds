@@ -155,11 +155,11 @@ public class OADConfig {
 				.defineInRange("black_opal_chance", 9, 1, Integer.MAX_VALUE);
 		
 		amethyst_vein_size = builder
-				.comment("Max vein size for an Amethyst Ore vein. WARNING: Reducing vein sizes by 10%+ for some reason reduces the total ores by 35%+. For reference, diamonds have a vein size of 8. Default = 8")
+				.comment("Max vein size for an Amethyst Ore vein. WARNING: Reducing vein sizes by 10%+ for some reason can reduce the total ores by 35%+. For reference, diamonds have a vein size of 8. Default = 8")
 				.defineInRange("amethyst_vein_size", 8, 0, 64);
 		
 		black_opal_vein_size = builder
-				.comment("Max vein size for an Black Opal Ore vein. WARNING: Reducing vein sizes by 10%+ for some reason reduces the total ores by 35%+.  Default = 8")
+				.comment("Max vein size for an Black Opal Ore vein. WARNING: Reducing vein sizes by 10%+ for some reason can reduce the total ores by 35%+.  Default = 8")
 				.defineInRange("black_opal_vein_size", 8, 0, 64);
 		
 		amethyst_max_spawn_height_overworld = builder

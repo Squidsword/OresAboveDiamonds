@@ -15,32 +15,54 @@ public class ForgeEventSubscriber {
  	public static void onBiomeLoading(BiomeLoadingEvent event) {
 		if (event.getCategory() == Biome.BiomeCategory.NETHER) {
 			if(OADConfig.spawn_amethyst_nether.get() == true) {
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.NETHER_AMETHYST_PLACED);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.NETHER_AMETHYST_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.NETHER_AMETHYST_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.NETHER_AMETHYST_PLACED[2]);
 			}
 			if(OADConfig.spawn_black_opal_nether.get() == true) {
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.NETHER_BLACK_OPAL_PLACED);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.NETHER_BLACK_OPAL_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.NETHER_BLACK_OPAL_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.NETHER_BLACK_OPAL_PLACED[2]);
+
 			}
 		} else if(event.getCategory() == Biome.BiomeCategory.THEEND) {
 			if(OADConfig.spawn_amethyst_end.get() == true) {
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.END_AMETHYST_PLACED);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.END_AMETHYST_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.END_AMETHYST_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.END_AMETHYST_PLACED[2]);
 			}
 			if(OADConfig.spawn_black_opal_end.get() == true) {
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.END_BLACK_OPAL_PLACED);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.END_BLACK_OPAL_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.END_BLACK_OPAL_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.END_BLACK_OPAL_PLACED[2]);
 			}
 		} else {
 			if(OADConfig.spawn_amethyst_overworld.get() == true) {
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_SMALL_PLACED);
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_SMALL_PLACED_FRACTION);
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_LARGE_PLACED);
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_BURIED_PLACED);
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_BURIED_PLACED_FRACTION);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_SMALL_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_SMALL_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_SMALL_PLACED[2]);
+				
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_LARGE_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_LARGE_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_LARGE_PLACED[2]);
+				
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_BURIED_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_BURIED_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.AMETHYST_BURIED_PLACED[2]);
+
 			}
 			if(OADConfig.spawn_black_opal_overworld.get() == true ) {
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_SMALL_PLACED);
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_SMALL_PLACED_FRACTION);
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_LARGE_PLACED);
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_BURIED_PLACED);
-				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_BURIED_PLACED_FRACTION);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_SMALL_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_SMALL_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_SMALL_PLACED[2]);
+					
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_LARGE_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_LARGE_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_LARGE_PLACED[2]);
+					
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_BURIED_PLACED[0]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_BURIED_PLACED[1]);
+				event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).add(() -> OreGeneration.BLACK_OPAL_BURIED_PLACED[2]);
 			}
 		}
 	}
