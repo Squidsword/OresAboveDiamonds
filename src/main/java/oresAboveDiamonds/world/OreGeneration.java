@@ -60,7 +60,6 @@ public class OreGeneration {
         return Feature.ORE.configured(new OreConfiguration(targets, (int) Math.round(veinSize), discardChance));
     }
     
-    // Only used for non-default config options
     public static PlacedFeature[] buildFeatures(ConfiguredFeature<?, ?> configured, int veinCount, double timesRarer, HeightRangePlacement placement) {
     	PlacedFeature[] fractionalFeatures = new PlacedFeature[3];
     	double veinsPerChunk = veinCount / timesRarer;
@@ -100,8 +99,6 @@ public class OreGeneration {
         
         AMETHYST_LARGE = buildConfigured(AMETHYST_TARGET_BLOCKS, (OADConfig.amethyst_vein_size.get() * 1.5), OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue());
         BLACK_OPAL_LARGE = buildConfigured(BLACK_OPAL_TARGET_BLOCKS, (OADConfig.black_opal_vein_size.get() * 1.5), OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue());
-
-
 
         int netherAmethystVeinSize = (int) Math.round(OADConfig.amethyst_vein_size.get() * OADConfig.nether_vein_multiplier.get());
         int netherBlackOpalVeinSize = (int) Math.round(OADConfig.black_opal_vein_size.get() * OADConfig.nether_vein_multiplier.get());
