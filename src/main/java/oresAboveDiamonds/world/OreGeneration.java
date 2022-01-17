@@ -95,11 +95,13 @@ public class OreGeneration {
         AMETHYST_SMALL = buildConfigured(AMETHYST_TARGET_BLOCKS, (OADConfig.amethyst_vein_size.get() / 2.0), OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 0.715F);
         BLACK_OPAL_SMALL = buildConfigured(BLACK_OPAL_TARGET_BLOCKS, (OADConfig.black_opal_vein_size.get() / 2.0), OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 0.715F);
 
+        AMETHYST_BURIED = buildConfigured(AMETHYST_TARGET_BLOCKS, OADConfig.amethyst_vein_size.get(), Math.min(1.0F, OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 1.43F));
+        BLACK_OPAL_BURIED = buildConfigured(BLACK_OPAL_TARGET_BLOCKS, OADConfig.black_opal_vein_size.get(), Math.min(1.0F, OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 1.43F));
+        
         AMETHYST_LARGE = buildConfigured(AMETHYST_TARGET_BLOCKS, (OADConfig.amethyst_vein_size.get() * 1.5), OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue());
         BLACK_OPAL_LARGE = buildConfigured(BLACK_OPAL_TARGET_BLOCKS, (OADConfig.black_opal_vein_size.get() * 1.5), OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue());
 
-        AMETHYST_BURIED = buildConfigured(AMETHYST_TARGET_BLOCKS, OADConfig.amethyst_vein_size.get(), Math.min(1.0F, OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 1.43F));
-        BLACK_OPAL_BURIED = buildConfigured(BLACK_OPAL_TARGET_BLOCKS, OADConfig.black_opal_vein_size.get(), Math.min(1.0F, OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 1.43F));
+
 
         int netherAmethystVeinSize = (int) Math.round(OADConfig.amethyst_vein_size.get() * OADConfig.nether_vein_multiplier.get());
         int netherBlackOpalVeinSize = (int) Math.round(OADConfig.black_opal_vein_size.get() * OADConfig.nether_vein_multiplier.get());
@@ -128,40 +130,16 @@ public class OreGeneration {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_amethyst"), END_AMETHYST);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_black_opal"), END_BLACK_OPAL);
 
-        // Uses fractions to try and better imitate vanilla's ore spawning
+        // The integers in the second paramter are based on vanilla's OrePlacements class.
+        // Large_Placed turns into 1 / 9 by using 1 as the integer and multiplying times rarer by 9.
         HeightRangePlacement aPlacement = buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get());
-        if (OADConfig.amethyst_times_rarer.get() == 3) {
-        	AMETHYST_SMALL_PLACED = new PlacedFeature[3];
-            AMETHYST_SMALL_PLACED[0] = AMETHYST_SMALL.placed(commonOrePlacement(2, aPlacement));
-            AMETHYST_SMALL_PLACED[1] = AMETHYST_SMALL.placed(rareOrePlacement(6, aPlacement));
-            AMETHYST_SMALL_PLACED[2] = AMETHYST_SMALL.placed(rareOrePlacement(6, aPlacement));
-            
-            AMETHYST_BURIED_PLACED = new PlacedFeature[3];
-            AMETHYST_BURIED_PLACED[0] = AMETHYST_BURIED.placed(commonOrePlacement(1, aPlacement));
-            AMETHYST_BURIED_PLACED[1] = AMETHYST_BURIED.placed(rareOrePlacement(6, aPlacement));
-            AMETHYST_BURIED_PLACED[2] = AMETHYST_BURIED.placed(rareOrePlacement(6, aPlacement));
-        } else {
-            AMETHYST_SMALL_PLACED = buildFeatures(AMETHYST_SMALL, 7, OADConfig.amethyst_times_rarer.get(), aPlacement);
-            AMETHYST_BURIED_PLACED = buildFeatures(AMETHYST_BURIED, 4, OADConfig.amethyst_times_rarer.get(), aPlacement);
-        }
-
-        HeightRangePlacement bPlacement = buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get());
-        if (OADConfig.black_opal_times_rarer.get() == 9) {
-        	BLACK_OPAL_SMALL_PLACED = new PlacedFeature[3];
-        	BLACK_OPAL_SMALL_PLACED[0] = BLACK_OPAL_SMALL.placed(commonOrePlacement(0, bPlacement));
-            BLACK_OPAL_SMALL_PLACED[1] = BLACK_OPAL_SMALL.placed(rareOrePlacement(2, bPlacement));
-            BLACK_OPAL_SMALL_PLACED[2] =  BLACK_OPAL_SMALL.placed(rareOrePlacement(4, bPlacement));
-
-            BLACK_OPAL_BURIED_PLACED = new PlacedFeature[3];
-            BLACK_OPAL_BURIED_PLACED[0] = BLACK_OPAL_BURIED.placed(commonOrePlacement(0, bPlacement));
-            BLACK_OPAL_BURIED_PLACED[1] = BLACK_OPAL_BURIED.placed(rareOrePlacement(3, bPlacement));
-            BLACK_OPAL_BURIED_PLACED[2] = BLACK_OPAL_BURIED.placed(rareOrePlacement(9, bPlacement));
-        } else {
-            BLACK_OPAL_SMALL_PLACED = buildFeatures(BLACK_OPAL_SMALL, 7, OADConfig.black_opal_times_rarer.get(), bPlacement);
-            BLACK_OPAL_BURIED_PLACED = buildFeatures(BLACK_OPAL_BURIED, 4, OADConfig.black_opal_times_rarer.get(), bPlacement);
-        }
-
+        AMETHYST_SMALL_PLACED = buildFeatures(AMETHYST_SMALL, 7, OADConfig.amethyst_times_rarer.get(), aPlacement);
+        AMETHYST_BURIED_PLACED = buildFeatures(AMETHYST_BURIED, 4, OADConfig.amethyst_times_rarer.get(), aPlacement);
         AMETHYST_LARGE_PLACED = buildFeatures(AMETHYST_LARGE, 1, OADConfig.amethyst_times_rarer.get() * 9, buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get()));
+        
+        HeightRangePlacement bPlacement = buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get());
+        BLACK_OPAL_SMALL_PLACED = buildFeatures(BLACK_OPAL_SMALL, 7, OADConfig.black_opal_times_rarer.get(), bPlacement);
+        BLACK_OPAL_BURIED_PLACED = buildFeatures(BLACK_OPAL_BURIED, 4, OADConfig.black_opal_times_rarer.get(), bPlacement);
         BLACK_OPAL_LARGE_PLACED = buildFeatures(BLACK_OPAL_LARGE, 1, OADConfig.black_opal_times_rarer.get() * 9, buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get()));
 
         double netherAmethystTimesRarer = OADConfig.amethyst_times_rarer.get() * OADConfig.nether_chance_multiplier.get();
@@ -177,42 +155,43 @@ public class OreGeneration {
         END_BLACK_OPAL_PLACED = buildFeatures(END_BLACK_OPAL, 3, endBlackOpalTimesRarer, buildPlacement(0, OADConfig.black_opal_max_spawn_height_end.get()));
 
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst"), AMETHYST_SMALL_PLACED[0]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal"), BLACK_OPAL_SMALL_PLACED[0]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_2"), AMETHYST_SMALL_PLACED[1]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_2"), BLACK_OPAL_SMALL_PLACED[1]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_3"), AMETHYST_SMALL_PLACED[2]);
+        
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal"), BLACK_OPAL_SMALL_PLACED[0]);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_2"), BLACK_OPAL_SMALL_PLACED[1]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_3"), BLACK_OPAL_SMALL_PLACED[2]);
 
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_large"), AMETHYST_LARGE_PLACED[0]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_large"), BLACK_OPAL_LARGE_PLACED[0]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_large_2"), AMETHYST_LARGE_PLACED[1]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_large_2"), BLACK_OPAL_LARGE_PLACED[1]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_large_3"), AMETHYST_LARGE_PLACED[2]);
+        
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_large"), BLACK_OPAL_LARGE_PLACED[0]);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_large_2"), BLACK_OPAL_LARGE_PLACED[1]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_large_3"), BLACK_OPAL_LARGE_PLACED[2]);
         
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_buried"), AMETHYST_BURIED_PLACED[0]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_buried"), BLACK_OPAL_BURIED_PLACED[0]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_buried_2"), AMETHYST_BURIED_PLACED[1]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_buried_2"), BLACK_OPAL_BURIED_PLACED[1]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_amethyst_buried_3"), AMETHYST_BURIED_PLACED[2]);
+        
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_buried"), BLACK_OPAL_BURIED_PLACED[0]);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_buried_2"), BLACK_OPAL_BURIED_PLACED[1]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_black_opal_buried_3"), BLACK_OPAL_BURIED_PLACED[2]);
 
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_amethyst"), NETHER_AMETHYST_PLACED[0]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_black_opal"), NETHER_BLACK_OPAL_PLACED[0]);
-
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_amethyst_2"), NETHER_AMETHYST_PLACED[1]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_black_opal_2"), NETHER_BLACK_OPAL_PLACED[1]);
-        
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_amethyst_3"), NETHER_AMETHYST_PLACED[2]);
+        
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_black_opal"), NETHER_BLACK_OPAL_PLACED[0]);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_black_opal_2"), NETHER_BLACK_OPAL_PLACED[1]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_nether_black_opal_3"), NETHER_BLACK_OPAL_PLACED[2]);
         
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_amethyst"), END_AMETHYST_PLACED[0]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_black_opal"), END_BLACK_OPAL_PLACED[0]);
-
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_amethyst_2"), END_AMETHYST_PLACED[1]);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_black_opal_2"), END_BLACK_OPAL_PLACED[1]);
-        
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_amethyst_3"), END_AMETHYST_PLACED[2]);
+        
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_black_opal"), END_BLACK_OPAL_PLACED[0]);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_black_opal_2"), END_BLACK_OPAL_PLACED[1]);
         Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(OresAboveDiamonds.MODID, "ore_end_black_opal_3"), END_BLACK_OPAL_PLACED[2]);
     }
 
@@ -228,6 +207,7 @@ public class OreGeneration {
         return orePlacement(RarityFilter.onAverageOnceEvery(p_195350_), p_195351_);
     }
     
+    // Thanks to my friend Ruston for this method
     private static int[] closestDenominators(double c) {
     	//the following code was designed to solve the problem (1/x) + (1/y) = c, given some c
         //where x and y are integers and c is a continuos value between 0 and 1
