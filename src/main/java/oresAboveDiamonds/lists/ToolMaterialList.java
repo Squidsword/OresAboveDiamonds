@@ -1,11 +1,7 @@
 package oresAboveDiamonds.lists;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -14,6 +10,9 @@ import net.minecraftforge.common.TierSortingRegistry;
 import oresAboveDiamonds.OresAboveDiamonds;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.init.ModItems;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 public enum ToolMaterialList implements Tier 
 {
@@ -57,11 +56,11 @@ public enum ToolMaterialList implements Tier
 	private int durability, harvestLevel, enchantability;
 	private Item repairMaterial;
 	
-	private Tag<Block> tag;
+	private TagKey<Block> tag;
 	
 	private boolean infinite_durability;
 	
-	private ToolMaterialList(int attackDamage, float efficiency, int durability, int harvestLevel, int enchantability, Item repairMaterial, Tag<Block> tag) 
+	private ToolMaterialList(int attackDamage, float efficiency, int durability, int harvestLevel, int enchantability, Item repairMaterial, TagKey<Block> tag)
 	{
 		this.attackDamageBonus = attackDamage;
 		this.efficiency = efficiency;
@@ -115,13 +114,12 @@ public enum ToolMaterialList implements Tier
 	}
 	
     @Nonnull
-    public Tag<Block> getTag()
+    public TagKey<Block> getTag()
     {
         return this.tag;
     }
     
 	public boolean isInfinite() {
-		// TODO Auto-generated method stub
 		return this.infinite_durability;
 	}
 

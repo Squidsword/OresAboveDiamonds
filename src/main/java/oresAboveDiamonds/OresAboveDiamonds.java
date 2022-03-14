@@ -1,5 +1,7 @@
 package oresAboveDiamonds;
 
+import oresAboveDiamonds.world.OADConfiguredFeature;
+import oresAboveDiamonds.world.OADPlacedFeature;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +17,6 @@ import oresAboveDiamonds.events.PlayerLoggedInEventHandler;
 import oresAboveDiamonds.init.ModBlocks;
 import oresAboveDiamonds.init.ModItems;
 import oresAboveDiamonds.network.OADPacketHandler;
-import oresAboveDiamonds.world.OreGeneration;
 
 
 @Mod(OresAboveDiamonds.MODID)
@@ -40,7 +41,7 @@ public class OresAboveDiamonds {
 		
 		
 		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.18.1_V2.toml"));
+		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.18.2.toml"));
 		
 		ModItems.ITEMS.register(modEventBus);
 		ModBlocks.BLOCKS.register(modEventBus);
@@ -48,7 +49,8 @@ public class OresAboveDiamonds {
 	
 	public void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			OreGeneration.registerFeatures();
+			OADConfiguredFeature.registerConfiguredFeatures();
+			OADPlacedFeature.registerPlacedFeatures();
 		});
 		
 	}

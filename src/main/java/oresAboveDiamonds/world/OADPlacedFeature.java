@@ -15,7 +15,7 @@ import static oresAboveDiamonds.world.OADConfiguredFeature.*;
 
 
 @EventBusSubscriber
-public class OreGeneration {
+public class OADPlacedFeature {
 
     public static Holder<PlacedFeature>[] AMETHYST_SMALL_PLACED;
     public static Holder<PlacedFeature>[] BLACK_OPAL_SMALL_PLACED;
@@ -47,7 +47,7 @@ public class OreGeneration {
         return HeightRangePlacement.uniform(VerticalAnchor.absolute(minHeight), VerticalAnchor.absolute(maxHeight));
     }
 
-    public static void registerFeatures() {
+    public static void registerPlacedFeatures() {
 
         // The integers in the second paramter are based on vanilla's OrePlacements class.
         // Large_Placed turns into 1 / 9 by using 1 as the integer and multiplying times rarer by 9.
