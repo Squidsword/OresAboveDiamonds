@@ -1,11 +1,11 @@
 package oresAboveDiamonds.blocks;
 
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
 
-public class BlackOpalOre extends OreBlock {
+public class BlackOpalOre extends DropExperienceBlock {
 
 	public BlackOpalOre() {
 		this(SoundType.STONE, 3f);
