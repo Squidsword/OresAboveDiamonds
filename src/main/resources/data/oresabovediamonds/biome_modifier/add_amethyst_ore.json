@@ -1,0 +1,5 @@
+{
+  "type": "oresabovediamonds:ores_above_diamonds_codec",
+  "biomes": "#minecraft:is_overworld",
+  "feature": "oresabovediamonds:amethyst_ore_placed"
+}
