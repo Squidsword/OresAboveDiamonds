@@ -1,0 +1,67 @@
+"item.oresabovediamonds.black_opal": "§5Siyah opal",
+"item.oresabovediamonds.amethyst": "§dAmetist",
+
+"block.oresabovediamonds.amethyst_ore": "§dAmetist madeni",
+"block.oresabovediamonds.black_opal_ore": "§5Siyah opal madeni",
+
+"block.oresabovediamonds.deepslate_amethyst_ore": "§dDerin kayrak ametist madeni",
+"block.oresabovediamonds.nether_amethyst_ore": "§dNether ametist madeni",
+"block.oresabovediamonds.end_amethyst_ore": "§dSon ametist madeni",
+
+"block.oresabovediamonds.deepslate_black_opal_ore": "§5Derin kayrak siyah opal madeni",
+"block.oresabovediamonds.nether_black_opal_ore": "§5Nether siyah opal madeni",
+"block.oresabovediamonds.end_black_opal_ore": "§5Son siyah opal madeni",
+
+"block.oresabovediamonds.amethyst_block": "§dKatı ametist bloğu",
+"block.oresabovediamonds.black_opal_block": "§5Siyah opal bloğu",
+
+"item.oresabovediamonds.amethyst_sword": "§dAmetist kılıç",
+"item.oresabovediamonds.amethyst_pickaxe": "§dAmetist kazma",
+"item.oresabovediamonds.amethyst_shovel": "§dAmetist kürek",
+"item.oresabovediamonds.amethyst_axe": "§dAmetist balta",
+"item.oresabovediamonds.amethyst_hoe": "§dAmetist çapa",
+
+"item.oresabovediamonds.black_opal_sword": "§5Siyah opal kılıç",
+"item.oresabovediamonds.black_opal_pickaxe": "§5Siyah opal kazma",
+"item.oresabovediamonds.black_opal_shovel": "§5Siyah opal kürek",
+"item.oresabovediamonds.black_opal_axe": "§5Siyah opal balta",
+"item.oresabovediamonds.black_opal_hoe": "§5Siyah opal çapa",
+
+"item.oresabovediamonds.netherite_opal_sword": "§5Netherit opal kılıç",
+"item.oresabovediamonds.netherite_opal_pickaxe": "§5Netherit opal kazma",
+"item.oresabovediamonds.netherite_opal_shovel": "§5Netherit opal kürek",
+"item.oresabovediamonds.netherite_opal_axe": "§5Netherit opal balta",
+"item.oresabovediamonds.netherite_opal_hoe": "§5Netherit opal çapa",
+
+"item.oresabovediamonds.amethyst_helmet": "§dAmetist kask",
+"item.oresabovediamonds.amethyst_chestplate": "§dAmetist göğüslük",
+"item.oresabovediamonds.amethyst_leggings": "§dAmetist pantalon",
+"item.oresabovediamonds.amethyst_boots": "§dAmetist ayakkabı",
+
+"item.oresabovediamonds.black_opal_helmet": "§5Siyah opal kask",
+"item.oresabovediamonds.black_opal_chestplate": "§5Siyah opal göğüslük",
+"item.oresabovediamonds.black_opal_leggings": "§5Siyah opal pantalon",
+"item.oresabovediamonds.black_opal_boots": "§5Siyah opal ayakkabı",
+
+"item.oresabovediamonds.netherite_opal_helmet": "§5Netherit opal kask",
+"item.oresabovediamonds.netherite_opal_chestplate": "§5Netherit opal göğüslük",
+"item.oresabovediamonds.netherite_opal_leggings": "§5Netherit opal pantalon",
+"item.oresabovediamonds.netherite_opal_boots": "§5Netherit opal ayakkabı",
+
+"material.oresabovediamonds.amethyst": "Ametist",
+"material.oresabovediamonds.black_opal": "Siyah opal",
+"material.oresabovediamonds.netherite_opal": "Netherit opal",
+
+"advancements.mine_amethyst": "Elmasın ötesinde bi' maden?",
+"advancements.mine_amethyst_text": "Bir ametist bul.",
+"advancements.mine_black_opal": "Bingo!",
+"advancements.mine_black_opal_text": "Bir siyah opal bul!",
+"advancements.craft_black_opal_block": "Gösteriş",
+"advancements.craft_black_opal_block_text": "Siyah opal bloğu üret. Kaybetmeyesin!",
+"advancements.obtain_all_netherite_opal_items": "Emeklilik",
+"advancements.obtain_all_netherite_opal_items_text": "Oyundaki bütün netherit opal'inden eşyaları ele geçir. Biraz da dinlen.",
+"advancements.obtain_netherite_opal_hoe": "Çok ciddi bi' adanmışlık",
+"advancements.obtain_netherite_opal_hoe_text": "Netherit opal'den bir çapa'ya sahip ol. Değer miydi?",
+
+
+"itemGroup.oresabovediamonds": "§dElmastan iyi madenler"
