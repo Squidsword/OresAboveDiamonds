@@ -11,13 +11,14 @@ import net.minecraftforge.registries.RegistryObject;
 import oresAboveDiamonds.OresAboveDiamonds;
 
 // Reference: Easy Steel by kwpugh
-public class OresAboveDiamondsBiomeCodecs {
+public class OADBiomeCodecs {
     public static DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS =
             DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, OresAboveDiamonds.MODID);
 
-    public static RegistryObject<Codec<OresAboveDiamondsBiomeModifier>> ORES_ABOVE_DIAMONDS_CODEC = BIOME_MODIFIER_SERIALIZERS.register("ores_above_diamonds_codec", () ->
+    public static RegistryObject<Codec<OADBiomeModifier>> OAD_CODEC = BIOME_MODIFIER_SERIALIZERS.register("oad_codec", () ->
             RecordCodecBuilder.create(builder -> builder.group(
-                    Biome.LIST_CODEC.fieldOf("biomes").forGetter(OresAboveDiamondsBiomeModifier::biomes),
-                    PlacedFeature.CODEC.fieldOf("feature").forGetter(OresAboveDiamondsBiomeModifier::feature)
-            ).apply(builder, OresAboveDiamondsBiomeModifier::new)));
+                    Biome.LIST_CODEC.fieldOf("biomes").forGetter(OADBiomeModifier::biomes),
+                    PlacedFeature.CODEC.fieldOf("feature").forGetter(OADBiomeModifier::feature)
+            ).apply(builder, OADBiomeModifier::new)));
+    
 }

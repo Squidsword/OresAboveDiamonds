@@ -1,5 +1,5 @@
 {
   "type": "oresabovediamonds:oad_codec",
-  "biomes": "#minecraft:is_overworld",
-  "feature": "oresabovediamonds:ore_end_amethyst"
+  "biomes": "#minecraft:is_end",
+  "feature": "oresabovediamonds:ore_end_amethyst_3"
 }

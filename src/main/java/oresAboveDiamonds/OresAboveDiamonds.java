@@ -1,10 +1,5 @@
 package oresAboveDiamonds;
 
-import oresAboveDiamonds.world.OADConfiguredFeature;
-import oresAboveDiamonds.world.OADPlacedFeature;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -17,42 +12,46 @@ import oresAboveDiamonds.events.PlayerLoggedInEventHandler;
 import oresAboveDiamonds.init.ModBlocks;
 import oresAboveDiamonds.init.ModItems;
 import oresAboveDiamonds.network.OADPacketHandler;
+import oresAboveDiamonds.world.OADBiomeCodecs;
+import oresAboveDiamonds.world.OADPlacedFeature;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 @Mod(OresAboveDiamonds.MODID)
 public class OresAboveDiamonds {
 	public static final Logger LOGGER = LogManager.getLogger("oresabovediamonds");
 	public static final String MODID = "oresabovediamonds";
-	
+
+
 	public static OresAboveDiamonds instance;
-	
+
 	public OresAboveDiamonds() {
 		instance = this;
-		
+
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-		
+
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-		//FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientRegistries);
-		
+
+		OADPacketHandler.registerMessages();
+		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.19.toml"));
+
+		ModItems.ITEMS.register(modEventBus);
+		ModBlocks.BLOCKS.register(modEventBus);
+		OADBiomeCodecs.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
+		OADPlacedFeature.PLACED_FEATURES.register(modEventBus);
+
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new PlayerLoggedInEventHandler());
 		MinecraftForge.EVENT_BUS.register(new LootTableHandler());
 		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
-		
-		
-		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.18.2.toml"));
-		
-		ModItems.ITEMS.register(modEventBus);
-		ModBlocks.BLOCKS.register(modEventBus);
+
 	}
-	
+
 	public void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			OADConfiguredFeature.registerConfiguredFeatures();
-			OADPlacedFeature.registerPlacedFeatures();
+
 		});
-		
 	}
 	
 }

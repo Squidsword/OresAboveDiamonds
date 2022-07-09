@@ -5,9 +5,7 @@
 	[
 		"I"
 	],
-	
-	
-	
+
 	"key":
 	{
 		"I": {"item": "oresabovediamonds:amethyst"}
@@ -15,6 +13,6 @@
 	
 	"result": {
 		"item": "minecraft:amethyst_shard",
-		"count": 4
+		"count": 3
 	}
 }

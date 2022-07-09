@@ -1,5 +1,0 @@
-{
-  "type": "oresabovediamonds:ores_above_diamonds_codec",
-  "biomes": "#minecraft:is_overworld",
-  "feature": "oresabovediamonds:black_opal_ore_placed"
-}

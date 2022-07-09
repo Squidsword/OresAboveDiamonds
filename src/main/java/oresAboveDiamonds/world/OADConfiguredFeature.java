@@ -8,16 +8,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.init.ModBlocks;
 
-import java.util.ArrayList;
-
-public record OADPlacedFeatureRecord(String name, int veinSize, float discardChance, int timesRarer, diamondVeinCount, ImmutableList<OreConfiguration.TargetBlockState> targets, HeightRangePlacement placement, Holder<ConfiguredFeature<OreConfiguration, ?>> configured) {
-
-    private static ArrayList<OADPlacedFeatureRecord> OADConfiguredList;
+// Reference: Gobber by kwpugh
+public class OADConfiguredFeature {
 
     public static ImmutableList<OreConfiguration.TargetBlockState> AMETHYST_TARGET_BLOCKS;
     public static ImmutableList<OreConfiguration.TargetBlockState> NETHER_AMETHYST_TARGET_BLOCKS;
@@ -37,20 +33,7 @@ public record OADPlacedFeatureRecord(String name, int veinSize, float discardCha
     public static Holder<ConfiguredFeature<OreConfiguration, ?>> END_AMETHYST;
     public static Holder<ConfiguredFeature<OreConfiguration, ?>> END_BLACK_OPAL;
 
-    public OADPlacedFeatureRecord {
-        OADConfiguredList.add(this);
-    }
-
-    public static Holder<ConfiguredFeature<OreConfiguration, ?>> buildConfigured(String name, ImmutableList<OreConfiguration.TargetBlockState> targets, double veinSize, float discardChance) {
-        return FeatureUtils.register(name, Feature.ORE, new OreConfiguration(targets, (int) Math.round(veinSize), discardChance));
-    }
-
     static {
-
-    }
-
-    public static void registerConfiguredFeatures() {
-
         AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.AMETHYST_ORE.get().defaultBlockState()),
                 OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_AMETHYST_ORE.get().defaultBlockState()));
         NETHER_AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(OreFeatures.NETHER_ORE_REPLACEABLES, ModBlocks.NETHER_AMETHYST_ORE.get().defaultBlockState()));
@@ -63,7 +46,6 @@ public record OADPlacedFeatureRecord(String name, int veinSize, float discardCha
 
         AMETHYST_SMALL = buildConfigured("ore_amethyst", AMETHYST_TARGET_BLOCKS, (OADConfig.amethyst_vein_size.get() / 2.0), OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 0.715F);
         BLACK_OPAL_SMALL = buildConfigured("ore_black_opal", BLACK_OPAL_TARGET_BLOCKS, (OADConfig.black_opal_vein_size.get() / 2.0), OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 0.715F);
-        new OADPlacedFeatureRecord("ore_amethyst")
 
         AMETHYST_BURIED = buildConfigured("ore_amethyst_buried", AMETHYST_TARGET_BLOCKS, OADConfig.amethyst_vein_size.get(), Math.min(1.0F, OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 1.43F));
         BLACK_OPAL_BURIED = buildConfigured("ore_black_opal_buried", BLACK_OPAL_TARGET_BLOCKS, OADConfig.black_opal_vein_size.get(), Math.min(1.0F, OADConfig.overworld_discard_chance_on_air_exposure.get().floatValue() * 1.43F));
@@ -84,10 +66,8 @@ public record OADPlacedFeatureRecord(String name, int veinSize, float discardCha
         END_BLACK_OPAL = buildConfigured("ore_end_black_opal", END_BLACK_OPAL_TARGET_BLOCKS, endBlackOpalVeinSize, OADConfig.end_discard_chance_on_air_exposure.get().floatValue());
     }
 
-    public ArrayList<OADPlacedFeatureRecord> getOADConfiguredList(){
-        ArrayList<OADPlacedFeatureRecord> newList = new ArrayList<>();
-        newList.addAll(OADConfiguredList);
-        return newList;
+    public static Holder<ConfiguredFeature<OreConfiguration, ?>> buildConfigured(String name, ImmutableList<OreConfiguration.TargetBlockState> targets, double veinSize, float discardChance) {
+        return FeatureUtils.register(name, Feature.ORE, new OreConfiguration(targets, (int) Math.round(veinSize), discardChance));
     }
 
 }

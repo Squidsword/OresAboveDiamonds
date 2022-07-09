@@ -4,9 +4,9 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '1.0'
-group = 'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'modid'
+version = '9.0.0b'
+group = 'mod.squidsword.oresabovediamonds' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'oresabovediamonds'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -49,10 +49,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'oresabovediamonds'
 
             mods {
-                examplemod {
+                oresabovediamonds {
                     source sourceSets.main
                 }
             }
@@ -65,10 +65,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'oresabovediamonds'
 
             mods {
-                examplemod {
+                oresabovediamonds {
                     source sourceSets.main
                 }
             }
@@ -84,10 +84,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'oresabovediamonds'
 
             mods {
-                examplemod {
+                oresabovediamonds {
                     source sourceSets.main
                 }
             }
@@ -100,11 +100,11 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            // Specify the oresabovediamonds for data generation, where to output the resulting resource, and where to look for existing resources.
+            args '--mod', 'oresabovediamonds', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                oresabovediamonds {
                     source sourceSets.main
                 }
             }
@@ -118,7 +118,12 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
-
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
     // flatDir {
     //     dir 'libs'
@@ -138,6 +143,9 @@ dependencies {
 
     // Examples using mod jars from ./libs
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
+    implementation fg.deobf("curse.maven:advanced_xray-256256:3828962")
+    implementation fg.deobf("curse.maven:gems_and_crystals-334162:3837321")
+    implementation fg.deobf("curse.maven:world_edit-225608:3836903")
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
@@ -148,12 +156,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "examplemod",
-                "Specification-Vendor"    : "examplemodsareus",
+                "Specification-Title"     : "oresabovediamonds",
+                "Specification-Vendor"    : "oresabovediamondssareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "examplemodsareus",
+                "Implementation-Vendor"   : "oresabovediamondssareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

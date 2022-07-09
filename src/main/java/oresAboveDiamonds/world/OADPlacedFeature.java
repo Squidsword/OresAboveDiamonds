@@ -1,43 +1,246 @@
 package oresAboveDiamonds.world;
 
 import net.minecraft.core.Holder;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.core.Registry;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.registries.DeferredRegister;
+import oresAboveDiamonds.OresAboveDiamonds;
 import oresAboveDiamonds.config.OADConfig;
 
 import java.util.List;
 
-import static oresAboveDiamonds.world.OADConfiguredFeature.*;
-
-
 @EventBusSubscriber
 public class OADPlacedFeature {
 
-    public static Holder<PlacedFeature>[] AMETHYST_SMALL_PLACED;
-    public static Holder<PlacedFeature>[] BLACK_OPAL_SMALL_PLACED;
-    public static Holder<PlacedFeature>[] AMETHYST_BURIED_PLACED;
-    public static Holder<PlacedFeature>[] BLACK_OPAL_BURIED_PLACED;
-    public static Holder<PlacedFeature>[] AMETHYST_LARGE_PLACED;
-    public static Holder<PlacedFeature>[] BLACK_OPAL_LARGE_PLACED;
-    public static Holder<PlacedFeature>[] NETHER_AMETHYST_PLACED;
-    public static Holder<PlacedFeature>[] NETHER_BLACK_OPAL_PLACED;
-    public static Holder<PlacedFeature>[] END_AMETHYST_PLACED;
-    public static Holder<PlacedFeature>[] END_BLACK_OPAL_PLACED;
-    
-    public static Holder<PlacedFeature>[] buildFeatures(String name, Holder<ConfiguredFeature<OreConfiguration, ?>> configured, int veinCount, double timesRarer, HeightRangePlacement placement) {
-    	Holder<PlacedFeature>[] fractionalFeatures = (Holder<PlacedFeature>[]) new Holder<?>[3];
-    	double veinsPerChunk = veinCount / timesRarer;
-    	int integerPart = (int) veinsPerChunk;
-    	double doublePart = veinsPerChunk - integerPart;
-    	fractionalFeatures[0] = PlacementUtils.register(name, configured, commonOrePlacement(integerPart, placement));
-    	int[] denominators = closestDenominators(doublePart);
-    	fractionalFeatures[1] = PlacementUtils.register(name + "_2", configured, rareOrePlacement(denominators[0], placement));
-    	fractionalFeatures[2] = PlacementUtils.register(name + "_3", configured, rareOrePlacement(denominators[1], placement));
-    	return fractionalFeatures;
+    // Reference: Gems And Crystals by Coliwogg
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES =
+            DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, OresAboveDiamonds.MODID);
+
+    public static final HeightRangePlacement aPlacement = buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get());
+    public static final HeightRangePlacement bPlacement = buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get());
+
+    // putting these a method wont work
+    static {
+        boolean enabled = OADConfig.spawn_amethyst_overworld.get();
+        String name = "ore_amethyst";
+        double veinsPerChunk = 7 / OADConfig.amethyst_times_rarer.get();
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) (Holder<? extends ConfiguredFeature<?, ?>>)
+                        OADConfiguredFeature.AMETHYST_SMALL, commonOrePlacement(integerPart, aPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) (Holder<? extends ConfiguredFeature<?, ?>>)
+                        OADConfiguredFeature.AMETHYST_SMALL, rareOrePlacement(denominators[0], aPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) (Holder<? extends ConfiguredFeature<?, ?>>)
+                        OADConfiguredFeature.AMETHYST_SMALL, rareOrePlacement(denominators[1], aPlacement)));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_amethyst_overworld.get();
+        String name = "ore_amethyst_buried";
+        double veinsPerChunk = 4 / OADConfig.amethyst_times_rarer.get();
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.AMETHYST_BURIED, commonOrePlacement(integerPart, aPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.AMETHYST_BURIED, rareOrePlacement(denominators[0], aPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.AMETHYST_BURIED, rareOrePlacement(denominators[1], aPlacement)));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_amethyst_overworld.get();
+        String name = "ore_amethyst_large";
+        double veinsPerChunk = 1 / (OADConfig.amethyst_times_rarer.get() * 9);
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.AMETHYST_LARGE, commonOrePlacement(integerPart, aPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.AMETHYST_LARGE, rareOrePlacement(denominators[0], aPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.AMETHYST_LARGE, rareOrePlacement(denominators[1], aPlacement)));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_black_opal_overworld.get();
+        String name = "ore_black_opal";
+        double veinsPerChunk = 7 / OADConfig.black_opal_times_rarer.get();
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) (Holder<? extends ConfiguredFeature<?, ?>>)
+                        OADConfiguredFeature.BLACK_OPAL_SMALL, commonOrePlacement(integerPart, bPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) (Holder<? extends ConfiguredFeature<?, ?>>)
+                        OADConfiguredFeature.BLACK_OPAL_SMALL, rareOrePlacement(denominators[0], bPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) (Holder<? extends ConfiguredFeature<?, ?>>)
+                        OADConfiguredFeature.BLACK_OPAL_SMALL, rareOrePlacement(denominators[1], bPlacement)));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_black_opal_overworld.get();
+        String name = "ore_black_opal_buried";
+        double veinsPerChunk = 4 / OADConfig.black_opal_times_rarer.get();
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.BLACK_OPAL_BURIED, commonOrePlacement(integerPart, bPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.BLACK_OPAL_BURIED, rareOrePlacement(denominators[0], bPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.BLACK_OPAL_BURIED, rareOrePlacement(denominators[1], bPlacement)));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_black_opal_overworld.get();
+        String name = "ore_black_opal_large";
+        double veinsPerChunk = 1 / (OADConfig.black_opal_times_rarer.get() * 9);
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.BLACK_OPAL_LARGE, commonOrePlacement(integerPart, bPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.BLACK_OPAL_LARGE, rareOrePlacement(denominators[0], bPlacement)));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.BLACK_OPAL_LARGE, rareOrePlacement(denominators[1], bPlacement)));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_amethyst_nether.get();
+        String name = "ore_nether_amethyst";
+        double veinsPerChunk = 9 * OADConfig.nether_chance_multiplier.get() / OADConfig.amethyst_times_rarer.get();
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.NETHER_AMETHYST, commonOrePlacement(integerPart, buildPlacement(0, OADConfig.amethyst_max_spawn_height_nether.get()))));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.NETHER_AMETHYST, rareOrePlacement(denominators[0], buildPlacement(0, OADConfig.amethyst_max_spawn_height_nether.get()))));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.NETHER_AMETHYST, rareOrePlacement(denominators[1], buildPlacement(0, OADConfig.amethyst_max_spawn_height_nether.get()))));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_black_opal_nether.get();
+        String name = "ore_nether_black_opal";
+        double veinsPerChunk = 9 * OADConfig.nether_chance_multiplier.get() / OADConfig.black_opal_times_rarer.get();
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.NETHER_BLACK_OPAL, commonOrePlacement(integerPart, buildPlacement(0, OADConfig.black_opal_max_spawn_height_nether.get()))));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.NETHER_BLACK_OPAL, rareOrePlacement(denominators[0], buildPlacement(0, OADConfig.black_opal_max_spawn_height_nether.get()))));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.NETHER_BLACK_OPAL, rareOrePlacement(denominators[1], buildPlacement(0, OADConfig.black_opal_max_spawn_height_nether.get()))));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_amethyst_end.get();
+        String name = "ore_end_amethyst";
+        double veinsPerChunk = 3 * OADConfig.end_chance_multiplier.get() / OADConfig.amethyst_times_rarer.get();
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.END_AMETHYST, commonOrePlacement(integerPart, buildPlacement(0, OADConfig.amethyst_max_spawn_height_end.get()))));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.END_AMETHYST, rareOrePlacement(denominators[0], buildPlacement(0, OADConfig.amethyst_max_spawn_height_end.get()))));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.END_AMETHYST, rareOrePlacement(denominators[1], buildPlacement(0, OADConfig.amethyst_max_spawn_height_end.get()))));
+    }
+
+    static {
+        boolean enabled = OADConfig.spawn_black_opal_end.get();
+        String name = "ore_end_black_opal";
+        double veinsPerChunk = 3 * OADConfig.end_chance_multiplier.get() / OADConfig.black_opal_times_rarer.get();
+
+        int integerPart = enabled ? (int) veinsPerChunk : 0;
+        double doublePart = veinsPerChunk - integerPart;
+        int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
+
+        PLACED_FEATURES.register(name,
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.END_BLACK_OPAL, commonOrePlacement(integerPart, buildPlacement(0, OADConfig.black_opal_max_spawn_height_end.get()))));
+
+        PLACED_FEATURES.register(String.format("%s_2", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.END_BLACK_OPAL, rareOrePlacement(denominators[0], buildPlacement(0, OADConfig.black_opal_max_spawn_height_end.get()))));
+
+        PLACED_FEATURES.register(String.format("%s_3", name),
+                () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                        OADConfiguredFeature.END_BLACK_OPAL, rareOrePlacement(denominators[1], buildPlacement(0, OADConfig.black_opal_max_spawn_height_end.get()))));
     }
 
     public static HeightRangePlacement buildPlacement(int maxHeight) {
@@ -45,34 +248,6 @@ public class OADPlacedFeature {
     }
     public static HeightRangePlacement buildPlacement(int minHeight, int maxHeight) {
         return HeightRangePlacement.uniform(VerticalAnchor.absolute(minHeight), VerticalAnchor.absolute(maxHeight));
-    }
-
-    public static void registerPlacedFeatures() {
-
-        // The integers in the second paramter are based on vanilla's OrePlacements class.
-        // Large_Placed turns into 1 / 9 by using 1 as the integer and multiplying times rarer by 9.
-        HeightRangePlacement aPlacement = buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get());
-        AMETHYST_SMALL_PLACED = buildFeatures("ore_amethyst", AMETHYST_SMALL, 7, OADConfig.amethyst_times_rarer.get(), aPlacement);
-        AMETHYST_BURIED_PLACED = buildFeatures("ore_amethyst_buried", AMETHYST_BURIED, 4, OADConfig.amethyst_times_rarer.get(), aPlacement);
-        AMETHYST_LARGE_PLACED = buildFeatures("ore_amethyst_large", AMETHYST_LARGE, 1, OADConfig.amethyst_times_rarer.get() * 9, buildPlacement(OADConfig.amethyst_max_spawn_height_overworld.get()));
-        
-        HeightRangePlacement bPlacement = buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get());
-        BLACK_OPAL_SMALL_PLACED = buildFeatures("ore_black_opal", BLACK_OPAL_SMALL, 7, OADConfig.black_opal_times_rarer.get(), bPlacement);
-        BLACK_OPAL_BURIED_PLACED = buildFeatures("ore_black_opal_buried", BLACK_OPAL_BURIED, 4, OADConfig.black_opal_times_rarer.get(), bPlacement);
-        BLACK_OPAL_LARGE_PLACED = buildFeatures("ore_black_opal_placed", BLACK_OPAL_LARGE, 1, OADConfig.black_opal_times_rarer.get() * 9, buildPlacement(OADConfig.black_opal_max_spawn_height_overworld.get()));
-
-        double netherAmethystTimesRarer = OADConfig.amethyst_times_rarer.get() * OADConfig.nether_chance_multiplier.get();
-        double netherBlackOpalTimesRarer = OADConfig.black_opal_times_rarer.get() * OADConfig.nether_chance_multiplier.get();
-
-        NETHER_AMETHYST_PLACED = buildFeatures("ore_nether_amethyst", NETHER_AMETHYST, 9, netherAmethystTimesRarer, buildPlacement(0, OADConfig.amethyst_max_spawn_height_nether.get()));
-        NETHER_BLACK_OPAL_PLACED = buildFeatures("ore_nether_black_opal", NETHER_BLACK_OPAL, 9, netherBlackOpalTimesRarer, buildPlacement(0, OADConfig.black_opal_max_spawn_height_nether.get()));
-
-        double endAmethystTimesRarer = OADConfig.amethyst_times_rarer.get() * OADConfig.end_chance_multiplier.get();
-        double endBlackOpalTimesRarer = OADConfig.black_opal_times_rarer.get() * OADConfig.end_chance_multiplier.get();
-
-        END_AMETHYST_PLACED = buildFeatures("ore_end_amethyst", END_AMETHYST, 3, endAmethystTimesRarer, buildPlacement(0, OADConfig.amethyst_max_spawn_height_end.get()));
-        END_BLACK_OPAL_PLACED = buildFeatures("ore_end_black_opal", END_BLACK_OPAL, 3, endBlackOpalTimesRarer, buildPlacement(0, OADConfig.black_opal_max_spawn_height_end.get()));
-
     }
 
     private static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {
@@ -84,9 +259,12 @@ public class OADPlacedFeature {
     }
 
     private static List<PlacementModifier> rareOrePlacement(int p_195350_, PlacementModifier p_195351_) {
+        if (p_195350_ <= 0) {
+            return commonOrePlacement(0, p_195351_);
+        }
         return orePlacement(RarityFilter.onAverageOnceEvery(p_195350_), p_195351_);
     }
-    
+
     // Thanks to my friend Ruston for this method
     private static int[] closestDenominators(double c) {
     	//the following code was designed to solve the problem (1/x) + (1/y) = c, given some c

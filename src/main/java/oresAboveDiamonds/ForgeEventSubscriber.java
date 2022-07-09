@@ -1,4 +1,4 @@
-package oresAboveDiamonds;
+/*package oresAboveDiamonds;
 
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.biome.Biome;
@@ -68,3 +68,4 @@ public class ForgeEventSubscriber {
 		}
 	}
 }
+*/

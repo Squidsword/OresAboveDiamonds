@@ -7,8 +7,8 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class OADConfig {
 	
-	public static ForgeConfigSpec.IntValue amethyst_times_rarer;
-	public static ForgeConfigSpec.IntValue black_opal_times_rarer;
+	public static ForgeConfigSpec.DoubleValue amethyst_times_rarer;
+	public static ForgeConfigSpec.DoubleValue black_opal_times_rarer;
 	
 	public static ForgeConfigSpec.IntValue amethyst_vein_size;
 	public static ForgeConfigSpec.IntValue black_opal_vein_size;
@@ -85,7 +85,6 @@ public class OADConfig {
 	public static ForgeConfigSpec.BooleanValue spawn_black_opal_end;
 	
 	public static ForgeConfigSpec.BooleanValue old_combat_mechanics;
-	public static ForgeConfigSpec.BooleanValue ores_above_netherite;
 	public static ForgeConfigSpec.BooleanValue chest_loot;
 	
 	public static void init(ForgeConfigSpec.Builder builder) {
@@ -148,11 +147,11 @@ public class OADConfig {
 		
 		amethyst_times_rarer = builder
 				.comment("Approximately how many times rarer the amethyst should be than diamonds. All dimensions uses these values. 1 = As common as diamonds, 2 = Half as common as diamonds etc. Default = 3")
-				.defineInRange("amethyst_chance", 3, 1, Integer.MAX_VALUE);
+				.defineInRange("amethyst_chance", 3d, -1d, 1000d);
 		
 		black_opal_times_rarer = builder
 				.comment("Approximately how many times rarer the black opal should be than diamonds. All dimensions uses these values. Default = 9")
-				.defineInRange("black_opal_chance", 9, 1, Integer.MAX_VALUE);
+				.defineInRange("black_opal_chance", 9d, -1d, 1000d);
 		
 		amethyst_vein_size = builder
 				.comment("Max vein size for an Amethyst Ore vein. WARNING: Reducing vein sizes by 10%+ for some reason can reduce the total ores by 35%+. For reference, diamonds have a vein size of 8. Default = 8")
