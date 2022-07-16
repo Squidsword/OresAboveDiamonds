@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '9.0.0b'
+version = '9.0.1b'
 group = 'mod.squidsword.oresabovediamonds' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'oresabovediamonds'
 
@@ -134,7 +134,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.19-41.0.16'
+    minecraft 'net.minecraftforge:forge:1.19-41.0.98'
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -143,9 +143,9 @@ dependencies {
 
     // Examples using mod jars from ./libs
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
-    implementation fg.deobf("curse.maven:advanced_xray-256256:3828962")
-    implementation fg.deobf("curse.maven:gems_and_crystals-334162:3837321")
-    implementation fg.deobf("curse.maven:world_edit-225608:3836903")
+    //implementation fg.deobf("curse.maven:advanced_xray-256256:3828962")
+    //implementation fg.deobf("curse.maven:gems_and_crystals-334162:3837321")
+    //implementation fg.deobf("curse.maven:world_edit-225608:3836903")
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

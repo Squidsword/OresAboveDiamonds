@@ -13,7 +13,7 @@ public class PlayerLoggedInEventHandler {
     @SubscribeEvent
     public void onLoginEvent(PlayerLoggedInEvent event) {
 
-        ServerPlayer player = (ServerPlayer) event.getPlayer();
+        ServerPlayer player = (ServerPlayer) event.getEntity();
 
         double amethyst_times_rarer = OADConfig.amethyst_times_rarer.get();
         double black_opal_times_rarer = OADConfig.black_opal_times_rarer.get();
