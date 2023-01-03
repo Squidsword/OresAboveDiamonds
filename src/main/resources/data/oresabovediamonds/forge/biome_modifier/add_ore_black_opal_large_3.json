@@ -1,5 +1,6 @@
 {
-  "type": "oresabovediamonds:oad_codec",
+  "type": "forge:add_features",
   "biomes": "#minecraft:is_overworld",
-  "feature": "oresabovediamonds:ore_black_opal_large_3"
+  "features": "oresabovediamonds:ore_black_opal_large_3",
+  "step": "underground_ores"
 }

@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/Squidsword/OresAboveDiamonds/issues"
 
 [[mods]] #mandatory
 modId="oresabovediamonds" #mandatory
-version="9.0.3" #mandatory
+version="9.1.0" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
 displayName="Ores Above Diamonds" #mandatory
 updateJSONURL="https://raw.githubusercontent.com/Squidsword/OresAboveDiamonds/1.16.4/update.json" #optional
@@ -31,13 +31,13 @@ The mod doesn't have built in retrogen support. This means that ores will not sp
 [[dependencies.oresabovediamonds]]
     modId="forge"
     mandatory=true
-    versionRange="[41.0.0,)"
+    versionRange="[44.1.0,)"
     ordering="NONE"
     side="BOTH"
 	
 [[dependencies.oresabovediamonds]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.0,)"
+    versionRange="[1.19.3,)"
     ordering="NONE"
     side="BOTH"

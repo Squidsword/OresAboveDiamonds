@@ -109,10 +109,10 @@ public class OADPlacedFeature {
         double doublePart = veinsPerChunk - integerPart;
         int[] denominators = enabled ? closestDenominators(doublePart) : new int[]{-1, -1};
         List<List<PlacementModifier>> orePlacements = List.of(commonOrePlacement(integerPart, heightRange), rareOrePlacement(denominators[0], heightRange), rareOrePlacement(denominators[1], heightRange));
-        int iteration = 0;
+        int iteration = 1;
         for (List<PlacementModifier> placement : orePlacements) {
             ResourceKey<PlacedFeature> resourceKey;
-            if (iteration == 0) {
+            if (iteration == 1) {
                 resourceKey = PlacementUtils.createKey(OresAboveDiamonds.key(name));
             } else {
                 resourceKey = PlacementUtils.createKey(OresAboveDiamonds.key(String.format("%s_%d", name, iteration)));

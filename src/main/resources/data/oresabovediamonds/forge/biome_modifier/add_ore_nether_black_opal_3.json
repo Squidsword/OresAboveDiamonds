@@ -1,5 +1,6 @@
 {
-  "type": "oresabovediamonds:oad_codec",
+  "type": "forge:add_features",
   "biomes": "#minecraft:is_nether",
-  "feature": "oresabovediamonds:ore_nether_black_opal_3"
+  "features": "oresabovediamonds:ore_nether_black_opal_3",
+  "step": "underground_ores"
 }

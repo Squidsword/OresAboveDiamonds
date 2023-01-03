@@ -1,5 +1,6 @@
 {
-  "type": "oresabovediamonds:oad_codec",
+  "type": "forge:add_features",
   "biomes": "#minecraft:is_end",
-  "feature": "oresabovediamonds:ore_end_black_opal_2"
+  "features": "oresabovediamonds:ore_end_black_opal_2",
+  "step": "underground_ores"
 }
