@@ -12,7 +12,6 @@ import oresAboveDiamonds.events.PlayerLoggedInEventHandler;
 import oresAboveDiamonds.init.ModBlocks;
 import oresAboveDiamonds.init.ModItems;
 import oresAboveDiamonds.network.OADPacketHandler;
-import oresAboveDiamonds.world.OADBiomeCodecs;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,7 +36,6 @@ public class OresAboveDiamonds {
 
 		ModItems.ITEMS.register(modEventBus);
 		ModBlocks.BLOCKS.register(modEventBus);
-		OADBiomeCodecs.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new PlayerLoggedInEventHandler());

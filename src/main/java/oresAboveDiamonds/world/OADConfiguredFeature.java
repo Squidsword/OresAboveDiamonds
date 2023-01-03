@@ -43,6 +43,7 @@ public class OADConfiguredFeature {
         RuleTest STONE = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest DEEPSLATE = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         RuleTest NETHER = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
+
         AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(STONE, ModBlocks.AMETHYST_ORE.get().defaultBlockState()),
                 OreConfiguration.target(DEEPSLATE, ModBlocks.DEEPSLATE_AMETHYST_ORE.get().defaultBlockState()));
         NETHER_AMETHYST_TARGET_BLOCKS = ImmutableList.of(OreConfiguration.target(NETHER, ModBlocks.NETHER_AMETHYST_ORE.get().defaultBlockState()));
