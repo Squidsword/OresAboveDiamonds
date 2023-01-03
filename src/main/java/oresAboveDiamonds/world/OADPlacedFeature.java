@@ -111,7 +111,6 @@ public class OADPlacedFeature {
         List<List<PlacementModifier>> orePlacements = List.of(commonOrePlacement(integerPart, heightRange), rareOrePlacement(denominators[0], heightRange), rareOrePlacement(denominators[1], heightRange));
         int iteration = 0;
         for (List<PlacementModifier> placement : orePlacements) {
-
             ResourceKey<PlacedFeature> resourceKey;
             if (iteration == 0) {
                 resourceKey = PlacementUtils.createKey(OresAboveDiamonds.key(name));
@@ -119,6 +118,7 @@ public class OADPlacedFeature {
                 resourceKey = PlacementUtils.createKey(OresAboveDiamonds.key(String.format("%s_%d", name, iteration)));
             }
             PlacementUtils.register(bootstrap, resourceKey, configured, placement);
+            iteration++;
         }
 
     }

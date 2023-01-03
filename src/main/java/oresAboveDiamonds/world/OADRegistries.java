@@ -1,7 +1,5 @@
 package oresAboveDiamonds.world;
 
-// Reference: Randomite 1.19.3 by Modding Legacy
-
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySetBuilder;
@@ -12,13 +10,14 @@ import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import oresAboveDiamonds.OresAboveDiamonds;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = OresAboveDiamonds.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = OresAboveDiamonds.MODID, bus = Bus.MOD)
 public class OADRegistries {
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, OADConfiguredFeature::bootstrap).add(Registries.PLACED_FEATURE, OADPlacedFeature::bootstrap);
 
@@ -29,10 +28,9 @@ public class OADRegistries {
     }
 
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) {
+    public static void gatherData(GatherDataEvent event)
+    {
         DataGenerator gen = event.getGenerator();
-        gen.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(gen.getPackOutput(),
-                CompletableFuture.completedFuture(createLookup()), BUILDER, new HashSet(List.of(OresAboveDiamonds.MODID))));
-
+        gen.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(gen.getPackOutput(), CompletableFuture.completedFuture(createLookup()), BUILDER, new HashSet<>(List.of(OresAboveDiamonds.MODID))));
     }
 }
