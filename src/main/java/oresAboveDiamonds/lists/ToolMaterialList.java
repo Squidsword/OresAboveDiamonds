@@ -18,8 +18,6 @@ public enum ToolMaterialList implements Tier
 {
 	
 	//Reference: gobber by kwpugh
-	
-	
 	AMETHYST(OADConfig.amethyst_attack_damage.get() , OADConfig.amethyst_efficiency.get(), OADConfig.amethyst_durability.get(), 4, OADConfig.amethyst_enchantability.get(), ModItems.AMETHYST.get(), MaterialTags.NEEDS_AMETHYST_TOOL),
 	BLACK_OPAL(OADConfig.black_opal_attack_damage.get(), OADConfig.black_opal_efficiency.get(), OADConfig.black_opal_durability.get(), 5, OADConfig.black_opal_enchantability.get(), ModItems.BLACK_OPAL.get(), MaterialTags.NEEDS_BLACK_OPAL_TOOL),
 	NETHERITE_OPAL(OADConfig.netherite_opal_attack_damage.get(), OADConfig.netherite_opal_efficiency.get(), OADConfig.netherite_opal_durability.get(), 5, OADConfig.netherite_opal_enchantability.get(), ModItems.BLACK_OPAL.get(), MaterialTags.NEEDS_NETHERITE_OPAL_TOOL);

@@ -26,25 +26,5 @@ public class AmethystOre extends DropExperienceBlock {
 			  UniformInt.of(10, 30));
 		
 	}
-	
-	/*
-	@Override
-	public int getHarvestLevel(BlockState state) {
-		return 3;
-	}
-	
-	@Nullable
-	@Override
-	public ToolType getHarvestTool(BlockState state) {
-		return ToolType.PICKAXE;	
-	}
-	
 
-
-	@Override
-	public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch) {
-		return silktouch == 0 ? 20 : 0;
-		
-	}
-	*/
 }

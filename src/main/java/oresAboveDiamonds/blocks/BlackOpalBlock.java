@@ -15,19 +15,5 @@ public class BlackOpalBlock extends Block {
 				.sound(SoundType.NETHERITE_BLOCK)
 			 );
 	}
-	
-	/*
-	@Nullable
-	@Override
-	public ToolType getHarvestTool(BlockState state) {
-		return ToolType.PICKAXE;
-		
-	}
-	
-	@Override
-	public int getHarvestLevel(BlockState state) {
-		return 4;
-	}
-	*/
-	
+
 }

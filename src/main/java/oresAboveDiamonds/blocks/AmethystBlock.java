@@ -14,21 +14,5 @@ public class AmethystBlock extends Block {
 				.requiresCorrectToolForDrops()
 				.sound(SoundType.AMETHYST));
 	}
-	
-	
-	
-	/*
-	@Nullable
-	@Override
-	public ToolType getHarvestTool(BlockState state) {
-		return ToolType.PICKAXE;
-		
-	}
-	
-	@Override
-	public int getHarvestLevel(BlockState state) {
-		return 3;
-	}
-	*/
 		
 }

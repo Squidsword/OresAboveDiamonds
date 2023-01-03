@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+// Run runData to generate the appropriate JSON files
 @EventBusSubscriber(modid = OresAboveDiamonds.MODID, bus = Bus.MOD)
 public class OADRegistries {
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.CONFIGURED_FEATURE, OADConfiguredFeature::bootstrap).add(Registries.PLACED_FEATURE, OADPlacedFeature::bootstrap);
