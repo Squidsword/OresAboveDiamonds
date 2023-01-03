@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/Squidsword/OresAboveDiamonds/issues"
 
 [[mods]] #mandatory
 modId="oresabovediamonds" #mandatory
-version="9.0.1b" #mandatory
+version="9.0.3" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/ores-above-diamonds" #optional
 displayName="Ores Above Diamonds" #mandatory
 updateJSONURL="https://raw.githubusercontent.com/Squidsword/OresAboveDiamonds/1.16.4/update.json" #optional

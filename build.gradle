@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '9.0.1b'
+version = '9.0.3'
 group = 'mod.squidsword.oresabovediamonds' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'oresabovediamonds'
 
@@ -22,11 +22,11 @@ minecraft {
     // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
     //
     // Parchment is an unofficial project maintained by ParchmentMC, separate from MinecraftForge
-    // Additional setup is needed to use their mappings: https://github.com/ParchmentMC/Parchment/wiki/Getting-Started
+    // Additional setup is needed to use their mappings: https://parchmentmc.org/docs/getting-started
     //
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: '1.19'
+    mappings channel: 'official', version: '1.19.3'
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
 
@@ -49,10 +49,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'oresabovediamonds'
+            property 'forge.enabledGameTestNamespaces', 'examplemod'
 
             mods {
-                oresabovediamonds {
+                examplemod {
                     source sourceSets.main
                 }
             }
@@ -65,10 +65,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'oresabovediamonds'
+            property 'forge.enabledGameTestNamespaces', 'examplemod'
 
             mods {
-                oresabovediamonds {
+                examplemod {
                     source sourceSets.main
                 }
             }
@@ -84,10 +84,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'oresabovediamonds'
+            property 'forge.enabledGameTestNamespaces', 'examplemod'
 
             mods {
-                oresabovediamonds {
+                examplemod {
                     source sourceSets.main
                 }
             }
@@ -100,11 +100,11 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            // Specify the oresabovediamonds for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'oresabovediamonds', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                oresabovediamonds {
+                examplemod {
                     source sourceSets.main
                 }
             }
@@ -118,12 +118,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
+
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
     // flatDir {
     //     dir 'libs'
@@ -134,18 +129,13 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.19.2-43.1.33'
+    minecraft 'net.minecraftforge:forge:1.19.3-44.1.0'
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
-    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
     // Examples using mod jars from ./libs
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
-    //implementation fg.deobf("curse.maven:advanced_xray-256256:3828962")
-    //implementation fg.deobf("curse.maven:gems_and_crystals-334162:3837321")
-    //implementation fg.deobf("curse.maven:world_edit-225608:3836903")
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
@@ -156,12 +146,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "oresabovediamonds",
-                "Specification-Vendor"    : "oresabovediamondssareus",
+                "Specification-Title"     : "examplemod",
+                "Specification-Vendor"    : "examplemodsareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "oresabovediamondssareus",
+                "Implementation-Vendor"   : "examplemodsareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

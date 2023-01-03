@@ -20,8 +20,6 @@ public class BlackOpalOre extends DropExperienceBlock {
 				.of(Material.STONE)
 				.requiresCorrectToolForDrops()
 				.strength(hardness, 3f)
-				//.harvestLevel(4)
-				//.harvestTool(ToolType.PICKAXE)
 				.sound(soundType),
 				
 			 UniformInt.of(25, 75));
