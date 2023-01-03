@@ -7,8 +7,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import oresAboveDiamonds.config.ConfigHelper;
+import oresAboveDiamonds.events.LootTableHandler;
 import oresAboveDiamonds.events.PlayerLoggedInEventHandler;
+import oresAboveDiamonds.init.ModBlocks;
+import oresAboveDiamonds.init.ModItems;
 import oresAboveDiamonds.network.OADPacketHandler;
+import oresAboveDiamonds.world.OADBiomeCodecs;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,14 +35,14 @@ public class OresAboveDiamonds {
 		OADPacketHandler.registerMessages();
 		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.19.toml"));
 
-//		ModItems.ITEMS.register(modEventBus);
-//		ModBlocks.BLOCKS.register(modEventBus);
-		//OADBiomeCodecs.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
+		ModItems.ITEMS.register(modEventBus);
+		ModBlocks.BLOCKS.register(modEventBus);
+		OADBiomeCodecs.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new PlayerLoggedInEventHandler());
-//		MinecraftForge.EVENT_BUS.register(new LootTableHandler());
-//		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
+		MinecraftForge.EVENT_BUS.register(new LootTableHandler());
+		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
 
 	}
 
