@@ -10,8 +10,8 @@ import oresAboveDiamonds.lists.ArmorMaterialList;
 
 public class CustomArmorItem extends ArmorItem {
 
-	public CustomArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-		super(materialIn, slot, builder);
+	public CustomArmorItem(ArmorMaterial materialIn, ArmorItem.Type type, Properties builder) {
+		super(materialIn, type, builder);
 		// TODO Auto-generated constructor stub
 	}
 	

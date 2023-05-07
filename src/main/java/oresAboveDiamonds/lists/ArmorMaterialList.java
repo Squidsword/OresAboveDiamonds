@@ -2,7 +2,7 @@ package oresAboveDiamonds.lists;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -45,17 +45,15 @@ public enum ArmorMaterialList implements ArmorMaterial
 		this.toughness = toughness;
 		this.knockback_resistance = knockback_resistance;
 	}
-
+	
 	@Override
-	public int getDurabilityForSlot(EquipmentSlot slot) 
-	{
-		return MAX_DAMAGE_ARRAY[slot.getIndex()] * this.durability;
+	public int getDurabilityForType(ArmorItem.Type p_266807_) {
+		return MAX_DAMAGE_ARRAY[p_266807_.getSlot().getIndex()] * this.durability;
 	}
 
 	@Override
-	public int getDefenseForSlot(EquipmentSlot slot) {
-
-		return this.damageReductionAmounts[slot.getIndex()];
+	public int getDefenseForType(ArmorItem.Type p_267168_) {
+		return this.damageReductionAmounts[p_267168_.getSlot().getIndex()];
 	}
 
 	@Override

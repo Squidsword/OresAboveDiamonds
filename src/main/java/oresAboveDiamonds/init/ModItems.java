@@ -1,6 +1,6 @@
 package oresAboveDiamonds.init;
 
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -42,20 +42,20 @@ public class ModItems {
 	public static final RegistryObject<CustomAxeItem> NETHERITE_OPAL_AXE = ITEMS.register("netherite_opal_axe", () -> new CustomAxeItem(ToolMaterialList.NETHERITE_OPAL, axedmg, -3f, new Item.Properties().fireResistant()));
 	public static final RegistryObject<CustomHoeItem> NETHERITE_OPAL_HOE = ITEMS.register("netherite_opal_hoe", () -> new CustomHoeItem(ToolMaterialList.NETHERITE_OPAL, -6, 2f, new Item.Properties().fireResistant()));
 
-	public static final RegistryObject<CustomArmorItem> AMETHYST_HELMET = ITEMS.register("amethyst_helmet", () -> new CustomArmorItem(ArmorMaterialList.AMETHYST, EquipmentSlot.HEAD, new Item.Properties()));
-	public static final RegistryObject<CustomArmorItem> AMETHYST_CHESTPLATE = ITEMS.register("amethyst_chestplate", () -> new CustomArmorItem(ArmorMaterialList.AMETHYST, EquipmentSlot.CHEST, new Item.Properties()));
-	public static final RegistryObject<CustomArmorItem> AMETHYST_LEGGINGS = ITEMS.register("amethyst_leggings", () -> new CustomArmorItem(ArmorMaterialList.AMETHYST, EquipmentSlot.LEGS, new Item.Properties()));
-	public static final RegistryObject<CustomArmorItem> AMETHYST_BOOTS = ITEMS.register("amethyst_boots", () -> new CustomArmorItem(ArmorMaterialList.AMETHYST, EquipmentSlot.FEET, new Item.Properties()));
+	public static final RegistryObject<CustomArmorItem> AMETHYST_HELMET = ITEMS.register("amethyst_helmet", () -> new CustomArmorItem(ArmorMaterialList.AMETHYST, ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<CustomArmorItem> AMETHYST_CHESTPLATE = ITEMS.register("amethyst_chestplate", () -> new CustomArmorItem(ArmorMaterialList.AMETHYST, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<CustomArmorItem> AMETHYST_LEGGINGS = ITEMS.register("amethyst_leggings", () -> new CustomArmorItem(ArmorMaterialList.AMETHYST, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<CustomArmorItem> AMETHYST_BOOTS = ITEMS.register("amethyst_boots", () -> new CustomArmorItem(ArmorMaterialList.AMETHYST, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-	public static final RegistryObject<CustomArmorItem> BLACK_OPAL_HELMET = ITEMS.register("black_opal_helmet", () -> new CustomArmorItem(ArmorMaterialList.BLACK_OPAL, EquipmentSlot.HEAD, new Item.Properties()));
-	public static final RegistryObject<CustomArmorItem> BLACK_OPAL_CHESTPLATE = ITEMS.register("black_opal_chestplate", () -> new CustomArmorItem(ArmorMaterialList.BLACK_OPAL, EquipmentSlot.CHEST, new Item.Properties()));
-	public static final RegistryObject<CustomArmorItem> BLACK_OPAL_LEGGINGS = ITEMS.register("black_opal_leggings", () -> new CustomArmorItem(ArmorMaterialList.BLACK_OPAL, EquipmentSlot.LEGS, new Item.Properties()));
-	public static final RegistryObject<CustomArmorItem> BLACK_OPAL_BOOTS = ITEMS.register("black_opal_boots", () -> new CustomArmorItem(ArmorMaterialList.BLACK_OPAL, EquipmentSlot.FEET, new Item.Properties()));
+	public static final RegistryObject<CustomArmorItem> BLACK_OPAL_HELMET = ITEMS.register("black_opal_helmet", () -> new CustomArmorItem(ArmorMaterialList.BLACK_OPAL, ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<CustomArmorItem> BLACK_OPAL_CHESTPLATE = ITEMS.register("black_opal_chestplate", () -> new CustomArmorItem(ArmorMaterialList.BLACK_OPAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<CustomArmorItem> BLACK_OPAL_LEGGINGS = ITEMS.register("black_opal_leggings", () -> new CustomArmorItem(ArmorMaterialList.BLACK_OPAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<CustomArmorItem> BLACK_OPAL_BOOTS = ITEMS.register("black_opal_boots", () -> new CustomArmorItem(ArmorMaterialList.BLACK_OPAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_HELMET = ITEMS.register("netherite_opal_helmet", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, EquipmentSlot.HEAD, new Item.Properties().fireResistant()));
-	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_CHESTPLATE = ITEMS.register("netherite_opal_chestplate", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, EquipmentSlot.CHEST, new Item.Properties().fireResistant()));
-	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_LEGGINGS = ITEMS.register("netherite_opal_leggings", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, EquipmentSlot.LEGS, new Item.Properties().fireResistant()));
-	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_BOOTS = ITEMS.register("netherite_opal_boots", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, EquipmentSlot.FEET, new Item.Properties().fireResistant()));
+	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_HELMET = ITEMS.register("netherite_opal_helmet", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
+	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_CHESTPLATE = ITEMS.register("netherite_opal_chestplate", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
+	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_LEGGINGS = ITEMS.register("netherite_opal_leggings", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
+	public static final RegistryObject<CustomArmorItem> NETHERITE_OPAL_BOOTS = ITEMS.register("netherite_opal_boots", () -> new CustomArmorItem(ArmorMaterialList.NETHERITE_OPAL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
 
 	public static final RegistryObject<TooltipBlockItem> AMETHYST_ORE = ITEMS.register("amethyst_ore", () -> new TooltipBlockItem(ModBlocks.AMETHYST_ORE.get(), new Item.Properties()));
 	public static final RegistryObject<TooltipBlockItem> DEEPSLATE_AMETHYST_ORE = ITEMS.register("deepslate_amethyst_ore", () -> new TooltipBlockItem(ModBlocks.DEEPSLATE_AMETHYST_ORE.get(), new Item.Properties()));

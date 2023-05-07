@@ -17,7 +17,7 @@ public class ModItemGroups {
 		event.registerCreativeModeTab(new ResourceLocation(OresAboveDiamonds.MODID), builder -> {
 			builder.title(Component.translatable("itemGroup." + OresAboveDiamonds.MODID))
 					.icon(() -> ModItems.AMETHYST.get().getDefaultInstance())
-					.displayItems((flagSet, entries, flag) -> {
+					.displayItems((flagSet, entries) -> {
 						ModItems.ITEMS.getEntries().stream().map(RegistryObject::get).forEach(entries::accept);
 					});
 		});

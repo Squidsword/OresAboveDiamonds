@@ -3,17 +3,19 @@ package oresAboveDiamonds.events;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.PacketDistributor;
 import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.network.OADPacketHandler;
 import oresAboveDiamonds.network.PacketSyncConfig;
+
+import java.util.function.Supplier;
 
 public class PlayerLoggedInEventHandler {
 
     @SubscribeEvent
     public void onLoginEvent(PlayerLoggedInEvent event) {
 
-        ServerPlayer player = (ServerPlayer) event.getEntity();
+        Supplier<ServerPlayer> player = () -> (ServerPlayer) event.getEntity();
 
         double amethyst_times_rarer = OADConfig.amethyst_times_rarer.get();
         double black_opal_times_rarer = OADConfig.black_opal_times_rarer.get();
@@ -22,7 +24,7 @@ public class PlayerLoggedInEventHandler {
         int black_opal_vein_size = OADConfig.black_opal_vein_size.get();
 
         double overworld_discard_chance_on_air_exposure = OADConfig.overworld_discard_chance_on_air_exposure.get();
-        double nether_discard_chance_on_air_exposure = OADConfig.overworld_discard_chance_on_air_exposure.get();
+        double nether_discard_chance_on_air_exposure = OADConfig.nether_discard_chance_on_air_exposure.get();
         double end_discard_chance_on_air_exposure = OADConfig.end_discard_chance_on_air_exposure.get();
 
         int amethyst_max_spawn_height_overworld = OADConfig.amethyst_max_spawn_height_overworld.get();
@@ -58,7 +60,7 @@ public class PlayerLoggedInEventHandler {
 
         int netherite_opal_helmet_armor = OADConfig.netherite_opal_helmet_armor.get();
         int netherite_opal_chestplate_armor = OADConfig.netherite_opal_chestplate_armor.get();
-        int netherite_opal_leggings_armor = OADConfig.netherite_opal_chestplate_armor.get();
+        int netherite_opal_leggings_armor = OADConfig.netherite_opal_leggings_armor.get();
         int netherite_opal_boots_armor = OADConfig.netherite_opal_boots_armor.get();
 
         int amethyst_attack_damage = OADConfig.amethyst_attack_damage.get();
@@ -169,6 +171,6 @@ public class PlayerLoggedInEventHandler {
                 old_combat_mechanics,
                 chest_loot);
 
-        OADPacketHandler.INSTANCE.sendTo(message, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+        OADPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(player), message);
     }
 }

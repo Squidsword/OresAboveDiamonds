@@ -2,11 +2,13 @@ package oresAboveDiamonds;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
-import oresAboveDiamonds.config.ConfigHelper;
+import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.events.LootTableHandler;
 import oresAboveDiamonds.events.PlayerLoggedInEventHandler;
 import oresAboveDiamonds.init.ModBlocks;
@@ -21,7 +23,6 @@ public class OresAboveDiamonds {
 	public static final Logger LOGGER = LogManager.getLogger("oresabovediamonds");
 	public static final String MODID = "oresabovediamonds";
 
-
 	public static OresAboveDiamonds instance;
 
 	public OresAboveDiamonds() {
@@ -31,8 +32,10 @@ public class OresAboveDiamonds {
 
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
+		OADConfig.loadConfig(OADConfig.SPEC, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds_1.19.toml"));
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, OADConfig.SPEC);
+
 		OADPacketHandler.registerMessages();
-		ConfigHelper.loadConfig(ConfigHelper.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("ores_above_diamonds-1.19.toml"));
 
 		ModItems.ITEMS.register(modEventBus);
 		ModBlocks.BLOCKS.register(modEventBus);

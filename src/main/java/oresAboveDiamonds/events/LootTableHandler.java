@@ -2,7 +2,6 @@ package oresAboveDiamonds.events;
 
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import oresAboveDiamonds.config.OADConfig;
 
 public class LootTableHandler {
 
@@ -12,9 +11,9 @@ public class LootTableHandler {
 	public static void lootLoad(LootTableLoadEvent event) {
 		String prefix = "minecraft:chests/";
 		String name = event.getName().toString();
-
+		/*
 		if (name.startsWith(prefix) && OADConfig.chest_loot.get() == true) {
-			/*
+
 			String file = name.substring(name.indexOf(prefix) + prefix.length());
 			switch (file) {
 			case "abandoned_mineshaft":
@@ -32,8 +31,9 @@ public class LootTableHandler {
 			default:
 				break;
 			}
-			*/
+
 		}
+		*/
 	}
 
 	/*

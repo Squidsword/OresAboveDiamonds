@@ -211,8 +211,6 @@ public class PacketSyncConfig {
 		this.netherite_opal_leggings_armor = netherite_opal_leggings_armor;
 		this.netherite_opal_boots_armor = netherite_opal_boots_armor;
 
-		this.old_combat_mechanics = old_combat_mechanics;
-
 		this.spawn_amethyst_overworld = spawn_amethyst_overworld;
 		this.spawn_black_opal_overworld = spawn_black_opal_overworld;
 		this.spawn_amethyst_nether = spawn_amethyst_nether;
@@ -244,6 +242,7 @@ public class PacketSyncConfig {
 		this.amethyst_max_spawn_height_end = amethyst_max_spawn_height_end;
 		this.black_opal_max_spawn_height_end = black_opal_max_spawn_height_end;
 
+		this.old_combat_mechanics = old_combat_mechanics;
 		this.chest_loot = chest_loot;
 	}
 
@@ -323,7 +322,6 @@ public class PacketSyncConfig {
 		buf.writeBoolean(msg.spawn_black_opal_end);
 
 		buf.writeBoolean(msg.old_combat_mechanics);
-		buf.writeBoolean(msg.ores_above_netherite);
 		buf.writeBoolean(msg.chest_loot);
 	}
 	
@@ -481,7 +479,7 @@ public class PacketSyncConfig {
 				update(OADConfig.nether_chance_multiplier, msg.nether_chance_multiplier);
 				update(OADConfig.end_chance_multiplier, msg.end_chance_multiplier);
 				update(OADConfig.nether_vein_multiplier, msg.nether_vein_multiplier);
-				update(OADConfig.end_vein_multiplier, msg.end_chance_multiplier);
+				update(OADConfig.end_vein_multiplier, msg.end_vein_multiplier);
 
 				update(OADConfig.spawn_amethyst_overworld, msg.spawn_amethyst_overworld);
 				update(OADConfig.spawn_black_opal_overworld, msg.spawn_black_opal_overworld);
@@ -512,17 +510,16 @@ public class PacketSyncConfig {
 			return false;
 		}
 		cfg.set(msg);
-		System.out.println(cfg.toString() + " " + msg);
 		counter++;
 		return true;
 	}
 	public static boolean update(ForgeConfigSpec.DoubleValue cfg, double msg) {
-		if (Math.abs(cfg.get() - msg) < 0.00001)  {
+		if (Math.abs(cfg.get() - msg) < 0.0001)  {
 			return false;
 		}
 		cfg.set(msg);
 		counter++;
-		System.out.println(cfg.toString() + " " + msg);
+
 		return true;
 	}
 
@@ -531,7 +528,6 @@ public class PacketSyncConfig {
 			return false;
 		}
 		cfg.set(msg);
-		System.out.println(cfg.toString() + " " + msg);
 		counter++;
 		return true;
 	}
