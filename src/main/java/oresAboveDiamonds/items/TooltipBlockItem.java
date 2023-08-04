@@ -35,7 +35,7 @@ public class TooltipBlockItem extends BlockItem {
 	}
 	public void addDisabled(List<Component> tooltip) {
 		tooltip.add(Component.literal("\u00A7c" + "DISABLED"));
-		tooltip.add(Component.literal("Can be enabled in the config file."));
+		tooltip.add(Component.literal("Not supported for 1.19.3+. Still can be added with data packs"));
 	}
 	
 	@Override
@@ -59,30 +59,30 @@ public class TooltipBlockItem extends BlockItem {
 		if(KeyboardUtil.isHoldingShift()) {
 			switch(blockName) {
 			case "DEEPSLATE_AMETHYST_ORE":
-				if(OADConfig.spawn_amethyst_overworld.get() == true) {
+				if(OADConfig.spawn_amethyst_overworld.getDefault() == true) {
 					tooltip.add(Component.literal("Spawns when a normal amethyst ore tries to generate in a deepslate block."));
 				} else {
 					addDisabled(tooltip);
 				}
 				break;
 			case "AMETHYST_ORE":
-				if(OADConfig.spawn_amethyst_overworld.get() == true) {
-					addDescription(tooltip, OADConfig.amethyst_times_rarer.get(), OADConfig.amethyst_vein_size.get(), OADConfig.amethyst_max_spawn_height_overworld.get(), "Overworld", "\u00A7d", OADConfig.overworld_discard_chance_on_air_exposure.get());
+				if(OADConfig.spawn_amethyst_overworld.getDefault() == true) {
+					addDescription(tooltip, OADConfig.amethyst_times_rarer.getDefault(), OADConfig.amethyst_vein_size.getDefault(), OADConfig.amethyst_max_spawn_height_overworld.getDefault(), "Overworld", "\u00A7d", OADConfig.overworld_discard_chance_on_air_exposure.getDefault());
 					/*
 					tooltip.add(Component.literal("\u00A7a" + "Generating in the Overworld"));
-					tooltip.add(Component.literal("\u00A7d" + "1 in " + OADConfig.amethyst_times_rarer.get() + "\u00A7r" + " chance of spawning per chunk"));
-					tooltip.add(Component.literal("Max vein size of " + "\u00A7d" + OADConfig.amethyst_vein_size.get()));
-					tooltip.add(Component.literal("Spawns below " + "\u00A7d" + "y:" + OADConfig.amethyst_max_spawn_height_overworld.get()));
+					tooltip.add(Component.literal("\u00A7d" + "1 in " + OADConfig.amethyst_times_rarer.getDefault() + "\u00A7r" + " chance of spawning per chunk"));
+					tooltip.add(Component.literal("Max vein size of " + "\u00A7d" + OADConfig.amethyst_vein_size.getDefault()));
+					tooltip.add(Component.literal("Spawns below " + "\u00A7d" + "y:" + OADConfig.amethyst_max_spawn_height_overworld.getDefault()));
 					*/
 				} else {
 					addDisabled(tooltip);
 				}
 				break;
 			case "NETHER_AMETHYST_ORE":
-				if(OADConfig.spawn_amethyst_nether.get() == true) {
-					int spawnchance = Math.max(1, (int) (OADConfig.amethyst_times_rarer.get() / (OADConfig.nether_chance_multiplier.get())));
-					int veinsize =  (int) (OADConfig.amethyst_vein_size.get() * OADConfig.nether_vein_multiplier.get());
-					addDescription(tooltip, spawnchance, veinsize, OADConfig.amethyst_max_spawn_height_nether.get(), "Nether", "\u00A7d", OADConfig.nether_discard_chance_on_air_exposure.get());
+				if(OADConfig.spawn_amethyst_nether.getDefault() == true) {
+					int spawnchance = Math.max(1, (int) (OADConfig.amethyst_times_rarer.getDefault() / (OADConfig.nether_chance_multiplier.getDefault())));
+					int veinsize =  (int) (OADConfig.amethyst_vein_size.getDefault() * OADConfig.nether_vein_multiplier.getDefault());
+					addDescription(tooltip, spawnchance, veinsize, OADConfig.amethyst_max_spawn_height_nether.getDefault(), "Nether", "\u00A7d", OADConfig.nether_discard_chance_on_air_exposure.getDefault());
 				} else {
 					addDisabled(tooltip);
 				}
@@ -90,17 +90,17 @@ public class TooltipBlockItem extends BlockItem {
 				
 			case "END_AMETHYST_ORE":
 				
-				if(OADConfig.spawn_amethyst_end.get() == true) {
-					int spawnchance = Math.max(1, (int) (OADConfig.amethyst_times_rarer.get() / (OADConfig.end_chance_multiplier.get())));
-					int veinsize =  (int) (OADConfig.amethyst_vein_size.get() * OADConfig.end_vein_multiplier.get());
-					addDescription(tooltip, spawnchance, veinsize, OADConfig.amethyst_max_spawn_height_end.get(), "End", "\u00A7d", OADConfig.end_discard_chance_on_air_exposure.get());
+				if(OADConfig.spawn_amethyst_end.getDefault() == true) {
+					int spawnchance = Math.max(1, (int) (OADConfig.amethyst_times_rarer.getDefault() / (OADConfig.end_chance_multiplier.getDefault())));
+					int veinsize =  (int) (OADConfig.amethyst_vein_size.getDefault() * OADConfig.end_vein_multiplier.getDefault());
+					addDescription(tooltip, spawnchance, veinsize, OADConfig.amethyst_max_spawn_height_end.getDefault(), "End", "\u00A7d", OADConfig.end_discard_chance_on_air_exposure.getDefault());
 				} else {
 					addDisabled(tooltip);
 				} 
 				break;
 				
 			case "DEEPSLATE_BLACK_OPAL_ORE":
-				if(OADConfig.spawn_black_opal_overworld.get() == true) {
+				if(OADConfig.spawn_black_opal_overworld.getDefault() == true) {
 					tooltip.add(Component.literal("Spawns when a normal black opal ore tries to generate in a deepslate block."));
 				} else {
 					addDisabled(tooltip);
@@ -108,17 +108,17 @@ public class TooltipBlockItem extends BlockItem {
 				break;
 				
 			case "BLACK_OPAL_ORE":
-				if(OADConfig.spawn_black_opal_overworld.get() == true) {
-					addDescription(tooltip, OADConfig.black_opal_times_rarer.get(), OADConfig.black_opal_vein_size.get(), OADConfig.black_opal_max_spawn_height_overworld.get(), "Overworld", "\u00A75", OADConfig.overworld_discard_chance_on_air_exposure.get());
+				if(OADConfig.spawn_black_opal_overworld.getDefault() == true) {
+					addDescription(tooltip, OADConfig.black_opal_times_rarer.getDefault(), OADConfig.black_opal_vein_size.getDefault(), OADConfig.black_opal_max_spawn_height_overworld.getDefault(), "Overworld", "\u00A75", OADConfig.overworld_discard_chance_on_air_exposure.getDefault());
 				} else {
 					addDisabled(tooltip);
 				}
 				break;
 			case "NETHER_BLACK_OPAL_ORE":
-				if(OADConfig.spawn_black_opal_nether.get() == true) {
-					int spawnchance = Math.max(1, (int) (OADConfig.black_opal_times_rarer.get() / (OADConfig.nether_chance_multiplier.get())));
-					int veinsize =  (int) (OADConfig.black_opal_vein_size.get() * OADConfig.nether_vein_multiplier.get());
-					addDescription(tooltip, spawnchance, veinsize, OADConfig.black_opal_max_spawn_height_nether.get(), "Nether", "\u00A75", OADConfig.nether_discard_chance_on_air_exposure.get());
+				if(OADConfig.spawn_black_opal_nether.getDefault() == true) {
+					int spawnchance = Math.max(1, (int) (OADConfig.black_opal_times_rarer.getDefault() / (OADConfig.nether_chance_multiplier.getDefault())));
+					int veinsize =  (int) (OADConfig.black_opal_vein_size.getDefault() * OADConfig.nether_vein_multiplier.getDefault());
+					addDescription(tooltip, spawnchance, veinsize, OADConfig.black_opal_max_spawn_height_nether.getDefault(), "Nether", "\u00A75", OADConfig.nether_discard_chance_on_air_exposure.getDefault());
 				} else {
 					addDisabled(tooltip);
 				}
@@ -126,10 +126,10 @@ public class TooltipBlockItem extends BlockItem {
 				
 			case "END_BLACK_OPAL_ORE":
 				
-				if(OADConfig.spawn_black_opal_end.get() == true) {
-					int spawnchance = Math.max(1, (int) (OADConfig.black_opal_times_rarer.get() / (OADConfig.end_chance_multiplier.get())));
-					int veinsize =  (int) (OADConfig.black_opal_vein_size.get() * OADConfig.end_vein_multiplier.get());
-					addDescription(tooltip, spawnchance, veinsize, OADConfig.black_opal_max_spawn_height_end.get(), "End", "\u00A75", OADConfig.end_discard_chance_on_air_exposure.get());
+				if(OADConfig.spawn_black_opal_end.getDefault() == true) {
+					int spawnchance = Math.max(1, (int) (OADConfig.black_opal_times_rarer.getDefault() / (OADConfig.end_chance_multiplier.getDefault())));
+					int veinsize =  (int) (OADConfig.black_opal_vein_size.getDefault() * OADConfig.end_vein_multiplier.getDefault());
+					addDescription(tooltip, spawnchance, veinsize, OADConfig.black_opal_max_spawn_height_end.getDefault(), "End", "\u00A75", OADConfig.end_discard_chance_on_air_exposure.getDefault());
 				} else {
 					addDisabled(tooltip);
 				}
@@ -141,36 +141,36 @@ public class TooltipBlockItem extends BlockItem {
 			switch(blockName) {
 			case "DEEPSLATE_AMETHYST_ORE":
 			case "AMETHYST_ORE":
-				if(OADConfig.spawn_amethyst_overworld.get() == false) {
+				if(OADConfig.spawn_amethyst_overworld.getDefault() == false) {
 					tooltip.add(Component.literal("\u00A7c" + "DISABLED"));
 				}
 				break;
 			case "NETHER_AMETHYST_ORE":
-				if(OADConfig.spawn_amethyst_nether.get() == false) {
+				if(OADConfig.spawn_amethyst_nether.getDefault() == false) {
 					tooltip.add(Component.literal("\u00A7c" + "DISABLED"));
 				}
 				break;
 				
 			case "END_AMETHYST_ORE":
-				if(OADConfig.spawn_amethyst_end.get() == false ) {
+				if(OADConfig.spawn_amethyst_end.getDefault() == false ) {
 					tooltip.add(Component.literal("\u00A7c" + "DISABLED"));
 				}
 				break;
 				
 			case "DEEPSLATE_BLACK_OPAL_ORE":
 			case "BLACK_OPAL_ORE":
-				if(OADConfig.spawn_black_opal_overworld.get() == false) {
+				if(OADConfig.spawn_black_opal_overworld.getDefault() == false) {
 					tooltip.add(Component.literal("\u00A7c" + "DISABLED"));
 				}
 				break;
 			case "NETHER_BLACK_OPAL_ORE":
-				if(OADConfig.spawn_black_opal_nether.get() == false) {
+				if(OADConfig.spawn_black_opal_nether.getDefault() == false) {
 					tooltip.add(Component.literal("\u00A7c" + "DISABLED"));
 				}
 				break;
 				
 			case "END_BLACK_OPAL_ORE":
-				if(OADConfig.spawn_black_opal_end.get() == false) {
+				if(OADConfig.spawn_black_opal_end.getDefault() == false) {
 					tooltip.add(Component.literal("\u00A7c" + "DISABLED"));
 				}
 				break;

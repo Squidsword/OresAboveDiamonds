@@ -4,7 +4,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 
 public class AmethystOre extends DropExperienceBlock {
 
@@ -18,7 +18,8 @@ public class AmethystOre extends DropExperienceBlock {
 	
 	public AmethystOre(SoundType soundType, float hardness) {
 		super(BlockBehaviour.Properties
-				.of(Material.STONE)
+				.of()
+				.mapColor(MapColor.STONE)
 				.requiresCorrectToolForDrops()
 				.strength(hardness, 3f)
 				.sound(soundType),

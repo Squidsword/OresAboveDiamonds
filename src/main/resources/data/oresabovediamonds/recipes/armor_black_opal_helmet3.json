@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "minecraft:diamond_helmet"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "oresabovediamonds:black_opal_helmet"
+  },
+  "template": {
+    "item": "minecraft:air"
   }
 }

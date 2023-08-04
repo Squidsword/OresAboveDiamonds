@@ -12,6 +12,7 @@ import oresAboveDiamonds.config.OADConfig;
 import oresAboveDiamonds.events.LootTableHandler;
 import oresAboveDiamonds.events.PlayerLoggedInEventHandler;
 import oresAboveDiamonds.init.ModBlocks;
+import oresAboveDiamonds.init.ModItemGroups;
 import oresAboveDiamonds.init.ModItems;
 import oresAboveDiamonds.network.OADPacketHandler;
 import org.apache.logging.log4j.LogManager;
@@ -39,12 +40,12 @@ public class OresAboveDiamonds {
 
 		ModItems.ITEMS.register(modEventBus);
 		ModBlocks.BLOCKS.register(modEventBus);
+		ModItemGroups.TABS.register(modEventBus);
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new PlayerLoggedInEventHandler());
-		MinecraftForge.EVENT_BUS.register(new LootTableHandler());
-		MinecraftForge.EVENT_BUS.addListener(LootTableHandler::lootLoad);
-
+		MinecraftForge.EVENT_BUS.register(LootTableHandler.class);
+		MinecraftForge.EVENT_BUS.register(ModItemGroups.class);
 	}
 
 	public static String key(String name) {
